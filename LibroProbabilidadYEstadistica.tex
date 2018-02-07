@@ -47,6 +47,10 @@
     \usepackage{multicol}                                           %Create multicolumns
 
     % *********   HEADERS AND FOOTERS ********
+    \def\ProjectAuthorLink{https://github.com/SoyOscarRH}           %Just to keep it in line
+    \def\ProjectNameLink{\ProjectAuthorLink/LibroProbabilidad}      %Link to Proyect
+
+    % *********   HEADERS AND FOOTERS ********
     \usepackage{fancyhdr}                                           %Lets make awesome headers/footers
     \pagestyle{fancy}                                               %Lets make awesome headers/footers
     \setlength{\headheight}{16pt}                                   %Top line
@@ -371,7 +375,6 @@
     {\textbf{\textsc{\Huge Compilando Conocimiento}}}\\[2.7cm]      %Name of project   
 
     % ============ NAME OF THE BOOK  ===============
-    \def\ProjectNameLink{https://github.com/SoyOscarRH}             %Just to keep it in line
     \href{\ProjectNameLink/LibroProbabilidad}                       %Link to Author
     {\fontsize{36}{50}                                              %Size of the book
         \selectfont \textbf{Probabilidad y Estadística}}\\[0.5cm]   %Name of the book
@@ -423,37 +426,208 @@
     % ===============================================================================
     % ===============       INTRODUCCION A LA PROBALIDAD       ======================
     % ===============================================================================
-    \chapter{Introducción}
+    \chapter{Introducción - Cosas que Recordar}
 
 
 
         % ==============================================================
-        % =================                           ==================
+        % =========    NOTACION - COSAS QUE DEBES SABER    =============
         % ==============================================================
         \clearpage
-        \section{}
+        \section{Notación}
 
 
             % ====================================
-            % =====                         ======
+            % =======   EXPERIMENTO  =============
             % ====================================
-            \vspace{2em}
-            \subsection{Notación}
+            \subsection{Experimento $\varepsilon$}
+
+                Decimos que un experimento en probabilidad es cualquier proceso del cual se desconoce
+                con determinación el resultado final.
+
+                Generalmente lo denotamos con mayúsculas.
 
 
+
+            % ====================================
+            % ==========    OMEGA   ==============
+            % ====================================
+            \vspace{1em}
+            \subsection{Espacio Muestral $\Omega$}
+
+                Un espacio muestral asociado a un experimento es el conjunto de posibles resultados al
+                momento de realizar el experimento.
+
+                % ======== EJEMPLO ========
+                 \begin{SmallIndentation}[1em]
+                     \textbf{Ejemplo}:
+                     
+                    Por ejemplo si $\varepsilon_1:$ Lanzar una moneda.
+                    Entonces tenemos que $S_1 = \Set{Cara, Cruz}$ 
+
+                    Si $\varepsilon_2:$ Lanzar un dado.
+                    Entonces tenemos que $S_2 = \Set{1, 2, 3, 4, 5, 6}$ 
+                 
+                 \end{SmallIndentation}
+
+
+            % ====================================
+            % ==========    EVENTO  ==============
+            % ====================================
+            \vspace{1em}
+            \subsection{Evento $A$}
+
+                Un evento es simplemente algún subconjunto del espacio muestral.
+
+                % ======== EJEMPLO ========
+                 \begin{SmallIndentation}[1em]
+                     \textbf{Ejemplo}:
+                     
+                    Por ejemplo si $\varepsilon_1:$ Lanzar una moneda.
+                    Entonces tenemos que un evento puede ser $A_1 = \Set{Cara}$ 
+
+                    Si $\varepsilon_2:$ Lanzar un dado.
+                    Entonces tenemos que un evento puede ser $A_2 = \Set{1, 2, 4}, A_2.1 = \Set{5}$ 
+                 
+                 \end{SmallIndentation}
+
+
+
+
+            % ====================================
+            % =======    PROBABILIDAD    =========
+            % ====================================
+            \clearpage
+            \subsection{Probabilidad $P(A)$}
+
+                Definimos la probabilidad de un evento $A$ como:
+                \begin{equation*}
+                    P(A) = \frac{|A|}{|S|} \Remember{Recuerda que $A$ es un evento y $S$ es espacio muestral}
+                \end{equation*}
+
+                Creo que es muy obvio por la manera en que definimos a la probabilidad de un evento
+                es un número real entre 0 y 1.
+
+                Por lo tanto:
                 \begin{itemize}
-                    \item $\epsilon$ Experimento
-                    \item $A$ Evento
-                    \item $P(A)$ Probabilidad del evento $A$
-                    \item $\omega$ Es un Conjunto de posibles resultados del experimento
-                    \item $X$, es una variable libre, una característica del experimento, es decir
-                        $X: \omega \to \Reals$
+                    \item \textbf{NO hay probabilidades negativas}
+                    \item \textbf{NO hay probabilidades mayores a uno}
                 \end{itemize}
 
+                Entonces podemos reducir el problema de encontrar la probabilidad de un evento
+                simplemente a dos partes:
+                \begin{itemize}
+                    \item Encontrar la cardinalidad de dicho evento
+                    \item Encontrar la cardinalidad del espacio muestral de un experimento 
+                \end{itemize}
+
+         
+
+
+    % ===============================================================================
+    % =======================      COMBINATORIA       ===============================
+    % ===============================================================================
+    \chapter{Combinatoria}
+
+        % ==============================================================
+        % ===============      IDEAS CLAVES       ======================
+        % ==============================================================
+        \clearpage
+        \section{Ideas Clave}
+
+            
+            % ====================================
+            % ====   ORDEN VS NO ORDEN   =========
+            % ====================================
+            \subsection{Ordén vs Sin Ordén}
+
+                En las muestras que estan ordenadas entonces el ordén de los elementos importa
+                por ejemplo en los dígitos de un teléfono o en las letras de una palabra.
+
+                En las muestras que no estan ordenadas el ordén es irrelevante, por ejemplo en los
+                elementos de un conjunto.
+
+            % ====================================
+            % ===  REMPLAZAR VS NO REMPLAZAR  ====
+            % ====================================
+            \subsection{Remplazar vs No Remplazar}
+
+                Las muestras con remplazo entonces estan permitidas, por ejemplo los números de
+                la licencia.
+
+                Cuando la repetición no esta permitida, por ejemplo en un conjunto de números de lotería
+
+
+        % ==============================================================
+        % ===============        FORMULAS         ======================
+        % ==============================================================
+        \clearpage
+        \section{Fórmulas}
+
+            \begin{itemize}
+                \item 
+                    Número de \textbf{permutaciones} de un conjunto de $n$ objetos
+                    \begin{equation}
+                        n!
+                    \end{equation}
+
+                \item
+                    Número de \textbf{muestras ordenadas} de tamaño $r$
+                    \textbf{con remplazo} de un conjunto de $n$ objetos
+                    \begin{equation}
+                        n^r
+                    \end{equation}
+
+                \item
+                    Número de \textbf{muestras ordenadas} de tamaño $r$
+                    \textbf{sin remplazo} de un conjunto de $n$ objetos
+                    \begin{align}
+                        {}_nP_r
+                            = \frac{n!}{(n - r)!}          
+                            = (n)(n-1)(n-2)\dots(n-r+1) 
+                    \end{align}
+
+                \item
+                    Número de \textbf{muestras no ordenadas} de tamaño $r$
+                    \textbf{sin remplazo} de un conjunto de $n$ objetos
+
+                    Esto es lo mismo que el número de subconjuntos de cardinalidad $r$ de
+                    un conjunto de $n$ elementos
+                    \begin{align}
+                        {n \choose r}
+                            = \frac{{}_nP_r}{r!}          
+                            = \frac{n!}{r!(n-r)!}          
+                            = \frac{(n)(n-1)(n-2)\dots(n-r+1)}{r!}          
+                    \end{align}
+
+                \item
+                    Número de subconjuntos de un conjunto de $n$ elementos:
+                    \begin{equation}
+                        2^n
+                    \end{equation}
+
+
+            \end{itemize}
 
 
 
 
+
+            
+
+
+
+% ===============================================
+% ========        BIBLIO      ===================
+% ===============================================
+\begin{thebibliography}{10}
+
+    \bibitem{Leticia} 
+        Leticia Cañedo Suárez
+        \textit{Probabilidad}. 
+        ESCOM, 2018
+
+\end{thebibliography}
 
 
 \end{document}
