@@ -595,6 +595,7 @@
                     un conjunto de $n$ elementos
                     \begin{align}
                         {n \choose r}
+                            = {}_nC_r 
                             = \frac{{}_nP_r}{r!}          
                             = \frac{n!}{r!(n-r)!}          
                             = \frac{(n)(n-1)(n-2)\dots(n-r+1)}{r!}          
@@ -610,6 +611,77 @@
             \end{itemize}
 
 
+
+        % ==============================================================
+        % ===============        FORMULAS         ======================
+        % ==============================================================
+        \clearpage
+        \section{Coheficientes Binomiales}
+
+            % ====================================
+            % ======   INTERPRETACION    =========
+            % ====================================
+            \subsection{Interpretación}
+
+                Podemos interpretarlos de muchas maneras, algunas son:
+                \begin{itemize}
+                    \item
+                        El número de formas de seleccionar $k$ objetos de un conjunto de $n$ elementos.
+                    \item
+                        El número de subconjuntos de elementos $k$ en un conjunto de $n$ elementos.
+                \end{itemize}
+
+
+            % ====================================
+            % ======     PROPIEDADES     =========
+            % ====================================
+            \subsection{Propieades}
+
+                \begin{itemize}
+                    \item 
+                        Número de \textbf{permutaciones} de un conjunto de $n$ objetos
+                        \begin{align}
+                            {n \choose r}
+                                &= \frac{n!}{k!(n-k)!} 
+                                    &&\Remember{ donde $n \in \Naturals$ y $k \in \Set{1, \dots, n}$ }     \\
+                                &= \frac{(n)(n-1)(n-2)\dots(n-k+1)}{k!}
+                        \end{align}
+
+                    \item 
+                        Número de \textbf{permutaciones} de un conjunto de $n$ objetos
+                        \begin{equation}
+                            {n \choose k} = \frac{n!}{k!(n-k)!}
+                        \end{equation}
+
+                    \item 
+                        Propiedades Simetrícas
+                        \begin{equation}
+                            {n \choose k} = {n \choose n - k}
+                        \end{equation}
+
+                    \item 
+                        Casos Especiales
+                        \begin{align}
+                            {n \choose 0} = {n \choose n} = 1
+                            \MegaSpace \MegaSpace
+                            {n \choose 1} = {n \choose n-1} = n   
+                        \end{align}
+
+                    \item 
+                        Teorema del Binomio
+                        \begin{equation}
+                            (x + y)^n 
+                                = \sum_{k=0}^n {n \choose k} x^k y^{n-k}
+                        \end{equation}
+
+
+                    \item 
+                        Teorema del Binomio (Caso Especial)
+                        \begin{equation}
+                            \sum_{k=0}^n {n \choose k} p^k (1 - p)^{n-k} = 1
+                        \end{equation}
+
+                \end{itemize}
 
 
 
