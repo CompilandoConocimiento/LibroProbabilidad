@@ -453,7 +453,7 @@
             % ==========    OMEGA   ==============
             % ====================================
             \vspace{1em}
-            \subsection{Espacio Muestral $\Omega$}
+            \subsection{Espacio Muestral $S, \Omega$}
 
                 Un espacio muestral asociado a un experimento es el conjunto de posibles resultados al
                 momento de realizar el experimento.
@@ -494,34 +494,97 @@
 
 
 
+        % ====================================
+        % =======    PROBABILIDAD    =========
+        % ====================================
+        \clearpage
+        \section{Probabilidad $P(A)$}
+
+            Definimos la probabilidad de un evento $A$ como:
+            \begin{equation*}
+                P(A) = \frac{|A|}{|S|} \Remember{Recuerda que $A$ es un evento y $S$ es espacio muestral}
+            \end{equation*}
+
+            Creo que es muy obvio por la manera en que definimos a la probabilidad de un evento
+            es un número real entre 0 y 1.
+
+            Por lo tanto:
+            \begin{itemize}
+                \item \textbf{NO hay probabilidades negativas}
+                \item \textbf{NO hay probabilidades mayores a uno}
+            \end{itemize}
+
+            Entonces podemos reducir el problema de encontrar la probabilidad de un evento
+            simplemente a dos partes:
+            \begin{itemize}
+                \item Encontrar la cardinalidad de dicho evento
+                \item Encontrar la cardinalidad del espacio muestral de un experimento 
+            \end{itemize}
+
+
             % ====================================
-            % =======    PROBABILIDAD    =========
+            % =======    CONSECUENCIAS   =========
             % ====================================
             \clearpage
-            \subsection{Probabilidad $P(A)$}
+            \subsection{Consecuencias}
 
-                Definimos la probabilidad de un evento $A$ como:
-                \begin{equation*}
-                    P(A) = \frac{|A|}{|S|} \Remember{Recuerda que $A$ es un evento y $S$ es espacio muestral}
-                \end{equation*}
+            \begin{itemize}
+                \item
+                    $P(S) = 1$
+                
+                \item
+                    Si $A_1, A_2, \dots, A_n$ son eventos mutuamente excluyentes entonces:
+                    \begin{equation*}
+                        P\Wrap{\cup_{i = 1}^n A_i} 
+                            = \sum_{i = 1}^n P(A_i)    
+                    \end{equation*}
+                
+                \item
+                    Si $A_1, A_2, \dots$ son una colección infinita, pero contable de eventos
+                    mutuamente excluyentes entonces:
+                    \begin{equation*}
+                        P\Wrap{\cup_{i = 1}^\infty A_i} 
+                            = \sum_{i = 1}^\infty P(A_i)    
+                    \end{equation*}
 
-                Creo que es muy obvio por la manera en que definimos a la probabilidad de un evento
-                es un número real entre 0 y 1.
+                \item 
+                    $P(\emptyset) = 0$
+                
+                \item 
+                    $P(A') = 1 - P(A)$
 
-                Por lo tanto:
-                \begin{itemize}
-                    \item \textbf{NO hay probabilidades negativas}
-                    \item \textbf{NO hay probabilidades mayores a uno}
-                \end{itemize}
+                \item 
+                    Si $A \subseteq B$ entonces $P(A) \leq P(B)$
 
-                Entonces podemos reducir el problema de encontrar la probabilidad de un evento
-                simplemente a dos partes:
-                \begin{itemize}
-                    \item Encontrar la cardinalidad de dicho evento
-                    \item Encontrar la cardinalidad del espacio muestral de un experimento 
-                \end{itemize}
+                \item
+                    La probabilidad de la unión de n eventos de puede escribir de manera general como:
+                    \begin{equation*}
+                        P\Wrap{\cup_{i = 1}^n A_i} 
+                        = 
+                            \sum_{i = 1}^n P(A_i) 
+                            - \sum_{i < j}^n P(A_iA_j) 
+                            + \sum_{i < j < k}^n P(A_iA_jA_k)
+                            + \dots
+                            + (-1)^{n+1} P\Wrap{\cap_{i = 1}^n A_i}
+                    \end{equation*}
+                
+                \item Por consecuencia del caso general tenemos que: 
+                    \begin{equation*}
+                        P(A \cup B) = P(A) + P(B) - P(A \cap B)   
+                    \end{equation*}
+                
+                \item Por consecuencia del caso general tenemos que: 
+                    \begin{align*}
+                        P(A \cup B \cup C) 
+                            &=                                              \\
+                            &P(A) + P(B) + P(C)                             \\
+                            &-(P(A \cap B) + P(A \cap C) + P(B \cap C))     \\
+                            &+ P(A \cap B \cap C)   
+                    \end{align*}
 
-         
+            \end{itemize}
+
+     
 
 
     % ===============================================================================
@@ -685,7 +748,19 @@
 
 
 
-            
+        % ==============================================================
+        % ===============        PROPIEDADES      ======================
+        % ==============================================================
+        \clearpage
+        \section{Propiedades}
+
+            \begin{itemize}
+               
+               \item 
+                    Las formas de permutar $n$ elementos en un círculo es
+                    $(n-1)!$
+
+           \end{itemize}   
 
 
 
