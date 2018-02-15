@@ -611,6 +611,36 @@
             \end{itemize}
 
 
+            % ==============================================================
+            % =======     REGLA DE LA MULTIPLICACIÓN       =================
+            % ==============================================================
+            \vspace{1em}
+            \subsection{Regla de la Multiplicación}
+
+                Nota que $P(A \cap B)$ se puede ver como:
+                \begin{equation*}
+                    P(A \cap B)
+                        = P(A | B)P(B)
+                        = P(B | A)P(A) 
+                \end{equation*}
+
+
+                Podemos entonce redefinir la propabilidad condicional como:
+                \begin{align*}
+                    P(A | B)
+                        &= \dfrac{P(A \cap B)}{P(B)}
+                            && \Remember{Por definición}                                    \\[0.8em]
+                        &= \dfrac{P(B \Such A)P(A)}{P(B)}
+                            && \Remember{Por regla de multiplicación en el numerador}       \\[0.8em]
+                        &= \dfrac{P(B \Such A)P(A)}{P((B \cap A) \cup (B \cap A'))}
+                            && \Remember{Unión de eventos disconjuntos}                     \\[0.8em]
+                        &= \dfrac{P(B \Such A)P(A)}{P(B \cap A) + P(B \cap A')}
+                            && \Remember{Aplicando regla de la multiplicación a cada uno}   \\[1.2em]
+                        &= \dfrac{P(B \Such A)P(A)}{P(B | A)P(A) + P(B | A')P(A')}
+                \end{align*}
+
+
+
 
 
 
