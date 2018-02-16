@@ -642,6 +642,65 @@
 
 
 
+        % ==============================================================
+        % ===========      EVENTOS INDEPENDIENTES       ================
+        % ==============================================================
+        \clearpage
+        \section{Eventos Independientes}
+
+            Dados 2 eventos que $A, B$ son Independientes si y solo si
+            $P(A) = P(A | B)$ y se escribe: $A \bot B$.
+
+
+            % ==============================================================
+            % ===========               PROPIEDADES         ================
+            % ==============================================================
+            \clearpage
+            \subsection{Propiedades}
+
+                \begin{itemize}
+                   
+                    \item
+                        Si $A \bot B$ entonces $P(A \cap B) = P(A) P(B)$
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            
+                            Si $A \bot B$ entonces $P(B) = P(B | A)$, por lo tanto
+                            $P(B) = \frac{P(B \cap A)}{P(A)}$
+
+                            Y solo despejas
+                        
+                        \end{SmallIndentation}
+
+                    \item
+                        Si $A \bot B$ entonces $A' \bot B'$
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+
+                            Esta es clave:
+                            \begin{align*}
+                                P(A' \cap B')
+                                    &= P((A \cup B)')                       \\
+                                    &= 1 - [P(A)  + P(B) + P(A \cap B)]     \\
+                                    &= 1 - [P(A)  + P(B) + P(A \cap B)]     \\
+                                    &= (1-P(A))(1-P(B))                     \\
+                                    &= P(A') P(B')
+                            \end{align*}
+                        
+                        \end{SmallIndentation}
+
+                    \item
+                        Si $A \bot B$ entonces $P(A \cap B) \neq 0$
+                        o la contrapositiva que dice que si son disjuntos
+                        entonces no son independientes
+                            
+                            
+                \end{itemize}
+
+
 
 
     % ===============================================================================
