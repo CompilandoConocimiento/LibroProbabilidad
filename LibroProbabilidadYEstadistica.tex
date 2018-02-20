@@ -655,7 +655,6 @@
             % ==============================================================
             % ===========               PROPIEDADES         ================
             % ==============================================================
-            \clearpage
             \subsection{Propiedades}
 
                 \begin{itemize}
@@ -699,6 +698,36 @@
                             
                             
                 \end{itemize}
+
+
+
+
+        % ==============================================================
+        % ===========      TEOREMA DE BAYES             ================
+        % ==============================================================
+        \clearpage
+        \section{Teorema de Bayes}
+
+            Considera un conjunto de eventos $\Set{A_1, \dots, A_n}$ mutuamente exclusivos
+      		y tales que $\cup_{i=1}^n A_i = S$, es decir son particiones de $S$.
+
+      		Entonces podemos escribir la propabilidad de un evento $B$ como:
+      		\begin{equation*}
+      			P(B) 
+      				= \sum_{i = 1}^n P(A_i) P(B | A_i)
+      		\end{equation*}
+
+
+      		Gracias a esto podemos decir que:
+      		\begin{align*}
+      			P(A_i | B) 
+      				&= \frac{P(A_i \cap B)}{P(B)}									\\
+      				&= \dfrac{P(B | A_i)P(A_i)}{\displaystyle \sum_{i = 1}^n P(A_i) P(B | A_i)}
+      		\end{align*}
+
+
+
+
 
 
 
