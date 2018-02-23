@@ -2,22 +2,28 @@
 % *****************           PROPABILIDAD Y ESTADISTICA      ****************************
 % ****************************************************************************************
 
+
 % =======================================================
 % =======         HEADER FOR DOCUMENT        ============
 % =======================================================
+    
+    % *********   HEADERS AND FOOTERS ********
+    \def\ProjectAuthorLink{https://github.com/SoyOscarRH}           %Just to keep it in line
+    \def\ProjectNameLink{\ProjectAuthorLink/LibroProbabilidad}      %Link to Proyect
+
     % *********   DOCUMENT ITSELF   **************
     \documentclass[12pt, fleqn]{report}                             %Type of docuemtn and size of font and left eq
-    \usepackage[margin=1.2in]{geometry}                             %Margins and Geometry pacakge
+    \usepackage[spanish]{babel}                                     %Please use spanish
+    \usepackage[utf8]{inputenc}                                     %Please use spanish - UFT
+    \usepackage[margin = 1.2in]{geometry}                           %Margins and Geometry pacakge
     \usepackage{ifthen}                                             %Allow simple programming
     \usepackage{hyperref}                                           %Create MetaData for a PDF and LINKS!
     \usepackage{pdfpages}                                           %Create MetaData for a PDF and LINKS!
-    \hypersetup{pageanchor=false}                                   %Solve 'double page 1' warnings in build
+    \hypersetup{pageanchor = false}                                 %Solve 'double page 1' warnings in build
     \setlength{\parindent}{0pt}                                     %Eliminate ugly indentation
     \author{Oscar Andrés Rosas}                                     %Who I am
 
-    % *********   LANGUAJE AND UFT-8   *********
-    \usepackage[spanish]{babel}                                     %Please use spanish
-    \usepackage[utf8]{inputenc}                                     %Please use spanish - UFT
+    % *********   LANGUAJE    *****************
     \usepackage[T1]{fontenc}                                        %Please use spanish
     \usepackage{textcmds}                                           %Allow us to use quoutes
     \usepackage{changepage}                                         %Allow us to use identate paragraphs
@@ -45,10 +51,6 @@
     \usepackage{tabularx}                                           %Lets make tables awesome
     \usepackage{multirow}                                           %Lets make tables awesome
     \usepackage{multicol}                                           %Create multicolumns
-
-    % *********   HEADERS AND FOOTERS ********
-    \def\ProjectAuthorLink{https://github.com/SoyOscarRH}           %Just to keep it in line
-    \def\ProjectNameLink{\ProjectAuthorLink/LibroProbabilidad}      %Link to Proyect
 
     % *********   HEADERS AND FOOTERS ********
     \usepackage{fancyhdr}                                           %Lets make awesome headers/footers
@@ -81,9 +83,9 @@
     
     
     
-% ========================================
-% ===========   COMMANDS    ==============
-% ========================================
+% =======================================================
+% ===================   COMMANDS    =====================
+% =======================================================
 
     % =========================================
     % =======   NEW ENVIRONMENTS   ============
@@ -143,6 +145,9 @@
     \DeclareMathOperator \Reals        {\mathbb{R}}                 %Use: \Reals por Notation
     \DeclareMathOperator \Complexs     {\mathbb{C}}                 %Use: \Complex por Notation
     \DeclareMathOperator \GenericField {\mathbb{F}}                 %Use: \GenericField por Notation
+    \DeclareMathOperator \VectorSet    {\mathbb{V}}                 %Use: \VectorSet por Notation
+    \DeclareMathOperator \SubVectorSet {\mathbb{W}}                 %Use: \SubVectorSet por Notation
+    \DeclareMathOperator \Polynomials  {\mathbb{P}}                 %Use: \Polynomials por Notation
 
     % =====  CONTAINERS   ===============
     \newcommand{\Set}[1]{\left\{ \; #1 \; \right\}}                 %Use: \Set {Info} for INTELLIGENT space 
@@ -217,13 +222,13 @@
     % =========================================
 
     % == TRIGONOMETRIC FUNCTIONS  ====
-    \newcommand{\Cos}[1]{\cos\Wrap{#1}}                             %Simple wrappers
-    \newcommand{\Sin}[1]{\sin\Wrap{#1}}                             %Simple wrappers
-    \newcommand{\Tan}[1]{tan\Wrap{#1}}                              %Simple wrappers
+    \newcommand{\Cos}[1] {\cos\Wrap{#1}}                            %Simple wrappers
+    \newcommand{\Sin}[1] {\sin\Wrap{#1}}                            %Simple wrappers
+    \newcommand{\Tan}[1] {tan\Wrap{#1}}                             %Simple wrappers
     
-    \newcommand{\Sec}[1]{sec\Wrap{#1}}                              %Simple wrappers
-    \newcommand{\Csc}[1]{csc\Wrap{#1}}                              %Simple wrappers
-    \newcommand{\Cot}[1]{cot\Wrap{#1}}                              %Simple wrappers
+    \newcommand{\Sec}[1] {sec\Wrap{#1}}                             %Simple wrappers
+    \newcommand{\Csc}[1] {csc\Wrap{#1}}                             %Simple wrappers
+    \newcommand{\Cot}[1] {cot\Wrap{#1}}                             %Simple wrappers
 
     % === COMPLEX ANALYSIS TRIG ======
     \newcommand \Cis[1]  {\Cos{#1} + i \Sin{#1}}                    %Use: \Cis for cos(x) + i sin(x)
@@ -321,31 +326,32 @@
 
     \definecolor{DeepPurpleMD}{HTML}{673AB7}                        %Use: Color :D
 
+    \newcommand{\Color}[2]{\textcolor{#1}{#2}}                      %Simple color environment
     \newenvironment{ColorText}[1]                                   %Use: \begin{ColorText}
         { \leavevmode\color{#1}\ignorespaces }                      %That's is!
 
     % =====  CODE EDITOR =============
     \lstdefinestyle{CompilandoStyle} {                              %This is Code Style
-        backgroundcolor=\color{BlueGrey800MD},                      %Background Color  
-        basicstyle=\tiny\color{white},                              %Font color
-        commentstyle=\color{BlueGrey200MD},                         %Comment color
-        stringstyle=\color{Green300MD},                             %String color
-        keywordstyle=\color{Blue300MD},                             %keywords color
-        numberstyle=\tiny\color{TealMD},                            %Size of a number
-        frame=shadowbox,                                            %Adds a frame around the code
-        breakatwhitespace=true,                                     %Style   
-        showstringspaces=false,                                     %Hate those spaces                  
-        breaklines=true,                                            %Style                   
-        keepspaces=true,                                            %Style                   
-        numbers=left,                                               %Style                   
-        numbersep=10pt,                                             %Style 
-        xleftmargin=\parindent,                                     %Style 
-        tabsize=4,                                                  %Style
-        inputencoding=utf8/latin1                                   %Allow me to use special chars
+        backgroundcolor     = \color{BlueGrey900MD},                %Background Color  
+        basicstyle          = \tiny\color{white},                   %Style of text
+        commentstyle        = \color{BlueGrey200MD},                %Comment style
+        stringstyle         = \color{Green300MD},                   %String style
+        keywordstyle        = \color{Blue300MD},                    %keywords style
+        numberstyle         = \tiny\color{TealMD},                  %Size of a number
+        frame               = shadowbox,                            %Adds a frame around the code
+        breakatwhitespace   = true,                                 %Style   
+        breaklines          = true,                                 %Style   
+        showstringspaces    = false,                                %Hate those spaces                  
+        breaklines          = true,                                 %Style                   
+        keepspaces          = true,                                 %Style                   
+        numbers             = left,                                 %Style                   
+        numbersep           = 10pt,                                 %Style 
+        xleftmargin         = \parindent,                           %Style 
+        tabsize             = 4,                                    %Style
+        inputencoding       = utf8/latin1                           %Allow me to use special chars
     }
  
-    \lstset{style=CompilandoStyle}                                  %Use this style
-
+    \lstset{style = CompilandoStyle}                                %Use this style
 
 
 
@@ -426,7 +432,7 @@
     % ===============================================================================
     % ===============       INTRODUCCION A LA PROBALIDAD       ======================
     % ===============================================================================
-    \chapter{Introducción - Cosas que Recordar}
+    \chapter{Introducción}
 
 
 
@@ -728,6 +734,299 @@
 
 
 
+    % ===============================================================================
+    % ===============       VARIABLES ALEATORIAS               ======================
+    % ===============================================================================
+    \chapter{Variables Aleatorias}
+
+
+
+        % ==============================================================
+        % ===========                DEFINICION         ================
+        % ==============================================================
+        \clearpage
+        \section{Definición}
+
+            Una variable aleatoria es un función que asigna a cada elemento, en el espacio muestral
+            a un número real.
+
+            Esta se denota con mayúsculas y no es un número, es una función.
+            Para poner a un valor posible de una variable aleatoria lo denotamos con minúsculas.
+
+            % ==============================================================
+            % =======     VARIABLES ALEATORIAS DISCRETAS       =============
+            % ==============================================================
+            \vspace{2em}
+            \subsection{Variables Aleatorias Discretas}
+
+                Las variables aleatorias cuyo conjunto de valores posibles es finito o infinito contable
+                entonces decimos que es una variable aleatoria discreta.
+
+                % ======== EJEMPLO ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Ejemplo}:
+                    
+                    Por ejemplo considera que vas a lanzar 3 monedas, entonces tenemos que:
+                    \begin{equation*}
+                        S = \Set{ccc, ccx, cxc, xcc, xxc, xcx, cxx, xxx}
+                    \end{equation*}
+
+                    Entonces podemos tener una variable aleatoria como:
+
+                    Sea $X =$ Número de caras en 3 lanzamientos.
+
+                    Entonces podemos decir que:
+                    \begin{equation*}
+                        X(ccc) = 3, 
+                        X(ccx) = 2,
+                        X(cxc) = 2,
+                        X(xcc) = 2,
+                        X(xxc) = 1,
+                        X(xcx) = 1,
+                        X(cxx) = 1,
+                        X(xxx) = 0
+                    \end{equation*}
+
+                    Por lo tanto los vales posibles son $0, 1, 2, 3$.
+
+                \end{SmallIndentation}
+                
+
+
+
+            % ==============================================================
+            % ===========      FUNCION PROBABILIDAD         ================
+            % ==============================================================
+            \clearpage
+            \subsection{Función Probabilidad}
+
+                Es tan sencilla como $f_{X}(x) = P(X = x)$
+                Y tiene que cumplir que la suma de todos los posibles valores de la variable aleatoria
+                den uno.
+
+                Es decir, es la probabilidad de $x$ que para un elemento del espacio muestral nuestra
+                variable tome en valor de x.
+
+                % ======== EJEMPLO ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Ejemplo}:
+                    
+                    Por ejemplo podemos definir la probabilidad del ejemplo pasado
+                    podemos definir la función
+
+                    $f_{X}(x) = {3 \choose 3} \pfrac{1}{2}^x \pfrac{1}{2}^{3-x}$ para $x \in \Set{0, 1, 2, 3}$.
+
+                    Entonces tenemos que:
+                    \begin{itemize}
+                        \item La probabilidad de que $X = 0$ (caigan 0 caras) es $\frac{1}{8}$ 
+                        \item La probabilidad de que $X = 1$ (caigan 1 caras) es $\frac{3}{8}$ 
+                        \item La probabilidad de que $X = 2$ (caigan 2 caras) es $\frac{3}{8}$ 
+                        \item La probabilidad de que $X = 3$ (caigan 3 caras) es $\frac{1}{8}$ 
+                    \end{itemize}
+                
+                \end{SmallIndentation}
+
+            % ==============================================================
+            % ===========      FUNCION PROBABILIDAD         ================
+            % ==============================================================
+            \clearpage
+            \subsection{Función Probabilidad Acumulada}
+
+                La describimos como:
+                \begin{equation*}
+                    \Over{F}_{X}(x) = \sum_{i<x} f_{X}(i)
+                \end{equation*}
+
+
+                Podemos ver a la acumulada como una función fundamental, tal que podemos escribir a todas las
+                demás:
+                \begin{itemize}
+                    \item $P(X < x) = \Over{F}_{X}(x - 1)$
+                    \item $P(X \leq x) = \Over{F}_{X}(x)$
+                    \item $P(X > x) = 1 - \Over{F}_{X}(x)$
+                    \item $P(X \geq x) = 1 - \Over{F}_{X}(x - 1)$
+                    \item $P(a \leq X \leq b) = \Over{F}_{X}(b) - \Over{F}_{X}(a - 1)$
+                    \item $P(a < X \leq b) = \Over{F}_{X}(b) - \Over{F}_{X}(a)$
+                    \item $P(a \leq X < b) = \Over{F}_{X}(b - 1) - \Over{F}_{X}(a)$
+                    \item $P(a < X < b) = \Over{F}_{X}(b - 1) - \Over{F}_{X}(a - 1)$
+                \end{itemize}
+                    
+
+
+        % ============================================================== % ===========           ESPERANZA O MEDIA       ================
+        % ==============================================================
+        \clearpage
+        \section{Esperanza o Media}
+
+            Decimos que el valor esperado o esperanza media de la variable $X$
+            con $f_{X}(x)$ se define como:
+            \begin{equation*}
+                \mu_{X} = E(X) = \sum_x x P(X = x) = \sum_x x f_X(x)
+            \end{equation*}
+
+            Representa un promedio ponderado de los valores posibles de la variable basado en
+            sus probabilidades.
+
+            Es decir, si se repitiera el experimiento muchísimas veces el promedio de los resultados
+            se iría aproximando a la media.
+
+            % ==============================================================
+            % ===============        PROPIEDADES      ======================
+            % ==============================================================
+            \subsection{Propiedades}
+
+                \begin{itemize}
+
+                    \item
+                        $E(aX + bY) = aE(X) + bE(Y)$
+
+                    \item
+                        Si $X, Y$ son independientes entonces $E(XY) = E(X) + E(Y)$
+
+                    \item
+                        $E(a) = a$
+                \end{itemize}
+
+
+        % ==============================================================
+        % ===========              VARIANZA             ================
+        % ==============================================================
+        \clearpage
+        \section{Varianza}
+
+            Decimos que la varianza de la variable $X$
+            con $f_{X}(x)$ se define como:
+            \begin{equation*}
+                V(X) 
+                    = E((X - \mu)^2)
+                    = \sum_{x} (x - \mu)^2 P(X = x)
+            \end{equation*}
+
+            Podemos decir por su misma definición que la varianza siempre es positiva.
+
+            Es decir, este valor nos indica que tan lejos estan en promedio los valores de
+            su misma media, es decir, que tan dispersa o concentrada esta la distribución de 
+            los datos.
+
+
+
+
+
+            % ==============================================================
+            % ===============        PROPIEDADES      ======================
+            % ==============================================================
+            \subsection{Propiedades}
+
+                \begin{itemize}
+
+                    \item
+                        $v(X) = E(X^2) - (E(X))^2$
+                    \item 
+                        $V(a) = 0$
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            
+                            Sea $a = g(X)$, entonces su $\mu = a$, por lo
+                            tanto
+                            \begin{align}
+                                V(a) 
+                                    = E(a - a)^2)
+                                    = E(0)^2)
+                                    = 0
+                            \end{align}
+                        
+                        \end{SmallIndentation}
+
+                    \item 
+                        $v(aX) = a^2 v(X)$
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            \begin{align}
+                                V(aX) 
+                                    = E(aX^2) - E^2(aX)       \\
+                                    = a^2 E(X^2) - a^2E^2(X)  \\
+                                    = a^2 [E(X^2) - E^2(X)]   \\
+                                    = a^2 [v(X]          
+                            \end{align}
+                        
+                        \end{SmallIndentation}
+
+                    \item 
+                        $v(X + Y) = v(X) + v(Y) + 2Cov(X,Y)$
+
+
+                    \item 
+                        $v(X - Y) = v(X) - v(Y) - 2Cov(X,Y)$
+
+                    \item
+                        Si $X$ y $Y$ son independientes, entonces $v(X + Y) = v(X) + v(Y)$
+
+                    \item
+                        En general si $X_1, X_2, \dots, X_n$ son variables aleatorias, entonces
+                        tenemos que:
+                        \begin{align*}
+                            v\Wrap{\sum_{i = 1}^n X_i} = \sum_{i = 1}^n X_i + 2\sum_{i < j}^n Cov(X_i, X_j)
+                        \end{align*}
+
+                    \end{itemize}
+                            
+
+
+
+
+        % ==============================================================
+        % ===========        DESVICACIÓN ESTANDAR       ================
+        % ==============================================================
+        \clearpage
+        \section{Desvianción Estandar}
+
+            Decimos que la varianza de la variable $X$
+            con $f_{X}(x)$ se define como:
+            \begin{equation*}
+                \sigma(X) = \sqrt{v(X)}
+            \end{equation*}
+
+            Podemos decir por su misma definición que la varianza siempre es positiva.
+
+            Es decir, este valor nos indica que tan lejos estan en promedio los valores de
+            su misma media, es decir, que tan dispersa o concentrada esta la distribución de 
+            los datos.
+
+
+
+        % ==============================================================
+        % ===========            COVARIANZA             ================
+        % ==============================================================
+        \clearpage
+        \section{Covarianza}
+
+            La definimos como:
+            \begin{equation*}
+                Cov(X, Y)
+                    = E\Wrap{(X - \mu_{X})(Y - \mu_{Y})}
+            \end{equation*}
+
+
+            Es una manera de medir la dispersión conjunta de ambas variables.
+
+
+
+            
+            % ==============================================================
+            % ===============        PROPIEDADES      ======================
+            % ==============================================================
+            \subsection{Propiedades}
+
+                \begin{itemize}
+
+                    \item 
+                        $Cov(X, Y) 
+                            = E(X Y) - \mu_{X}\mu_{Y}$
+                    \end{itemize}
 
 
 
