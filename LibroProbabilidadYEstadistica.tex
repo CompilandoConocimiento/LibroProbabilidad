@@ -1031,6 +1031,119 @@
 
 
 
+        % ==============================================================
+        % ===========        MOMENTOS CENTRALES         ================
+        % ==============================================================
+        \clearpage
+        \section{Momentos Centrales}
+
+
+
+
+            Si $X$ es una variable aleatoria tal que $E(X) = \mu_x$ entonces tenemos que:
+            \begin{itemize}
+                \item 
+                    El k-ésimo momento central esta definida como:
+                    \begin{equation}
+                        \mu_k^c 
+                            = E\Brackets{(X - \mu)^k}
+                            = \sum_x (x - \mu)^k P(X = x)
+                    \end{equation}
+
+                \item 
+                    El k-ésimo momento alrededor del origen esta definida como:
+                    \begin{equation}
+                        \mu_k 
+                            = E\Brackets{(X)^k}
+                            = \sum_x x^k P(X = x)
+                    \end{equation}
+
+            \end{itemize}
+
+
+
+            % ==============================================================
+            % ===============        PROPIEDADES      ======================
+            % ==============================================================
+            \subsection{Propiedades}
+
+                \begin{itemize}
+
+                    \item
+                        Ya hemos trabajo con momentos, por ejemplo, la varianza
+                        la podemos definir como:
+                        $v(X) = E(X^2) - \mu^2$ donde $E(X^2)$ es un segundo momento
+
+                        O bien, verla como $v(X) = E[(X - \mu)^2]$ es decir
+                        la varianza es el segundo momento central.
+
+                \end{itemize}
+
+
+            % ==============================================================
+            % ===========     FUNCION GENERADORA      ======================
+            % ==============================================================
+            \clearpage
+            \subsection{Función Generadora de Momentos}
+
+                La podemos definir como:
+                \begin{equation*}
+                    \Psi_X (t) 
+                        = E(e^{tX})
+                        = \sum_x e^{tx} P(X = x)
+                \end{equation*}
+
+                Solemos decir que la k-ésima derivada de la función generadora
+                de momentos evaluada en $t = 0$ da como resultado el k-ésimo momento.
+
+                Es decir, siguen el siguiente patrón:
+                \begin{itemize}
+                    \item $\Psi_X' (t = 0) = E(X)$ 
+                    \item $\Psi_X'' (t = 0) = E(X^2)$ 
+                    \item $\Psi_X''' (t = 0) = E(X^3)$ 
+                    \item $\Psi_X^{(n)} (t = 0) = E(X^n)$ 
+                \end{itemize}
+
+
+
+            % ==============================================================
+            % ===============        PROPIEDADES      ======================
+            % ==============================================================
+            \subsection{Propiedades}
+
+                \begin{itemize}
+
+                    \item
+                        Nota que $\Psi_x(a) = E(e^{aX})$
+
+                    \item
+                        $\Psi_X (t = 0) = \mu_k$
+
+                    \item
+                        $\Psi_X (t = 0) = E(X)$
+
+                    \item
+                        Nota que si tuvieramos un montón de variables aleatorias
+                        $X_1, X_2, X_3, \dots, X_n$
+                        Y decimos que $Y = \sum_{i = 1}^n X_i$
+
+                        Entonces tenemos que $\Psi_Y(t) = \prod_{i = 1}^n \Psi_{X_i}(t)$
+
+
+                \end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
     % ===============================================================================
     % =======================      COMBINATORIA       ===============================
     % ===============================================================================
