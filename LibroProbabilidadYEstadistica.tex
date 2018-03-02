@@ -735,9 +735,9 @@
 
 
     % ===============================================================================
-    % ===============       VARIABLES ALEATORIAS               ======================
+    % ===============       VARIABLES ALEATORIAS DISCRETAS     ======================
     % ===============================================================================
-    \chapter{Variables Aleatorias}
+    \chapter{Variables Aleatorias Discretas}
 
 
 
@@ -745,7 +745,7 @@
         % ===========                DEFINICION         ================
         % ==============================================================
         \clearpage
-        \section{Definición}
+        \section{Variables Aleatorias}
 
             Una variable aleatoria es un función que asigna a cada elemento, en el espacio muestral
             a un número real.
@@ -793,75 +793,86 @@
                 
 
 
+        % ==============================================================
+        % ===========      FUNCION PROBABILIDAD         ================
+        % ==============================================================
+        \clearpage
+        \section{Función Probabilidad $f_X $}
 
-            % ==============================================================
-            % ===========      FUNCION PROBABILIDAD         ================
-            % ==============================================================
-            \clearpage
-            \subsection{Función Probabilidad}
+            Es una función que toma todos los posibles valores una variable aleatoria y nos regresa un número
+            real entre el 0 y el 1.
+            Es decir:
+            \begin{equation*}
+                f_X (x) = P(X = x)
+            \end{equation*}
 
-                Es tan sencilla como $f_{X}(x) = P(X = x)$
-                Y tiene que cumplir que la suma de todos los posibles valores de la variable aleatoria
-                den uno.
+            Y tiene que cumplir que la suma de todos los posibles valores de la variable aleatoria
+            den uno.
 
-                Es decir, es la probabilidad de $x$ que para un elemento del espacio muestral nuestra
-                variable tome en valor de x.
+            Más formalmente tenemos que la función probabilidad es aquella función que cumple que:
+            \begin{itemize}
+                \item $\forall a \in \Reals f_X(a) \geq 0$
+                \item $\Set{x \Such f_X(x) \neq 0}$ es un conjunto finito o numerable
+                \item $\sum_x f_X(x) = 1$
+            \end{itemize}
 
-                % ======== EJEMPLO ========
-                \begin{SmallIndentation}[1em]
-                    \textbf{Ejemplo}:
-                    
-                    Por ejemplo podemos definir la probabilidad del ejemplo pasado
-                    podemos definir la función
-
-                    $f_{X}(x) = {3 \choose 3} \pfrac{1}{2}^x \pfrac{1}{2}^{3-x}$ para $x \in \Set{0, 1, 2, 3}$.
-
-                    Entonces tenemos que:
-                    \begin{itemize}
-                        \item La probabilidad de que $X = 0$ (caigan 0 caras) es $\frac{1}{8}$ 
-                        \item La probabilidad de que $X = 1$ (caigan 1 caras) es $\frac{3}{8}$ 
-                        \item La probabilidad de que $X = 2$ (caigan 2 caras) es $\frac{3}{8}$ 
-                        \item La probabilidad de que $X = 3$ (caigan 3 caras) es $\frac{1}{8}$ 
-                    \end{itemize}
+            % ======== EJEMPLO ========
+            \begin{SmallIndentation}[1em]
+                \textbf{Ejemplo}:
                 
-                \end{SmallIndentation}
+                Por ejemplo podemos definir la probabilidad del ejemplo pasado
+                podemos definir la función
 
-            % ==============================================================
-            % ===========      FUNCION PROBABILIDAD         ================
-            % ==============================================================
-            \clearpage
-            \subsection{Función Probabilidad Acumulada}
+                $f_{X}(x) = {3 \choose 3} \Wrap{\frac{1}{2}}^x \Wrap{\frac{1}{2}}^{3-x}$ para $x \in \Set{0, 1, 2, 3}$.
 
-                La describimos como:
-                \begin{equation*}
-                    \Over{F}_{X}(x) = \sum_{i<x} f_{X}(i)
-                \end{equation*}
-
-
-                Podemos ver a la acumulada como una función fundamental, tal que podemos escribir a todas las
-                demás:
+                Entonces tenemos que:
                 \begin{itemize}
-                    \item $P(X < x) = \Over{F}_{X}(x - 1)$
-                    \item $P(X \leq x) = \Over{F}_{X}(x)$
-                    \item $P(X > x) = 1 - \Over{F}_{X}(x)$
-                    \item $P(X \geq x) = 1 - \Over{F}_{X}(x - 1)$
-                    \item $P(a \leq X \leq b) = \Over{F}_{X}(b) - \Over{F}_{X}(a - 1)$
-                    \item $P(a < X \leq b) = \Over{F}_{X}(b) - \Over{F}_{X}(a)$
-                    \item $P(a \leq X < b) = \Over{F}_{X}(b - 1) - \Over{F}_{X}(a)$
-                    \item $P(a < X < b) = \Over{F}_{X}(b - 1) - \Over{F}_{X}(a - 1)$
+                    \item La probabilidad de que $X = 0$ (caigan 0 caras) es $\frac{1}{8}$ 
+                    \item La probabilidad de que $X = 1$ (caigan 1 caras) es $\frac{3}{8}$ 
+                    \item La probabilidad de que $X = 2$ (caigan 2 caras) es $\frac{3}{8}$ 
+                    \item La probabilidad de que $X = 3$ (caigan 3 caras) es $\frac{1}{8}$ 
                 \end{itemize}
-                    
+            
+            \end{SmallIndentation}
 
 
-        % ============================================================== % ===========           ESPERANZA O MEDIA       ================
+        % ==============================================================
+        % ===========      FUNCION PROBABILIDAD         ================
+        % ==============================================================
+        \clearpage
+        \section{Función Probabilidad Acumulada $F_X$}
+
+            La describimos como:
+            \begin{equation*}
+                \Over{F}_{X}(x) = \sum_{i < x} f_{X}(i)
+            \end{equation*}
+
+
+            Podemos ver a la acumulada como una función fundamental, tal que podemos escribir a todas las
+            demás:
+            \begin{itemize}
+                \item $P(X < x) = \Over{F}_{X}(x - 1)$
+                \item $P(X \leq x) = \Over{F}_{X}(x)$
+                \item $P(X > x) = 1 - \Over{F}_{X}(x)$
+                \item $P(X \geq x) = 1 - \Over{F}_{X}(x - 1)$
+                \item $P(a \leq X \leq b) = \Over{F}_{X}(b) - \Over{F}_{X}(a - 1)$
+                \item $P(a < X \leq b) = \Over{F}_{X}(b) - \Over{F}_{X}(a)$
+                \item $P(a \leq X < b) = \Over{F}_{X}(b - 1) - \Over{F}_{X}(a)$
+                \item $P(a < X < b) = \Over{F}_{X}(b - 1) - \Over{F}_{X}(a - 1)$
+            \end{itemize}
+                
+
+
+        % ==============================================================
+        % ===========           ESPERANZA O MEDIA       ================
         % ==============================================================
         \clearpage
         \section{Esperanza o Media}
 
             Decimos que el valor esperado o esperanza media de la variable $X$
-            con $f_{X}(x)$ se define como:
+            se define como:
             \begin{equation*}
-                \mu_{X} = E(X) = \sum_x x P(X = x) = \sum_x x f_X(x)
+                \mu_{X} = E(X) = \sum_x x f_X(x) = \sum_x x P(X = x)
             \end{equation*}
 
             Representa un promedio ponderado de los valores posibles de la variable basado en
@@ -877,14 +888,23 @@
 
                 \begin{itemize}
 
+                    \item 
+                        Si $X$ puede tomar un número infinito de valores entonces la esperanza de 
+                        $X$ existe si y solo si $\sum_x |x| f_X(x) < \infty$
+
                     \item
-                        $E(aX + bY) = aE(X) + bE(Y)$
+                        $E(g(x)) = \sum_x g(x) f_X(x)$
+
+                    \item Es un Operador Lineal, es decir:
+
+                        $E(\alpha X + \beta Y) = \alpha E(X) + \beta E(Y)$
 
                     \item
                         Si $X, Y$ son independientes entonces $E(XY) = E(X) + E(Y)$
 
                     \item
                         $E(a) = a$
+
                 \end{itemize}
 
 
@@ -897,20 +917,22 @@
             Decimos que la varianza de la variable $X$
             con $f_{X}(x)$ se define como:
             \begin{equation*}
-                V(X) 
-                    = E((X - \mu)^2)
-                    = \sum_{x} (x - \mu)^2 P(X = x)
+                v(X) = E((X - \mu)^2)
             \end{equation*}
+
+            Pero usando esta definición podemos dar muchas otras definiciones utiles:
+            \begin{align*}
+                v(X) 
+                    &= E((X - \mu)^2)                       \\
+                    &= \sum_{x} (x - \mu)^2 P(X = x)        \\
+                    &= E(X^2) - (E(X))^2
+            \end{align*}
 
             Podemos decir por su misma definición que la varianza siempre es positiva.
 
             Es decir, este valor nos indica que tan lejos estan en promedio los valores de
             su misma media, es decir, que tan dispersa o concentrada esta la distribución de 
             los datos.
-
-
-
-
 
             % ==============================================================
             % ===============        PROPIEDADES      ======================
@@ -919,8 +941,6 @@
 
                 \begin{itemize}
 
-                    \item
-                        $v(X) = E(X^2) - (E(X))^2$
                     \item 
                         $V(a) = 0$
 
@@ -1001,7 +1021,7 @@
         % ==============================================================
         % ===========            COVARIANZA             ================
         % ==============================================================
-        \clearpage
+        \vspace{2em}
         \section{Covarianza}
 
             La definimos como:
@@ -1053,7 +1073,7 @@
                 \item 
                     El k-ésimo momento alrededor del origen esta definida como:
                     \begin{equation}
-                        \mu_k 
+                        \mu_k^0 
                             = E\Brackets{(X)^k}
                             = \sum_x x^k P(X = x)
                     \end{equation}
@@ -1072,7 +1092,7 @@
                     \item
                         Ya hemos trabajo con momentos, por ejemplo, la varianza
                         la podemos definir como:
-                        $v(X) = E(X^2) - \mu^2$ donde $E(X^2)$ es un segundo momento
+                        $v(X) = E(X^2) - \mu^2$ donde $E(X^2)$ es un segundo momento central
 
                         O bien, verla como $v(X) = E[(X - \mu)^2]$ es decir
                         la varianza es el segundo momento central.
@@ -1094,7 +1114,7 @@
                 \end{equation*}
 
                 Solemos decir que la k-ésima derivada de la función generadora
-                de momentos evaluada en $t = 0$ da como resultado el k-ésimo momento.
+                de momentos evaluada en $t = 0$ da como resultado el k-ésimo momento central al origen
 
                 Es decir, siguen el siguiente patrón:
                 \begin{itemize}
@@ -1112,6 +1132,11 @@
             \subsection{Propiedades}
 
                 \begin{itemize}
+
+                    \item
+                        Si $Y = aX + b$ entonces tenemos que:
+
+                        $\Psi_Y(t) = e^{bt} \Psi_X(at)$
 
                     \item
                         Nota que $\Psi_x(a) = E(e^{aX})$
@@ -1134,10 +1159,137 @@
 
 
 
+        % ==============================================================
+        % ====       DISTRIBUCIONES DISCRETAS FAMOSAS       ============
+        % ==============================================================
+        \clearpage
+        \section{Distribuciones Famosas}
 
 
+            % ==============================================================
+            % ====                  BERNOULLI                   ============
+            % ==============================================================
+            \subsection{Bernoulli}
+
+                Suponte un experimento en el que solo tienes dos salidas, 
+                $0, 1$, suponte que la probabilidad de que salga $0$ es $q$
+                y la que salga $1$ es $p$.
+
+                Ahora veamos algunas caracteristicas:
+                \begin{itemize}
+                    \item \textbf{Función Probabilidad}
+
+                        Esta esta fácil $f_X(x) = p^x q^{1-x}$
+
+                    \item \textbf{Esperanza de X}
+
+                        Nota que por definición tenemos que:
+                        \begin{align*}
+                            \mu_X 
+                                &= \sum_x x P(X = x)        \\
+                                &= 0(q) + 1(p)              \\
+                                &= p
+                        \end{align*}
+
+                    \item \textbf{Varianza}
+
+                        Por definición tenemos que:
+                        \begin{align*}
+                            v(X)
+                                &= E(x^2) - \mu^2               \\
+                                &= E(x^2) - p^2                 \\
+                                &= \sum_x x^2 P(X = x) - p^2    \\
+                                &= 0(q) + 1(p) - p^2            \\
+                                &= p - p^2                      \\
+                                &= p(1 - p)                     \\
+                                &= pq
+                        \end{align*}
+
+                    \item \textbf{Acumulada}
+
+                        Por definición tenemos que:
+                        \begin{align*}
+                            F_X(x) = 
+                                \begin{cases}
+                                    0 \Space& x < 0             \\
+                                    q \Space& 0 \leq x < 1      \\
+                                    p \Space& 1 \leq x 
+                                \end{cases}
+                        \end{align*}
+
+                    \item \textbf{Función Genera de Momentos}
+
+                        Por definición tenemos que:
+                        \begin{align*}
+                            \Psi(t) 
+                                &= E(e^tX)                      \\
+                                &= \sum_x e^tx P(X = x)         \\
+                                &= e^{0t}(q) + e^{1t}(p)        \\
+                                &= (q) + e^t(p)   
+                        \end{align*}
+
+                \end{itemize}
 
 
+            % ==============================================================
+            % ====                  BINOMIAL                    ============
+            % ==============================================================
+            \clearpage
+            \subsection{Binomial}
+
+                Es un experimento binomial que consiste en $n$ ensayos Bernoulli
+                independientees, con una probabilidad de exito individual constante.
+
+                La variable discreta es el número de exitos de los experimentos individuales
+                donde sus posibles valores fueron $X = \Set{0, 1, \dots, n}$.
+
+                Observa que la variable aleatoria se puede ver como la suma de Bernoullis independientes.
+
+                Ahora veamos algunas caracteristicas:
+                \begin{itemize}
+                    \item \textbf{Función Probabilidad}
+
+                        Esta esta fácil $f_X(x) = {n \choose x}p^x q^{n - x}$
+
+                        ¿Porque? Porque estamos hablando de eventos independientes por lo
+                        tanto su probabilidad conjunta es el producto de las individuales, 
+                        y literlalmente estamos usando la definición de combinación.
+
+                    \item \textbf{Función Acumulada}
+
+                        Esta esta fácil $f_X(x) = \sum_{i=0}^x {n \choose i}p^i q^{n - i}$
+
+                    \item \textbf{Esperanza de X}
+
+                        Podemos usar que la variable aleatoria se puede ver como la suma
+                        de Bernoullis independientes.
+
+                        Es decir $Y = \sum_x x_i$
+
+                        \begin{align*}
+                            \mu_X 
+                                &= E(Y)                 \\
+                                &= E(\sum_x x_i)        \\
+                                &= \sum_x E(x_i)        \\
+                                &= np
+                        \end{align*}
+
+
+                    \item \textbf{Varianza}
+
+                            Por definición tenemos que:
+                            \begin{align*}
+                                v(X) = npq   
+                            \end{align*}
+
+                    \item \textbf{Función Genera de Momentos}
+
+                            Por definición tenemos que:
+                            \begin{align*}
+                                \Psi (t) = \Wrap{q + e^tp}^n   
+                            \end{align*}
+                    
+                \end{itemize}
 
 
 
