@@ -1257,7 +1257,7 @@
 
                     \item \textbf{Función Acumulada}
 
-                        Esta esta fácil $f_X(x) = \sum_{i=0}^x {n \choose i}p^i q^{n - i}$
+                        Esta esta fácil $F_X(x) = \sum_{i=0}^x {n \choose i}p^i q^{n - i}$
 
                     \item \textbf{Esperanza de X}
 
@@ -1287,6 +1287,102 @@
                             Por definición tenemos que:
                             \begin{align*}
                                 \Psi (t) = \Wrap{q + e^tp}^n   
+                            \end{align*}
+                    
+                \end{itemize}
+
+            % ==============================================================
+            % ====                  GEOMETRICA                  ============
+            % ==============================================================
+            \clearpage
+            \subsection{Geométrica}
+
+                Supón que se repiten de manera independiente ensayos Bernoulli
+                con una probabilidad de exito constante de $p$ hasta obtener el primer
+                exito.
+
+                La variable discreta es el número de experimentos hasta un primer exito
+                donde sus posibles valores fueron $X = \Set{0, 1, \dots, }$.
+
+                Observa que la variable aleatoria se puede ver como la suma de Bernoullis independientes.
+
+                Ahora veamos algunas caracteristicas:
+                \begin{itemize}
+                    \item \textbf{Función Probabilidad}
+
+                        Esta esta fácil $f_X(x) = q^{x - 1}p$
+
+                        Es decir, es la propabilidad de que todos los anteriores sean fracasos y el actual
+                        sea el exito.
+
+                    \item \textbf{Función Acumulada}
+
+                        $F_X(x) = 1 - q^x$
+
+                        Esta esta fácil:
+                        \begin{align*}
+                            F_X(x) 
+                                &= \sum_{i=1}^x pq^{i - 1}      \\
+                                &= p\sum_{i=0}^{x-1} q^i        \\
+                                &= p\frac{1-q^x}{1-q}           \\
+                                &= p\frac{1-q^x}{p}             \\
+                                &= 1-q^x
+                        \end{align*}
+
+                    \clearpage
+
+                    \item \textbf{Esperanza de X}
+
+                        Esta es muy famosa: $E(X) = \frac{1}{p}$
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            \begin{align*}
+                                 E(X)
+                                    &= \sum_{x=1}^\infty xP(X = x)                          \\
+                                    &= \sum_{x=1}^\infty x q^{x - 1}p                       \\
+                                    &= p\sum_{x=1}^\infty x q^{x - 1}                       \\
+                                    &= p \MiniDerivate \sum_{x=1}^\infty x q^{x - 1}        \\
+                                    &= p \MiniDerivate \sum_{x=1}^\infty q^x                \\
+                                    &= p \MiniDerivate \frac{1}{1 - q}                      \\
+                                    &= p \frac{1}{(1- q)^2}                                 \\
+                                    &= p \frac{1}{p^2}                                      \\
+                                    &= \frac{1}{p}                                  
+                            \end{align*}    
+                        
+                        \end{SmallIndentation}
+                          
+                    \clearpage  
+
+                    \item \textbf{Varianza}
+
+                            $v(X) = \frac{1-p}{p^2}$
+
+                            \begin{align*}
+                                v(X) 
+                                    &= E(X^2) - \mu^2                                           \\
+                                    &= E(X^2) - \frac{1}{p^2}                                   \\
+                                    &= \sum_{x=1}^\infty x^2P(X = x) - \frac{1}{p^2}            \\
+                                    &= \sum_{x=1}^\infty x^2 p q^{x-1} - \frac{1}{p^2}          \\
+                                    &= p\sum_{x=1}^\infty x^2 q^{x-1} - \frac{1}{p^2}           \\
+                                    &= p\frac{1+q}{(1-q)^3} - \frac{1}{p^2}                     \\
+                                    &= \frac{1+q}{p^2} - \frac{1}{p^2}                          \\
+                                    &= \frac{q}{p^2}                                            \\
+                                    &= \frac{1-p}{p^2}
+                            \end{align*}
+
+                    \item \textbf{Función Genera de Momentos}
+
+                            Por definición tenemos que:
+                            \begin{align*}
+                                \Psi (t) = E\Wrap{e^{tX}}                                       \\
+                                \Psi (t) = \sum_{x=1}^\infty e^{tx} q^{x-1}p                    \\
+                                \Psi (t) = p \sum_{x=1}^\infty e^{tx} q^{x-1}                   \\
+                                \Psi (t) = p \sum_{x=1}^\infty e^{tx} q^{x-1}                   \\
+                                \Psi (t) = p e^t \sum_{x=1}^\infty (qe^t)^x                     \\
+                                \Psi (t) = p e^t \frac{1}{1 - qe^t}                             \\
+                                \Psi (t) = \frac{pe^t}{1-qe^t} 
                             \end{align*}
                     
                 \end{itemize}
