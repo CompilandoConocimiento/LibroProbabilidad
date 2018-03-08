@@ -1388,6 +1388,57 @@
                 \end{itemize}
 
 
+                % ==============================================================
+                % ====                  PROPIEDADES                 ============
+                % ==============================================================
+                \clearpage
+                \subsubsection{Propieades}
+
+                    \begin{itemize}
+                        \item Sea $P(X > a) = q^a$ con $a$ un natural positivo
+
+                            % ======== DEMOSTRACION ========
+                            \begin{SmallIndentation}[1em]
+                                \textbf{Demostración}:
+                                \begin{align*}
+                                    P(Y > a)
+                                        &= 1 - F_X(a)      
+                                            && \Remember{Definición de Acumulada}   \\
+                                        &= 1 - (1 - q^a)    
+                                            && \Remember{Talacha}                   \\
+                                        &= q^a    
+                                            && \Remember{Bingo}
+                                \end{align*}    
+                            
+                            
+                            \end{SmallIndentation}
+
+                        \item Sea $P(X > a + b \Such X > a) = P(X > b)$ con $a, b$ un naturales positivos
+
+                            % ======== DEMOSTRACION ========
+                            \begin{SmallIndentation}[1em]
+                                \textbf{Demostración}:
+                                \begin{align*}
+                                    P(X > a + b \Such X > a)
+                                        &= \frac{P(X > a + b \text{ y } X > a)}{P(X > a)}    
+                                            && \Remember{Definición de Condicional}     \\
+                                        &= \frac{P(X > a + b)}{P(X > a)}    
+                                            && \Remember{Sentido común}                 \\
+                                        &= \frac{p^{a+b}}{p^a}
+                                            && \Remember{Teorema pasado}                \\
+                                        &= p^{(a+b)-a}
+                                            && \Remember{Exponentes}                    \\
+                                        &= p^b
+                                            && \Remember{Usando teorema pasado}         \\
+                                        &= P(X > b)
+                                \end{align*}    
+                            
+                            
+                            \end{SmallIndentation}
+                                
+                    \end{itemize}
+
+
 
 
 
