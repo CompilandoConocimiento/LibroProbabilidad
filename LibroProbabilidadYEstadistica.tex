@@ -715,731 +715,21 @@
         \section{Teorema de Bayes}
 
             Considera un conjunto de eventos $\Set{A_1, \dots, A_n}$ mutuamente exclusivos
-      		y tales que $\cup_{i=1}^n A_i = S$, es decir son particiones de $S$.
+            y tales que $\cup_{i=1}^n A_i = S$, es decir son particiones de $S$.
 
-      		Entonces podemos escribir la propabilidad de un evento $B$ como:
-      		\begin{equation*}
-      			P(B) 
-      				= \sum_{i = 1}^n P(A_i) P(B | A_i)
-      		\end{equation*}
-
-
-      		Gracias a esto podemos decir que:
-      		\begin{align*}
-      			P(A_i | B) 
-      				&= \frac{P(A_i \cap B)}{P(B)}									\\
-      				&= \dfrac{P(B | A_i)P(A_i)}{\displaystyle \sum_{i = 1}^n P(A_i) P(B | A_i)}
-      		\end{align*}
-
-
-
-
-    % ===============================================================================
-    % ===============       VARIABLES ALEATORIAS DISCRETAS     ======================
-    % ===============================================================================
-    \chapter{Variables Aleatorias Discretas}
-
-
-
-        % ==============================================================
-        % ===========                DEFINICION         ================
-        % ==============================================================
-        \clearpage
-        \section{Variables Aleatorias}
-
-            Una variable aleatoria es un función que asigna a cada elemento, en el espacio muestral
-            a un número real.
-
-            Esta se denota con mayúsculas y no es un número, es una función.
-            Para poner a un valor posible de una variable aleatoria lo denotamos con minúsculas.
-
-            % ==============================================================
-            % =======     VARIABLES ALEATORIAS DISCRETAS       =============
-            % ==============================================================
-            \vspace{2em}
-            \subsection{Variables Aleatorias Discretas}
-
-                Las variables aleatorias cuyo conjunto de valores posibles es finito o infinito contable
-                entonces decimos que es una variable aleatoria discreta.
-
-                % ======== EJEMPLO ========
-                \begin{SmallIndentation}[1em]
-                    \textbf{Ejemplo}:
-                    
-                    Por ejemplo considera que vas a lanzar 3 monedas, entonces tenemos que:
-                    \begin{equation*}
-                        S = \Set{ccc, ccx, cxc, xcc, xxc, xcx, cxx, xxx}
-                    \end{equation*}
-
-                    Entonces podemos tener una variable aleatoria como:
-
-                    Sea $X =$ Número de caras en 3 lanzamientos.
-
-                    Entonces podemos decir que:
-                    \begin{equation*}
-                        X(ccc) = 3, 
-                        X(ccx) = 2,
-                        X(cxc) = 2,
-                        X(xcc) = 2,
-                        X(xxc) = 1,
-                        X(xcx) = 1,
-                        X(cxx) = 1,
-                        X(xxx) = 0
-                    \end{equation*}
-
-                    Por lo tanto los vales posibles son $0, 1, 2, 3$.
-
-                \end{SmallIndentation}
-                
-
-
-        % ==============================================================
-        % ===========      FUNCION PROBABILIDAD         ================
-        % ==============================================================
-        \clearpage
-        \section{Función Probabilidad $f_X $}
-
-            Es una función que toma todos los posibles valores una variable aleatoria y nos regresa un número
-            real entre el 0 y el 1.
-            Es decir:
+            Entonces podemos escribir la propabilidad de un evento $B$ como:
             \begin{equation*}
-                f_X (x) = P(X = x)
-            \end{equation*}
-
-            Y tiene que cumplir que la suma de todos los posibles valores de la variable aleatoria
-            den uno.
-
-            Más formalmente tenemos que la función probabilidad es aquella función que cumple que:
-            \begin{itemize}
-                \item $\forall a \in \Reals f_X(a) \geq 0$
-                \item $\Set{x \Such f_X(x) \neq 0}$ es un conjunto finito o numerable
-                \item $\sum_x f_X(x) = 1$
-            \end{itemize}
-
-            % ======== EJEMPLO ========
-            \begin{SmallIndentation}[1em]
-                \textbf{Ejemplo}:
-                
-                Por ejemplo podemos definir la probabilidad del ejemplo pasado
-                podemos definir la función
-
-                $f_{X}(x) = {3 \choose 3} \Wrap{\frac{1}{2}}^x \Wrap{\frac{1}{2}}^{3-x}$ para $x \in \Set{0, 1, 2, 3}$.
-
-                Entonces tenemos que:
-                \begin{itemize}
-                    \item La probabilidad de que $X = 0$ (caigan 0 caras) es $\frac{1}{8}$ 
-                    \item La probabilidad de que $X = 1$ (caigan 1 caras) es $\frac{3}{8}$ 
-                    \item La probabilidad de que $X = 2$ (caigan 2 caras) es $\frac{3}{8}$ 
-                    \item La probabilidad de que $X = 3$ (caigan 3 caras) es $\frac{1}{8}$ 
-                \end{itemize}
-            
-            \end{SmallIndentation}
-
-
-        % ==============================================================
-        % ===========      FUNCION PROBABILIDAD         ================
-        % ==============================================================
-        \clearpage
-        \section{Función Probabilidad Acumulada $F_X$}
-
-            La describimos como:
-            \begin{equation*}
-                \Over{F}_{X}(x) = \sum_{i < x} f_{X}(i)
+                P(B) 
+                    = \sum_{i = 1}^n P(A_i) P(B | A_i)
             \end{equation*}
 
 
-            Podemos ver a la acumulada como una función fundamental, tal que podemos escribir a todas las
-            demás:
-            \begin{itemize}
-                \item $P(X < x) = \Over{F}_{X}(x - 1)$
-                \item $P(X \leq x) = \Over{F}_{X}(x)$
-                \item $P(X > x) = 1 - \Over{F}_{X}(x)$
-                \item $P(X \geq x) = 1 - \Over{F}_{X}(x - 1)$
-                \item $P(a \leq X \leq b) = \Over{F}_{X}(b) - \Over{F}_{X}(a - 1)$
-                \item $P(a < X \leq b) = \Over{F}_{X}(b) - \Over{F}_{X}(a)$
-                \item $P(a \leq X < b) = \Over{F}_{X}(b - 1) - \Over{F}_{X}(a)$
-                \item $P(a < X < b) = \Over{F}_{X}(b - 1) - \Over{F}_{X}(a - 1)$
-            \end{itemize}
-                
-
-
-        % ==============================================================
-        % ===========           ESPERANZA O MEDIA       ================
-        % ==============================================================
-        \clearpage
-        \section{Esperanza o Media}
-
-            Decimos que el valor esperado o esperanza media de la variable $X$
-            se define como:
-            \begin{equation*}
-                \mu_{X} = E(X) = \sum_x x f_X(x) = \sum_x x P(X = x)
-            \end{equation*}
-
-            Representa un promedio ponderado de los valores posibles de la variable basado en
-            sus probabilidades.
-
-            Es decir, si se repitiera el experimiento muchísimas veces el promedio de los resultados
-            se iría aproximando a la media.
-
-            % ==============================================================
-            % ===============        PROPIEDADES      ======================
-            % ==============================================================
-            \subsection{Propiedades}
-
-                \begin{itemize}
-
-                    \item 
-                        Si $X$ puede tomar un número infinito de valores entonces la esperanza de 
-                        $X$ existe si y solo si $\sum_x |x| f_X(x) < \infty$
-
-                    \item
-                        $E(g(x)) = \sum_x g(x) f_X(x)$
-
-                    \item Es un Operador Lineal, es decir:
-
-                        $E(\alpha X + \beta Y) = \alpha E(X) + \beta E(Y)$
-
-                    \item
-                        Si $X, Y$ son independientes entonces $E(XY) = E(X) + E(Y)$
-
-                    \item
-                        $E(a) = a$
-
-                \end{itemize}
-
-
-        % ==============================================================
-        % ===========              VARIANZA             ================
-        % ==============================================================
-        \clearpage
-        \section{Varianza}
-
-            Decimos que la varianza de la variable $X$
-            con $f_{X}(x)$ se define como:
-            \begin{equation*}
-                v(X) = E((X - \mu)^2)
-            \end{equation*}
-
-            Pero usando esta definición podemos dar muchas otras definiciones utiles:
+            Gracias a esto podemos decir que:
             \begin{align*}
-                v(X) 
-                    &= E((X - \mu)^2)                       \\
-                    &= \sum_{x} (x - \mu)^2 P(X = x)        \\
-                    &= E(X^2) - (E(X))^2
+                P(A_i | B) 
+                    &= \frac{P(A_i \cap B)}{P(B)}                                   \\
+                    &= \dfrac{P(B | A_i)P(A_i)}{\displaystyle \sum_{i = 1}^n P(A_i) P(B | A_i)}
             \end{align*}
-
-            Podemos decir por su misma definición que la varianza siempre es positiva.
-
-            Es decir, este valor nos indica que tan lejos estan en promedio los valores de
-            su misma media, es decir, que tan dispersa o concentrada esta la distribución de 
-            los datos.
-
-            % ==============================================================
-            % ===============        PROPIEDADES      ======================
-            % ==============================================================
-            \subsection{Propiedades}
-
-                \begin{itemize}
-
-                    \item 
-                        $V(a) = 0$
-
-                        % ======== DEMOSTRACION ========
-                        \begin{SmallIndentation}[1em]
-                            \textbf{Demostración}:
-                            
-                            Sea $a = g(X)$, entonces su $\mu = a$, por lo
-                            tanto
-                            \begin{align}
-                                V(a) 
-                                    = E(a - a)^2)
-                                    = E(0)^2)
-                                    = 0
-                            \end{align}
-                        
-                        \end{SmallIndentation}
-
-                    \item 
-                        $v(aX) = a^2 v(X)$
-
-                        % ======== DEMOSTRACION ========
-                        \begin{SmallIndentation}[1em]
-                            \textbf{Demostración}:
-                            \begin{align}
-                                V(aX) 
-                                    = E(aX^2) - E^2(aX)       \\
-                                    = a^2 E(X^2) - a^2E^2(X)  \\
-                                    = a^2 [E(X^2) - E^2(X)]   \\
-                                    = a^2 [v(X]          
-                            \end{align}
-                        
-                        \end{SmallIndentation}
-
-                    \item 
-                        $v(X + Y) = v(X) + v(Y) + 2Cov(X,Y)$
-
-
-                    \item 
-                        $v(X - Y) = v(X) - v(Y) - 2Cov(X,Y)$
-
-                    \item
-                        Si $X$ y $Y$ son independientes, entonces $v(X + Y) = v(X) + v(Y)$
-
-                    \item
-                        En general si $X_1, X_2, \dots, X_n$ son variables aleatorias, entonces
-                        tenemos que:
-                        \begin{align*}
-                            v\Wrap{\sum_{i = 1}^n X_i} = \sum_{i = 1}^n X_i + 2\sum_{i < j}^n Cov(X_i, X_j)
-                        \end{align*}
-
-                    \end{itemize}
-                            
-
-
-
-
-        % ==============================================================
-        % ===========        DESVICACIÓN ESTANDAR       ================
-        % ==============================================================
-        \clearpage
-        \section{Desvianción Estandar}
-
-            Decimos que la varianza de la variable $X$
-            con $f_{X}(x)$ se define como:
-            \begin{equation*}
-                \sigma(X) = \sqrt{v(X)}
-            \end{equation*}
-
-            Podemos decir por su misma definición que la varianza siempre es positiva.
-
-            Es decir, este valor nos indica que tan lejos estan en promedio los valores de
-            su misma media, es decir, que tan dispersa o concentrada esta la distribución de 
-            los datos.
-
-
-
-        % ==============================================================
-        % ===========            COVARIANZA             ================
-        % ==============================================================
-        \vspace{2em}
-        \section{Covarianza}
-
-            La definimos como:
-            \begin{equation*}
-                Cov(X, Y)
-                    = E\Wrap{(X - \mu_{X})(Y - \mu_{Y})}
-            \end{equation*}
-
-
-            Es una manera de medir la dispersión conjunta de ambas variables.
-
-
-
-            
-            % ==============================================================
-            % ===============        PROPIEDADES      ======================
-            % ==============================================================
-            \subsection{Propiedades}
-
-                \begin{itemize}
-
-                    \item 
-                        $Cov(X, Y) 
-                            = E(X Y) - \mu_{X}\mu_{Y}$
-                    \end{itemize}
-
-
-
-
-        % ==============================================================
-        % ===========        MOMENTOS CENTRALES         ================
-        % ==============================================================
-        \clearpage
-        \section{Momentos Centrales}
-
-
-
-
-            Si $X$ es una variable aleatoria tal que $E(X) = \mu_x$ entonces tenemos que:
-            \begin{itemize}
-                \item 
-                    El k-ésimo momento central esta definida como:
-                    \begin{equation}
-                        \mu_k^c 
-                            = E\Brackets{(X - \mu)^k}
-                            = \sum_x (x - \mu)^k P(X = x)
-                    \end{equation}
-
-                \item 
-                    El k-ésimo momento alrededor del origen esta definida como:
-                    \begin{equation}
-                        \mu_k^0 
-                            = E\Brackets{(X)^k}
-                            = \sum_x x^k P(X = x)
-                    \end{equation}
-
-            \end{itemize}
-
-
-
-            % ==============================================================
-            % ===============        PROPIEDADES      ======================
-            % ==============================================================
-            \subsection{Propiedades}
-
-                \begin{itemize}
-
-                    \item
-                        Ya hemos trabajo con momentos, por ejemplo, la varianza
-                        la podemos definir como:
-                        $v(X) = E(X^2) - \mu^2$ donde $E(X^2)$ es un segundo momento central
-
-                        O bien, verla como $v(X) = E[(X - \mu)^2]$ es decir
-                        la varianza es el segundo momento central.
-
-                \end{itemize}
-
-
-            % ==============================================================
-            % ===========     FUNCION GENERADORA      ======================
-            % ==============================================================
-            \clearpage
-            \subsection{Función Generadora de Momentos}
-
-                La podemos definir como:
-                \begin{equation*}
-                    \Psi_X (t) 
-                        = E(e^{tX})
-                        = \sum_x e^{tx} P(X = x)
-                \end{equation*}
-
-                Solemos decir que la k-ésima derivada de la función generadora
-                de momentos evaluada en $t = 0$ da como resultado el k-ésimo momento central al origen
-
-                Es decir, siguen el siguiente patrón:
-                \begin{itemize}
-                    \item $\Psi_X' (t = 0) = E(X)$ 
-                    \item $\Psi_X'' (t = 0) = E(X^2)$ 
-                    \item $\Psi_X''' (t = 0) = E(X^3)$ 
-                    \item $\Psi_X^{(n)} (t = 0) = E(X^n)$ 
-                \end{itemize}
-
-
-
-            % ==============================================================
-            % ===============        PROPIEDADES      ======================
-            % ==============================================================
-            \subsection{Propiedades}
-
-                \begin{itemize}
-
-                    \item
-                        Si $Y = aX + b$ entonces tenemos que:
-
-                        $\Psi_Y(t) = e^{bt} \Psi_X(at)$
-
-                    \item
-                        Nota que $\Psi_x(a) = E(e^{aX})$
-
-                    \item
-                        $\Psi_X (t = 0) = \mu_k$
-
-                    \item
-                        $\Psi_X (t = 0) = E(X)$
-
-                    \item
-                        Nota que si tuvieramos un montón de variables aleatorias
-                        $X_1, X_2, X_3, \dots, X_n$
-                        Y decimos que $Y = \sum_{i = 1}^n X_i$
-
-                        Entonces tenemos que $\Psi_Y(t) = \prod_{i = 1}^n \Psi_{X_i}(t)$
-
-
-                \end{itemize}
-
-
-
-        % ==============================================================
-        % ====       DISTRIBUCIONES DISCRETAS FAMOSAS       ============
-        % ==============================================================
-        \clearpage
-        \section{Distribuciones Famosas}
-
-
-            % ==============================================================
-            % ====                  BERNOULLI                   ============
-            % ==============================================================
-            \subsection{Bernoulli}
-
-                Suponte un experimento en el que solo tienes dos salidas, 
-                $0, 1$, suponte que la probabilidad de que salga $0$ es $q$
-                y la que salga $1$ es $p$.
-
-                Ahora veamos algunas caracteristicas:
-                \begin{itemize}
-                    \item \textbf{Función Probabilidad}
-
-                        Esta esta fácil $f_X(x) = p^x q^{1-x}$
-
-                    \item \textbf{Esperanza de X}
-
-                        Nota que por definición tenemos que:
-                        \begin{align*}
-                            \mu_X 
-                                &= \sum_x x P(X = x)        \\
-                                &= 0(q) + 1(p)              \\
-                                &= p
-                        \end{align*}
-
-                    \item \textbf{Varianza}
-
-                        Por definición tenemos que:
-                        \begin{align*}
-                            v(X)
-                                &= E(x^2) - \mu^2               \\
-                                &= E(x^2) - p^2                 \\
-                                &= \sum_x x^2 P(X = x) - p^2    \\
-                                &= 0(q) + 1(p) - p^2            \\
-                                &= p - p^2                      \\
-                                &= p(1 - p)                     \\
-                                &= pq
-                        \end{align*}
-
-                    \item \textbf{Acumulada}
-
-                        Por definición tenemos que:
-                        \begin{align*}
-                            F_X(x) = 
-                                \begin{cases}
-                                    0 \Space& x < 0             \\
-                                    q \Space& 0 \leq x < 1      \\
-                                    p \Space& 1 \leq x 
-                                \end{cases}
-                        \end{align*}
-
-                    \item \textbf{Función Genera de Momentos}
-
-                        Por definición tenemos que:
-                        \begin{align*}
-                            \Psi(t) 
-                                &= E(e^tX)                      \\
-                                &= \sum_x e^tx P(X = x)         \\
-                                &= e^{0t}(q) + e^{1t}(p)        \\
-                                &= (q) + e^t(p)   
-                        \end{align*}
-
-                \end{itemize}
-
-
-            % ==============================================================
-            % ====                  BINOMIAL                    ============
-            % ==============================================================
-            \clearpage
-            \subsection{Binomial}
-
-                Es un experimento binomial que consiste en $n$ ensayos Bernoulli
-                independientees, con una probabilidad de exito individual constante.
-
-                La variable discreta es el número de exitos de los experimentos individuales
-                donde sus posibles valores fueron $X = \Set{0, 1, \dots, n}$.
-
-                Observa que la variable aleatoria se puede ver como la suma de Bernoullis independientes.
-
-                Ahora veamos algunas caracteristicas:
-                \begin{itemize}
-                    \item \textbf{Función Probabilidad}
-
-                        Esta esta fácil $f_X(x) = {n \choose x}p^x q^{n - x}$
-
-                        ¿Porque? Porque estamos hablando de eventos independientes por lo
-                        tanto su probabilidad conjunta es el producto de las individuales, 
-                        y literlalmente estamos usando la definición de combinación.
-
-                    \item \textbf{Función Acumulada}
-
-                        Esta esta fácil $F_X(x) = \sum_{i=0}^x {n \choose i}p^i q^{n - i}$
-
-                    \item \textbf{Esperanza de X}
-
-                        Podemos usar que la variable aleatoria se puede ver como la suma
-                        de Bernoullis independientes.
-
-                        Es decir $Y = \sum_x x_i$
-
-                        \begin{align*}
-                            \mu_X 
-                                &= E(Y)                 \\
-                                &= E(\sum_x x_i)        \\
-                                &= \sum_x E(x_i)        \\
-                                &= np
-                        \end{align*}
-
-
-                    \item \textbf{Varianza}
-
-                            Por definición tenemos que:
-                            \begin{align*}
-                                v(X) = npq   
-                            \end{align*}
-
-                    \item \textbf{Función Genera de Momentos}
-
-                            Por definición tenemos que:
-                            \begin{align*}
-                                \Psi (t) = \Wrap{q + e^tp}^n   
-                            \end{align*}
-                    
-                \end{itemize}
-
-            % ==============================================================
-            % ====                  GEOMETRICA                  ============
-            % ==============================================================
-            \clearpage
-            \subsection{Geométrica}
-
-                Supón que se repiten de manera independiente ensayos Bernoulli
-                con una probabilidad de exito constante de $p$ hasta obtener el primer
-                exito.
-
-                La variable discreta es el número de experimentos hasta un primer exito
-                donde sus posibles valores fueron $X = \Set{0, 1, \dots, }$.
-
-                Observa que la variable aleatoria se puede ver como la suma de Bernoullis independientes.
-
-                Ahora veamos algunas caracteristicas:
-                \begin{itemize}
-                    \item \textbf{Función Probabilidad}
-
-                        Esta esta fácil $f_X(x) = q^{x - 1}p$
-
-                        Es decir, es la propabilidad de que todos los anteriores sean fracasos y el actual
-                        sea el exito.
-
-                    \item \textbf{Función Acumulada}
-
-                        $F_X(x) = 1 - q^x$
-
-                        Esta esta fácil:
-                        \begin{align*}
-                            F_X(x) 
-                                &= \sum_{i=1}^x pq^{i - 1}      \\
-                                &= p\sum_{i=0}^{x-1} q^i        \\
-                                &= p\frac{1-q^x}{1-q}           \\
-                                &= p\frac{1-q^x}{p}             \\
-                                &= 1-q^x
-                        \end{align*}
-
-                    \clearpage
-
-                    \item \textbf{Esperanza de X}
-
-                        Esta es muy famosa: $E(X) = \frac{1}{p}$
-
-                        % ======== DEMOSTRACION ========
-                        \begin{SmallIndentation}[1em]
-                            \textbf{Demostración}:
-                            \begin{align*}
-                                 E(X)
-                                    &= \sum_{x=1}^\infty xP(X = x)                          \\
-                                    &= \sum_{x=1}^\infty x q^{x - 1}p                       \\
-                                    &= p\sum_{x=1}^\infty x q^{x - 1}                       \\
-                                    &= p \MiniDerivate \sum_{x=1}^\infty x q^{x - 1}        \\
-                                    &= p \MiniDerivate \sum_{x=1}^\infty q^x                \\
-                                    &= p \MiniDerivate \frac{1}{1 - q}                      \\
-                                    &= p \frac{1}{(1- q)^2}                                 \\
-                                    &= p \frac{1}{p^2}                                      \\
-                                    &= \frac{1}{p}                                  
-                            \end{align*}    
-                        
-                        \end{SmallIndentation}
-                          
-                    \clearpage  
-
-                    \item \textbf{Varianza}
-
-                            $v(X) = \frac{1-p}{p^2}$
-
-                            \begin{align*}
-                                v(X) 
-                                    &= E(X^2) - \mu^2                                           \\
-                                    &= E(X^2) - \frac{1}{p^2}                                   \\
-                                    &= \sum_{x=1}^\infty x^2P(X = x) - \frac{1}{p^2}            \\
-                                    &= \sum_{x=1}^\infty x^2 p q^{x-1} - \frac{1}{p^2}          \\
-                                    &= p\sum_{x=1}^\infty x^2 q^{x-1} - \frac{1}{p^2}           \\
-                                    &= p\frac{1+q}{(1-q)^3} - \frac{1}{p^2}                     \\
-                                    &= \frac{1+q}{p^2} - \frac{1}{p^2}                          \\
-                                    &= \frac{q}{p^2}                                            \\
-                                    &= \frac{1-p}{p^2}
-                            \end{align*}
-
-                    \item \textbf{Función Genera de Momentos}
-
-                            Por definición tenemos que:
-                            \begin{align*}
-                                \Psi (t) = E\Wrap{e^{tX}}                                       \\
-                                \Psi (t) = \sum_{x=1}^\infty e^{tx} q^{x-1}p                    \\
-                                \Psi (t) = p \sum_{x=1}^\infty e^{tx} q^{x-1}                   \\
-                                \Psi (t) = p \sum_{x=1}^\infty e^{tx} q^{x-1}                   \\
-                                \Psi (t) = p e^t \sum_{x=1}^\infty (qe^t)^x                     \\
-                                \Psi (t) = p e^t \frac{1}{1 - qe^t}                             \\
-                                \Psi (t) = \frac{pe^t}{1-qe^t} 
-                            \end{align*}
-                    
-                \end{itemize}
-
-
-                % ==============================================================
-                % ====                  PROPIEDADES                 ============
-                % ==============================================================
-                \clearpage
-                \subsubsection{Propieades}
-
-                    \begin{itemize}
-                        \item Sea $P(X > a) = q^a$ con $a$ un natural positivo
-
-                            % ======== DEMOSTRACION ========
-                            \begin{SmallIndentation}[1em]
-                                \textbf{Demostración}:
-                                \begin{align*}
-                                    P(Y > a)
-                                        &= 1 - F_X(a)      
-                                            && \Remember{Definición de Acumulada}   \\
-                                        &= 1 - (1 - q^a)    
-                                            && \Remember{Talacha}                   \\
-                                        &= q^a    
-                                            && \Remember{Bingo}
-                                \end{align*}    
-                            
-                            
-                            \end{SmallIndentation}
-
-                        \item Sea $P(X > a + b \Such X > a) = P(X > b)$ con $a, b$ un naturales positivos
-
-                            % ======== DEMOSTRACION ========
-                            \begin{SmallIndentation}[1em]
-                                \textbf{Demostración}:
-                                \begin{align*}
-                                    P(X > a + b \Such X > a)
-                                        &= \frac{P(X > a + b \text{ y } X > a)}{P(X > a)}    
-                                            && \Remember{Definición de Condicional}     \\
-                                        &= \frac{P(X > a + b)}{P(X > a)}    
-                                            && \Remember{Sentido común}                 \\
-                                        &= \frac{p^{a+b}}{p^a}
-                                            && \Remember{Teorema pasado}                \\
-                                        &= p^{(a+b)-a}
-                                            && \Remember{Exponentes}                    \\
-                                        &= p^b
-                                            && \Remember{Usando teorema pasado}         \\
-                                        &= P(X > b)
-                                \end{align*}    
-                            
-                            
-                            \end{SmallIndentation}
-                                
-                    \end{itemize}
-
-
-
 
 
 
@@ -1617,6 +907,1207 @@
                     $(n-1)!$
 
            \end{itemize}   
+
+
+
+
+
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+% ///////////////////////       VARIABLES ALEATORIAS DISCRETAS       ///////////////////////////////////////
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+\part{Variables Aleatorias Discretas}
+\clearpage
+
+
+
+    % ===============================================================================
+    % ===============       VARIABLES ALEATORIAS DISCRETAS     ======================
+    % ===============================================================================
+    \chapter{Variables Aleatorias Discretas}
+
+
+
+        % ==============================================================
+        % ===========                DEFINICION         ================
+        % ==============================================================
+        \clearpage
+        \section{Variables Aleatorias}
+
+            Una variable aleatoria es una función que asigna a cada elemento $E_i \in S$ en el espacio
+            muestral a un número real $X(E_i) \in \Reals$, es decir, en español, lo que hace
+            es que es una función que nos da información de una característica de cada elemento
+            del espacio muestral.
+
+            Esta se denota con mayúsculas y no es un número, es una función.
+            Para poner a un valor posible de una variable aleatoria lo denotamos con minúsculas.
+
+            % ==============================================================
+            % =======     VARIABLES ALEATORIAS DISCRETAS       =============
+            % ==============================================================
+            \vspace{2em}
+            \subsection{Variables Aleatorias Discretas}
+
+                Las variables aleatorias cuyo conjunto de valores posibles es finito o infinito contable
+                entonces decimos que es una variable aleatoria discreta.
+
+                % ======== EJEMPLO ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Ejemplo}:
+                    
+                    Por ejemplo considera que vas a lanzar 3 monedas, entonces tenemos que:
+                    \begin{equation*}
+                        S = \Set{ccc, ccx, cxc, xcc, xxc, xcx, cxx, xxx}
+                    \end{equation*}
+
+                    Entonces podemos tener una variable aleatoria como:
+
+                    Sea $X =$ Número de caras en 3 lanzamientos.
+
+                    Entonces podemos decir que:
+                    \begin{align*}
+                        X(ccc) &= 3  \\
+                        X(ccx) &= 2  \\
+                        X(cxc) &= 2  \\
+                        X(xcc) &= 2  \\
+                        X(xxc) &= 1  \\
+                        X(xcx) &= 1  \\
+                        X(cxx) &= 1  \\
+                        X(xxx) &= 0
+                    \end{align*}
+
+                    Por lo tanto los vales posibles son $0, 1, 2, 3$.
+
+                \end{SmallIndentation}
+                
+
+
+        % ==============================================================
+        % ===========      FUNCION PROBABILIDAD         ================
+        % ==============================================================
+        \clearpage
+        \section{Función Probabilidad $f_X$}
+
+            % ======================================================
+            % ===========          DEFINICIÓN       ================
+            % ======================================================
+            \subsection{Definición}
+
+                También se le conoce como función de probabilidad puntual.
+                Es una función que toma todos los posibles valores una variable aleatoria y nos regresa un número
+                real entre el 0 y el 1 dado por la probabilidad de el valor de la variable aleatoria sea $x$.
+                Es decir:
+                \begin{equation*}
+                    f_X (x) = P(X = x)
+                \end{equation*}
+
+                Es una función de probabilidad, es decir tiene que cumplir que la suma de todos los posibles
+                valores de la variable aleatoria den uno.
+
+                Más formalmente tenemos que la función probabilidad es aquella función que cumple que:
+                \begin{itemize}
+                    \item $\forall a \in \Reals f_X(a) \geq 0$
+                    \item $\Set{x \Such f_X(x) \neq 0}$ es un conjunto finito o numerable
+                    \item $\displaystyle \sum_x f_X(x) = 1$
+                \end{itemize}
+
+            % ======================================================
+            % ===========            EJEMPLOS       ================
+            % ======================================================
+            \vspace{1em}
+            \subsection{Ejemplos}
+
+            % ======== EJEMPLO ========
+            \begin{SmallIndentation}[1em]
+                \textbf{Ejemplo}:
+                
+                Por ejemplo podemos definir la probabilidad del ejemplo pasado
+                podemos definir la función
+
+                $f_{X}(x) = {3 \choose 3} \Wrap{\frac{1}{2}}^x \Wrap{\frac{1}{2}}^{3-x}$ 
+                para $x \in \Set{0, 1, 2, 3}$
+
+                Entonces tenemos que:
+                \begin{itemize}
+                    \item La probabilidad de que $X = 0$ (caigan 0 caras) es $\frac{1}{8}$ 
+                    \item La probabilidad de que $X = 1$ (caigan 1 caras) es $\frac{3}{8}$ 
+                    \item La probabilidad de que $X = 2$ (caigan 2 caras) es $\frac{3}{8}$ 
+                    \item La probabilidad de que $X = 3$ (caigan 3 caras) es $\frac{1}{8}$ 
+                \end{itemize}
+            
+            \end{SmallIndentation}
+
+
+        % ==============================================================
+        % ===========      FUNCION ACUMULADA            ================
+        % ==============================================================
+        \clearpage
+        \section{Función P. Acumulada $F_X$}
+
+            % ======================================================
+            % ===========          DEFINICIÓN       ================
+            % ======================================================
+            \subsection{Definición}
+
+                Describimos a la función de probabilidad acumulada como:
+                \begin{equation*}
+                    \Over{F}_{X}(x) = \sum_{i < x} f_{X}(i)
+                \end{equation*}
+
+            % ======================================================
+            % ===========          PROPIEADES       ================
+            % ======================================================
+            \vspace{1em}
+            \subsection{Propieades}
+
+                Podemos ver a la acumulada como una función fundamental, tal que
+                podemos escribir a todas las demás:
+                \begin{itemize}
+                    \item $P(X < x)             = \Over{F}_{X}(x - 1)$
+                    \item $P(X \leq x)          = \Over{F}_{X}(x)$
+                    \item $P(X > x)             = 1 - \Over{F}_{X}(x)$
+                    \item $P(X \geq x)          = 1 - \Over{F}_{X}(x - 1)$
+                    \item $P(a \leq X \leq b)   = \Over{F}_{X}(b) - \Over{F}_{X}(a - 1)$
+                    \item $P(a < X \leq b)      = \Over{F}_{X}(b) - \Over{F}_{X}(a)$
+                    \item $P(a \leq X < b)      = \Over{F}_{X}(b - 1) - \Over{F}_{X}(a)$
+                    \item $P(a < X < b)         = \Over{F}_{X}(b - 1) - \Over{F}_{X}(a - 1)$
+                \end{itemize}
+                
+
+
+        % ==============================================================
+        % ===========           ESPERANZA O MEDIA       ================
+        % ==============================================================
+        \clearpage
+        \section{Esperanza o Media}
+
+            % ======================================================
+            % ===========          DEFINICIÓN       ================
+            % ======================================================
+            \subsection{Definición}
+
+                Decimos que el valor esperado, esperanza ó media de la variable $X$
+                se define como:
+                \begin{equation*}
+                    \mu_{X} = E(X) = \sum_x \; x f_X(x) = \sum_x x P(X = x)
+                \end{equation*}
+
+                Representa un promedio ponderado de los valores posibles de la variable basado en
+                sus probabilidades.
+
+                Es decir, si se repitiera el experimiento muchísimas veces el promedio de los resultados
+                se iría aproximando a la media.
+
+            % =========================================================
+            % ===============        PROPIEDADES      =================
+            % =========================================================
+            \vspace{1em}
+            \subsection{Propiedades}
+
+                \begin{itemize}
+
+                    \item 
+                        Si $X$ puede tomar un número infinito de valores entonces la esperanza de 
+                        $X$ existe si y solo si $\displaystyle \sum_x |x| f_X(x) < \infty$
+
+                    \item
+                        Podemos dar una definición al evaular la media en 
+                        $E(g(x)) = \sum_x g(x) f_X(x)$
+
+                    \item Es un Operador Lineal, es decir:
+
+                        $E(\alpha X + \beta Y) = \alpha E(X) + \beta E(Y)$
+
+                    \item
+                        Si $X, Y$ son independientes entonces $E(XY) = E(X) + E(Y)$
+
+                    \item
+                        Si $a$ es una constante, entonces: 
+                        $E(a) = a$
+
+                \end{itemize}
+
+
+        % ==============================================================
+        % ===========              VARIANZA             ================
+        % ==============================================================
+        \clearpage
+        \section{Varianza}
+
+            % ======================================================
+            % ===========          DEFINICIÓN       ================
+            % ======================================================
+            \subsection{Definición}
+
+                Decimos que la varianza de la variable $X$
+                con $f_{X}(x)$ se define como:
+                \begin{equation*}
+                    v(X) = E((X - \mu)^2)
+                \end{equation*}
+
+                Podemos decir por su misma definición que la varianza siempre es positiva.
+
+                Es decir, este valor nos indica que tan lejos estan en promedio los valores de
+                su misma media, es decir, que tan dispersa o concentrada esta la distribución de 
+                los datos.
+
+            % ==============================================================
+            % ===============        PROPIEDADES      ======================
+            % ==============================================================
+            \subsection{Propiedades}
+
+                \begin{itemize}
+
+                    \item
+                        $v(X) = E(X^2) - (E(X))^2$
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            
+                            Esto esta demasiada sencillo:
+                            \begin{align*}
+                                v(X) 
+                                    &= E((X - \mu)^2)                    \\
+                                    &= E(X^2 - 2x\mu +\mu^2)             \\
+                                    &= E(X^2) - E(2x\mu) + E(\mu^2)      \\
+                                    &= E(X^2) - 2\mu E(x) + E(\mu^2)     \\
+                                    &= E(X^2) - 2\mu^2 + \mu^2           \\
+                                    &= E(X^2) - \mu^2
+                            \end{align*}
+                        
+                        \end{SmallIndentation}
+                            
+
+                    \item 
+                        $V(a) = 0$
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            
+                            Sea $a = g(X)$, entonces su $\mu = a$, por lo
+                            tanto
+                            \begin{align*}
+                                V(a) 
+                                    &= E(a - a)^2)           \\
+                                    &= E(0)^2)               \\
+                                    &= 0
+                            \end{align*}
+                        
+                        \end{SmallIndentation}
+
+                    \item 
+                        $v(aX) = a^2 v(X)$
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            \begin{align*}
+                                V(aX) 
+                                    &= E(aX^2) - E^2(aX)       \\
+                                    &= a^2 E(X^2) - a^2E^2(X)  \\
+                                    &= a^2 [E(X^2) - E^2(X)]   \\
+                                    &= a^2 [v(X]          
+                            \end{align*}
+                        
+                        \end{SmallIndentation}
+
+                    \clearpage
+
+                    \item 
+                        $v(X + Y) = v(X) + v(Y) + 2Cov(X,Y)$
+
+                    \item 
+                        $v(X - Y) = v(X) - v(Y) - 2Cov(X,Y)$
+
+                    \item
+                        Si $X$ y $Y$ son independientes, entonces $v(X + Y) = v(X) + v(Y)$
+
+                    \item
+                        En general si $X_1, X_2, \dots, X_n$ son variables aleatorias, entonces
+                        tenemos que:
+                        \begin{align*}
+                            v\Wrap{\sum_{i = 1}^n X_i} = \sum_{i = 1}^n X_i + 2\sum_{i < j}^n Cov(X_i, X_j)
+                        \end{align*}
+
+                    \end{itemize}
+                            
+
+
+        % ==============================================================
+        % ===========        DESVICACIÓN ESTANDAR       ================
+        % ==============================================================
+        \clearpage
+        \section{Desvianción Estandar}
+
+            Decimos que la varianza de la variable $X$
+            con $f_{X}(x)$ se define como:
+            \begin{equation*}
+                \sigma(X) = \sqrt{v(X)}
+            \end{equation*}
+
+            Podemos decir por su misma definición que la varianza siempre es positiva.
+
+            Es decir, este valor nos indica que tan lejos estan en promedio los valores de
+            su misma media, es decir, que tan dispersa o concentrada esta la distribución de 
+            los datos.
+
+
+
+        % ==============================================================
+        % ===========            COVARIANZA             ================
+        % ==============================================================
+        \clearpage
+        \section{Covarianza}
+
+            % ======================================================
+            % ===========          DEFINICIÓN       ================
+            % ======================================================
+            \subsection{Definición}
+
+                Sea $X, Y$ dos variables independientes, entonces
+                definimos a la covarianza como:
+                \begin{equation*}
+                    Cov(X, Y)
+                        = E\Wrap{(X - \mu_{X})(Y - \mu_{Y})}
+                \end{equation*}
+
+                Es una manera de medir la dispersión conjunta de ambas variables.
+
+
+
+            
+            % =====================================================
+            % ===============        PROPIEDADES      =============
+            % =====================================================
+            \vspace{1em}
+            \subsection{Propiedades}
+
+                \begin{itemize}
+
+                    \item 
+                        $Cov(X, Y) = E(X Y) - \mu_{X}\mu_{Y}$
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            
+                            Podemos demostrar esto, bien facil:
+                            \begin{align*}
+                                Cov(X, Y)
+                                    &= E\Wrap{(X - \mu_X)(Y - \mu_Y)}                   \\
+                                    &= E\Wrap{XY - X\mu_Y -\mu_XY - \mu_X\mu_Y}         \\
+                                    &= E(XY) - E(X\mu_Y) -E(\mu_XY) + E(\mu_X\mu_Y)     \\
+                                    &= E(XY) - \mu_YE(X) -\mu_XE(Y) +  E(\mu_X\mu_Y)    \\
+                                    &= E(XY) - \mu_Y\mu_X -\mu_X\mu_Y + E(\mu_X\mu_Y)   \\
+                                    &= E(XY) - \mu_Y\mu_X -\mu_X\mu_Y + \mu_X\mu_Y      \\
+                                    &= E(XY) - \mu_Y\mu_X
+                            \end{align*}
+                        
+                        \end{SmallIndentation}
+
+                    \item La covarianza de 2 variables independientes es cero
+
+                    % ======== DEMOSTRACION ========
+                    \begin{SmallIndentation}[1em]
+                        \textbf{Demostración}:
+                        
+                        Mira esto:
+                        \begin{align*}
+                            Cov(X, Y)
+                                &= E(XY) - \mu_Y\mu_X                           
+                                    && \Remember{Si es que son independientes}      \\
+                                &= E(X)E(Y) - \mu_Y\mu_X
+                                    && \Remember{Recuerda que $E(X) = \mu_X$}       \\
+                                &= 0
+                        \end{align*}
+                    
+                    \end{SmallIndentation}
+                        
+                            
+                \end{itemize}
+
+
+
+
+        % ==============================================================
+        % ===========        MOMENTOS CENTRALES         ================
+        % ==============================================================
+        \clearpage
+        \section{Momentos Centrales}
+
+            Si $X$ es una variable aleatoria tal que $E(X) = \mu_x$ entonces tenemos que:
+            \begin{itemize}
+                \item 
+                    El k-ésimo momento central esta definida como:
+                    \begin{equation}
+                        \mu_k^c 
+                            = E\Brackets{(X - \mu)^k}
+                            = \sum_x (x - \mu)^k P(X = x)
+                    \end{equation}
+
+                \item 
+                    El k-ésimo momento alrededor del origen esta definida como:
+                    \begin{equation}
+                        \mu_k^0 
+                            = E\Brackets{(X)^k}
+                            = \sum_x x^k P(X = x)
+                    \end{equation}
+
+            \end{itemize}
+
+
+
+            % ==============================================================
+            % ===============        PROPIEDADES      ======================
+            % ==============================================================
+            \subsection{Propiedades}
+
+                \begin{itemize}
+
+                    \item
+                        Ya hemos trabajo con momentos, por ejemplo, la varianza
+                        la podemos definir como:
+                        $v(X) = E(X^2) - \mu^2$ donde $E(X^2)$ es un segundo momento central
+
+                        O bien, verla como $v(X) = E[(X - \mu)^2]$ es decir
+                        la varianza es el segundo momento central.
+
+                \end{itemize}
+
+
+            % ==============================================================
+            % ===========     FUNCION GENERADORA      ======================
+            % ==============================================================
+            \clearpage
+            \subsection{Función Generadora de Momentos}
+
+                La podemos definir como:
+                \begin{equation*}
+                    \Psi_X (t) 
+                        = E(e^{tX})
+                        = \sum_x e^{tx} P(X = x)
+                \end{equation*}
+
+                Solemos decir que la k-ésima derivada de la función generadora
+                de momentos evaluada en $t = 0$ da como resultado el k-ésimo momento central al origen
+
+                Es decir, siguen el siguiente patrón:
+                \begin{itemize}
+                    \item $\Psi_X' (t = 0) = E(X)$ 
+                    \item $\Psi_X'' (t = 0) = E(X^2)$ 
+                    \item $\Psi_X''' (t = 0) = E(X^3)$ 
+                    \item $\Psi_X^{(n)} (t = 0) = E(X^n)$ 
+                \end{itemize}
+
+
+
+            % ==============================================================
+            % ===============        PROPIEDADES      ======================
+            % ==============================================================
+            \subsection{Propiedades}
+
+                \begin{itemize}
+
+                    \item
+                        Si $Y = aX + b$ entonces tenemos que:
+
+                        $\Psi_Y(t) = e^{bt} \Psi_X(at)$
+
+                    \item
+                        Nota que $\Psi_x(a) = E(e^{aX})$
+
+                    \item
+                        $\Psi_X (t = 0) = \mu_k$
+
+                    \item
+                        $\Psi_X (t = 0) = E(X)$
+
+                    \item
+                        Nota que si tuvieramos un montón de variables aleatorias
+                        $X_1, X_2, X_3, \dots, X_n$
+                        Y decimos que $Y = \sum_{i = 1}^n X_i$
+
+                        Entonces tenemos que $\Psi_Y(t) = \prod_{i = 1}^n \Psi_{X_i}(t)$
+
+
+                \end{itemize}
+
+
+
+
+
+
+    % ===============================================================================
+    % ===============       DISTRIBUCIONES DISCRETAS FAMOSAS     ====================
+    % ===============================================================================
+    \chapter{Distribuciones Famosas}
+
+
+        % ==============================================================
+        % ====                  BERNOULLI                   ============
+        % ==============================================================
+        \clearpage
+        \section{Bernoulli}
+
+            Suponte un experimento en el que solo tienes dos salidas, 
+            $0, 1$, suponte que la probabilidad de que salga $0$ es $q$
+            y la que salga $1$ es $p$.
+
+            Ahora veamos algunas caracteristicas:
+            \begin{itemize}
+                \item \textbf{Función Probabilidad}
+
+                    Esta esta fácil $f_X(x) = p^x q^{1-x}$
+
+                \item \textbf{Esperanza de X}
+
+                    Nota que por definición tenemos que:
+                    \begin{align*}
+                        \mu_X 
+                            &= \sum_x x P(X = x)        \\
+                            &= 0(q) + 1(p)              \\
+                            &= p
+                    \end{align*}
+
+                \item \textbf{Varianza}
+
+                    Por definición tenemos que:
+                    \begin{align*}
+                        v(X)
+                            &= E(x^2) - \mu^2               \\
+                            &= E(x^2) - p^2                 \\
+                            &= \sum_x x^2 P(X = x) - p^2    \\
+                            &= 0(q) + 1(p) - p^2            \\
+                            &= p - p^2                      \\
+                            &= p(1 - p)                     \\
+                            &= pq
+                    \end{align*}
+
+                \item \textbf{Acumulada}
+
+                    Por definición tenemos que:
+                    \begin{align*}
+                        F_X(x) = 
+                            \begin{cases}
+                                0 \Space& x < 0             \\
+                                q \Space& 0 \leq x < 1      \\
+                                p \Space& 1 \leq x 
+                            \end{cases}
+                    \end{align*}
+
+                \item \textbf{Función Genera de Momentos}
+
+                    Por definición tenemos que:
+                    \begin{align*}
+                        \Psi(t) 
+                            &= E(e^tX)                      \\
+                            &= \sum_x e^tx P(X = x)         \\
+                            &= e^{0t}(q) + e^{1t}(p)        \\
+                            &= (q) + e^t(p)   
+                    \end{align*}
+
+            \end{itemize}
+
+
+        % ==============================================================
+        % ====                  BINOMIAL                    ============
+        % ==============================================================
+        \clearpage
+        \section{Binomial}
+
+            Es un experimento binomial que consiste en $n$ ensayos Bernoulli
+            independientees, con una probabilidad de exito individual constante.
+
+            La variable discreta es el número de exitos de los experimentos individuales
+            donde sus posibles valores fueron $X = \Set{0, 1, \dots, n}$.
+
+            Observa que la variable aleatoria se puede ver como la suma de Bernoullis independientes.
+
+            Ahora veamos algunas caracteristicas:
+            \begin{itemize}
+                \item \textbf{Función Probabilidad}
+
+                    Esta esta fácil $f_X(x) = {n \choose x}p^x q^{n - x}$
+
+                    ¿Porque? Porque estamos hablando de eventos independientes por lo
+                    tanto su probabilidad conjunta es el producto de las individuales, 
+                    y literlalmente estamos usando la definición de combinación.
+
+                \item \textbf{Función Acumulada}
+
+                    Esta esta fácil $F_X(x) = \sum_{i=0}^x {n \choose i}p^i q^{n - i}$
+
+                \item \textbf{Esperanza de X}
+
+                    Podemos usar que la variable aleatoria se puede ver como la suma
+                    de Bernoullis independientes.
+
+                    Es decir $Y = \sum_x x_i$
+
+                    \begin{align*}
+                        \mu_X 
+                            &= E(Y)                 \\
+                            &= E(\sum_x x_i)        \\
+                            &= \sum_x E(x_i)        \\
+                            &= np
+                    \end{align*}
+
+
+                \item \textbf{Varianza}
+
+                        Por definición tenemos que:
+                        \begin{align*}
+                            v(X) = npq   
+                        \end{align*}
+
+                \item \textbf{Función Genera de Momentos}
+
+                        Por definición tenemos que:
+                        \begin{align*}
+                            \Psi (t) = \Wrap{q + e^tp}^n   
+                        \end{align*}
+                
+            \end{itemize}
+
+
+
+        % ==============================================================
+        % ====                  GEOMETRICA                  ============
+        % ==============================================================
+        \clearpage
+        \section{Geométrica}
+
+            Supón que se repiten de manera independiente ensayos Bernoulli
+            con una probabilidad de exito constante de $p$ hasta obtener el primer
+            exito.
+
+            La variable discreta es el número de experimentos hasta un primer exito
+            donde sus posibles valores fueron $X = \Set{0, 1, \dots, }$.
+
+            Observa que la variable aleatoria se puede ver como la suma de Bernoullis independientes.
+
+            Ahora veamos algunas caracteristicas:
+            \begin{itemize}
+                \item \textbf{Función Probabilidad}
+
+                    Esta esta fácil $f_X(x) = q^{x - 1}p$
+
+                    Es decir, es la propabilidad de que todos los anteriores sean fracasos y el actual
+                    sea el exito.
+
+                \item \textbf{Función Acumulada}
+
+                    $F_X(x) = 1 - q^x$
+
+                    Esta esta fácil:
+                    \begin{align*}
+                        F_X(x) 
+                            &= \sum_{i=1}^x pq^{i - 1}      \\
+                            &= p\sum_{i=0}^{x-1} q^i        \\
+                            &= p\frac{1-q^x}{1-q}           \\
+                            &= p\frac{1-q^x}{p}             \\
+                            &= 1-q^x
+                    \end{align*}
+
+                \clearpage
+
+                \item \textbf{Esperanza de X}
+
+                    Esta es muy famosa: $E(X) = \frac{1}{p}$
+
+                    % ======== DEMOSTRACION ========
+                    \begin{SmallIndentation}[1em]
+                        \textbf{Demostración}:
+                        \begin{align*}
+                             E(X)
+                                &= \sum_{x=1}^\infty xP(X = x)                          \\
+                                &= \sum_{x=1}^\infty x q^{x - 1}p                       \\
+                                &= p\sum_{x=1}^\infty x q^{x - 1}                       \\
+                                &= p \MiniDerivate \sum_{x=1}^\infty x q^{x - 1}        \\
+                                &= p \MiniDerivate \sum_{x=1}^\infty q^x                \\
+                                &= p \MiniDerivate \frac{1}{1 - q}                      \\
+                                &= p \frac{1}{(1- q)^2}                                 \\
+                                &= p \frac{1}{p^2}                                      \\
+                                &= \frac{1}{p}                                  
+                        \end{align*}    
+                    
+                    \end{SmallIndentation}
+                      
+                \clearpage  
+
+                \item \textbf{Varianza}
+
+                        $v(X) = \frac{1-p}{p^2}$
+
+                        \begin{align*}
+                            v(X) 
+                                &= E(X^2) - \mu^2                                           \\
+                                &= E(X^2) - \frac{1}{p^2}                                   \\
+                                &= \sum_{x=1}^\infty x^2P(X = x) - \frac{1}{p^2}            \\
+                                &= \sum_{x=1}^\infty x^2 p q^{x-1} - \frac{1}{p^2}          \\
+                                &= p\sum_{x=1}^\infty x^2 q^{x-1} - \frac{1}{p^2}           \\
+                                &= p\frac{1+q}{(1-q)^3} - \frac{1}{p^2}                     \\
+                                &= \frac{1+q}{p^2} - \frac{1}{p^2}                          \\
+                                &= \frac{q}{p^2}                                            \\
+                                &= \frac{1-p}{p^2}
+                        \end{align*}
+
+                \item \textbf{Función Genera de Momentos}
+
+                        Por definición tenemos que:
+                        \begin{align*}
+                            \Psi (t) = E\Wrap{e^{tX}}                                       \\
+                            \Psi (t) = \sum_{x=1}^\infty e^{tx} q^{x-1}p                    \\
+                            \Psi (t) = p \sum_{x=1}^\infty e^{tx} q^{x-1}                   \\
+                            \Psi (t) = p \sum_{x=1}^\infty e^{tx} q^{x-1}                   \\
+                            \Psi (t) = p e^t \sum_{x=1}^\infty (qe^t)^x                     \\
+                            \Psi (t) = p e^t \frac{1}{1 - qe^t}                             \\
+                            \Psi (t) = \frac{pe^t}{1-qe^t} 
+                        \end{align*}
+                
+            \end{itemize}
+
+
+            % ==============================================================
+            % ====                  PROPIEDADES                 ============
+            % ==============================================================
+            \clearpage
+            \subsubsection{Propieades}
+
+                \begin{itemize}
+                    \item Sea $P(X > a) = q^a$ con $a$ un natural positivo
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            \begin{align*}
+                                P(Y > a)
+                                    &= 1 - F_X(a)      
+                                        && \Remember{Definición de Acumulada}   \\
+                                    &= 1 - (1 - q^a)    
+                                        && \Remember{Talacha}                   \\
+                                    &= q^a    
+                                        && \Remember{Bingo}
+                            \end{align*}    
+                        
+                        
+                        \end{SmallIndentation}
+
+                    \item Sea $P(X > a + b \Such X > a) = P(X > b)$ con $a, b$ un naturales positivos
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            \begin{align*}
+                                P(X > a + b \Such X > a)
+                                    &= \frac{P(X > a + b \text{ y } X > a)}{P(X > a)}    
+                                        && \Remember{Definición de Condicional}     \\
+                                    &= \frac{P(X > a + b)}{P(X > a)}    
+                                        && \Remember{Sentido común}                 \\
+                                    &= \frac{p^{a+b}}{p^a}
+                                        && \Remember{Teorema pasado}                \\
+                                    &= p^{(a+b)-a}
+                                        && \Remember{Exponentes}                    \\
+                                    &= p^b
+                                        && \Remember{Usando teorema pasado}         \\
+                                    &= P(X > b)
+                            \end{align*}    
+                        
+                        
+                        \end{SmallIndentation}
+                            
+                \end{itemize}
+
+
+                
+
+        % ==============================================================
+        % ==========     HIPER -GEOMETRICA                  ============
+        % ==============================================================
+        \clearpage
+        \section{Hiper-Geométrica}
+
+            % ==============================================================
+            % ==============          DEFINICION           =================
+            % ==============================================================
+            \subsection{Definición}
+
+                Supongamos que tenemos una población de tamaño $r$, ahora
+                esta particionado de 2 maneras, como elementos del tipo $r_1$
+                o $r_2$.
+
+                Ahora vamos a tomar una muestra aleatoria de tamaño $n$ sin reemplazo
+                ni sustitución.
+
+                Ahora, solo por notación si es que $n$, es decir la muestra es menor
+                que nuestra población $r$ la llamamos muestra, pero si $n = r$ entonces
+                decimos que es un censo.
+
+                % ======================================================
+                % =========    VARIABLE ALEATORIA       ================
+                % ======================================================
+                \space{1em}
+                \subsubsection{Variable Aleatoria}
+
+                    Ahora, nuestra variable aleatoria sera:
+                    \begin{equation*}
+                        X : \text{Número de elementos del tipo $r_1$ en una muestra aleatoria de tamaño $n$}
+                    \end{equation*}
+
+                    Ahora, los valores posibles que puede tomar es $max(0, n - r_2) \leq x \leq min(r_1, n)$
+                    Ahora, ¿Porque esos números tan feos?
+                    Por un lado tenemos que que lo peor que nos puede pasar son dos cosas, o bien su tu
+                    muestra es muy pequeña $n$ compara con todo el espacio $r$ y $r_1$ entonces
+                    entonces bien que puedes tener toda la mala suerte de que todas caigan donde tu no querías
+                    por lo tanto, podría pasar que $X = 0$, pero, pero que pasaría que tu $n$ fuera
+                    lo suficientemente grande tal que si que si entrará todo tus fragmentos que no quieres
+                    entonces lo mínimo que puede entrar es $n - r_2$.
+
+                    El cálculo para el límite mayor es parecido.
+
+
+                    Solemos entonces escribir esta distribución como:
+                    \begin{equation*}
+                        X \sim H(x; n, r_1, r_2)
+                    \end{equation*}
+
+                    donde:
+                    \begin{itemize}
+                        \item $x$: Nuestra variable
+                        \item $n$: Tamaño de la muestra
+                        \item $r$: Tamaño de TODA la población
+                        \item $r_1$: Tamaño de nuestra población de interes
+                        \item $r_2$: Tamaño de la población que no es de interes, sale de $r_2 = r - r_1$
+                    \end{itemize}
+
+
+            % ==============================================================
+            % ==========     FUNCIÓN PROBABILIDAD          =================
+            % ==============================================================
+            \clearpage
+            \subsection{Función Probabilidad}
+
+                Esta esta muy interesante, es:
+                \begin{equation*}
+                    f_X(x) = \dfrac{{r_1 \choose x}{r_2 \choose n-x} }{{r \choose n}}
+                \end{equation*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Idea de la Demostración}:
+                    
+                    Antes que nada, mira lo bonito que sale, arriba tienes $r_1, r_2$ y $r_1+r_2=r$
+                    y abajo tienes que $n-x, x$ y $n-x+x = n$
+                    
+                    Ahora, abajo estamos colocando las posibles formas de escojer conjunto de $n$
+                    elementos de una espacio de $r$ elementos, y arriba es la probabilidad
+                    conjunta de que primero tengamos $x$ elementos de $r_1$ y $n-x$ elementos de $r_2$
+                
+                \end{SmallIndentation}
+                    
+
+            % ==============================================================
+            % =========   FUNCION PROBABILIDAD ACUMULADA        ============
+            % ==============================================================
+            \vspace{1em}
+            \subsection{Función P. Acumulada}
+
+                Esta esta muy interesante, es:
+                \begin{align*}
+                    F_X(x) 
+                        = P(X \leq x)              
+                        = \dfrac{1}{\binom{r}{n}}                      
+                            \sum_{i = max (0, n - r_2)}^x                
+                                \binom{r_1}{i} \binom{r_2}{n - i}
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Idea de la Demostración}:
+                    
+                    Es por definición men :v
+                
+                \end{SmallIndentation}
+                    
+
+
+            % ==============================================================
+            % =========          FUNCION ESPERANZA              ============
+            % ==============================================================
+            \clearpage
+            \subsection{Esperanza}
+
+                Esta esta muy interesante:
+                \begin{align*}
+                    E(X) = n \pfrac{r_1}{r}                    
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Primero que nada porque usando la definición o algo así nos van a
+                    salir cosas horribles, así que mejor empecemos por otro lado.
+
+                    Sea $X_i$ variables aleatorias de Bernoulli, tal que esten
+                    definidas por: 
+                    \begin{align*}
+                        X_i = 
+                            \begin{cases}
+                                1 & \text{Si $X_i$ es de tipo $r_1$}        \\
+                                0 & \text{Si $X_i$ no es de tipo $r_1$}
+                            \end{cases}
+                    \end{align*}
+
+                    Ahora, como son variables de Bernoulli, podemos encontrar bien facil
+                    su esperanza como $E(X_i) = p = \dfrac{r_1}{r}$
+
+                    Ahora, como ya te esperabas, nota que nuestra variable aleatoria hipergeometrica
+                    es la suma de las otras $X = \sum_{i = 1}^n X_i$
+
+                    Ahora como la esperanza es un bonito operador lineal tenemos que:
+                    \begin{align*}
+                        E(X)
+                            &= E \Wrap{\sum_{i = 1}^n X_i}      \\
+                            &= \sum_{i = 1}^n E(X_i)            \\
+                            &= \sum_{i = 1}^n \frac{r_1}{r}     \\
+                            &= n \pfrac{r_1}{r}   
+                    \end{align*}
+                    
+                
+                \end{SmallIndentation}
+                    
+
+                
+
+
+            % ==============================================================
+            % =========   FUNCION GENERADORA DE MOMENTOS        ============
+            % ==============================================================
+            \clearpage
+            \subsection{Función Generadora}
+
+                Esta esta muy interesante, es:
+                \begin{align*}
+                    \Psi_X(t) 
+                        = E( e^{tX} )                 
+                        = \dfrac{1}{\binom{r}{n}}                      
+                            \sum_{i = max (0, n - r_2)}^{min(n, r_1)}               
+                               e^{ti} \binom{r_1}{i} \binom{r_2}{n - i}
+                \end{align*}
+
+
+
+
+
+        % ==============================================================
+        % ==========             POISSON                    ============
+        % ==============================================================
+        \clearpage
+        \section{Poisson}
+
+
+            % ======================================================
+            % =========    VARIABLE ALEATORIA       ================
+            % ======================================================
+            \vspace{1em}
+            \subsubsection{Variable Aleatoria}
+
+                La variable aleatoria que cuenta el número de ocurrencías en un periodo
+                de tiempo o espacio físico dado se le llama Poisson.
+
+                \begin{equation*}
+                    X : \text{Número de ocurrencias en un periodo de tiempo o espacio dado}
+                \end{equation*}
+
+                Ahora, los valores posibles que puede tomar es $0, 1, 2, \dots$
+
+                Solemos entonces escribir esta distribución como:
+                \begin{equation*}
+                    X \sim P(x; \lambda)
+                \end{equation*}
+
+                donde:
+                \begin{itemize}
+                    \item $x$: Nuestra variable
+                    \item $\lambda$: Es el número promedio de ocurrencias en el periodo o espacio dado
+                \end{itemize}
+
+
+            % ==============================================================
+            % ==========     FUNCIÓN PROBABILIDAD          =================
+            % ==============================================================
+            \clearpage
+            \subsection{Función Probabilidad}
+
+                Esta esta muy interesante, es:
+                \begin{equation*}
+                    f_X(x) = P(X = x) = e^{- \lambda} \dfrac{\lambda^x}{x!}
+                \end{equation*}
+
+
+            % ==============================================================
+            % =========   FUNCION PROBABILIDAD ACUMULADA        ============
+            % ==============================================================
+            \vspace{1em}
+            \subsection{Función P. Acumulada}
+
+                Esta esta muy interesante, es:
+                \begin{align*}
+                    F_X(x) 
+                        = P(X \leq x)              
+                        = e{-\lambda}\sum_{i = 0}^x \dfrac{\lambda^i}{i!}
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Idea de la Demostración}:
+                    
+                    Es por definición men :v
+                
+                \end{SmallIndentation}
+                    
+
+            % ==============================================================
+            % =========   FUNCION GENERADORA DE MOMENTOS        ============
+            % ==============================================================
+            \clearpage
+            \subsection{Función Generadora}
+
+                Esta esta muy interesante, es:
+                \begin{align*}
+                    \Psi_X(t) 
+                        = e^{\lambda(e^t - 1)}
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Usando la función probabilidad puntual tenemos que:
+                    \begin{align*}
+                        \Psi_X(t) 
+                            &= E( e^{tX} )                                                       \\
+                            &= \sum_{x = 0}^\infty e^{tx} P(X = x)                               \\
+                            &= \sum_{x = 0}^\infty e^{tx} e^{- \lambda} \dfrac{\lambda^x}{x!}    \\
+                            &= e^{- \lambda} \sum_{x = 0}^\infty e^{tx} \dfrac{\lambda^x}{x!}    \\
+                            &= e^{- \lambda} \sum_{x = 0}^\infty \dfrac{(e^t \lambda)^x}{x!}     \\
+                            &= e^{- \lambda} e^{e^t \lambda}                                     \\   
+                            &= e^{\lambda(e^t - 1)}
+                    \end{align*}
+                
+                \end{SmallIndentation}
+                    
+
+            % ==============================================================
+            % =========          FUNCION ESPERANZA              ============
+            % ==============================================================
+            \clearpage
+            \subsection{Esperanza}
+
+                Esta esta muy interesante:
+                \begin{align*}
+                    E(X) = \lambda               
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Esta sale o bien por definición o usando la generadora de momentos y dicieno que:
+                    \begin{align*}
+                        \Psi(t = 0)'
+                            &= e^{\lambda(e^t - 1)} \lambda(e^t) \Evaluate_{t = 0}      \\
+                            &= e^{0} \lambda(e^0)                                       \\
+                            &= \lambda
+                    \end{align*}
+                    
+                \end{SmallIndentation}
+
+
+            % ==============================================================
+            % =========                 VARIANZA                ============
+            % ==============================================================
+            \vspace{1em}
+            \subsection{Varianza}
+
+                Esta esta muy interesante:
+                \begin{align*}
+                    v(X) = \lambda               
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Esta sale o bien por definición o usando la generadora de momentos y dicieno que:
+                    \begin{align*}
+                        \Psi(t = 0)''
+                            &= e^{\lambda(e^t - 1)} \lambda(e^t) + \lambda (e^t)^2 e^{\lambda(e^t - 1)} \Evaluate_{t = 0} \\
+                            &= \lambda + \lambda^2                                       
+                    \end{align*}
+
+                    Por lo tanto la varianza es $v(X) = \lambda + \lambda^2 - \lambda^2 = \lambda$
+                
+                \end{SmallIndentation}
+                
+
+            % ==============================================================
+            % ==========     RELACION CON LA BINOMIAL      =================
+            % ==============================================================
+            \clearpage
+            \subsection{Relación con la Binomial}
+
+                Considera $X \sim Bin(x; n, p)$, entonces cuando más grande sea $n$ más nuestra binomial se 
+                va a parecer a una Poisson con $\lambda = np$
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Considera $X \sim Bin(x; n, p)$, entonces esta más que claro que por
+                    ser una variable aleatoria que se distribuye con una binomial
+                    que $P(X = x) = f_X = {n \choose x}p^x q^{n - x}$.
+
+                    Ahora como ya demostramos en las propiedades de la Poisson, vamos a suponer
+                    por un minuto que $\lambda = np$, es decir $p = \frac{\lambda}{n}$ entonces tenemos que:
+                    \begin{equation*}
+                        P(X = x) 
+                            = f_X 
+                            = {n \choose x}p^x q^{n - x}
+                            = {n \choose x}\Wrap{\frac{\lambda}{n}}^x \Wrap{1 - \frac{\lambda}{n}}^{n - x}
+                    \end{equation*}
+
+                    Ahora veamos que es lo que pasa cuando tenemos una $x$ muy muy grande, es decir:
+                    \begin{align*}
+                        \lim_{n \to \infty} P(X = x) 
+                            &= \lim_{n \to \infty} {n \choose x}p^x q^{n - x}                                                               \\
+                            &= \lim_{n \to \infty} {n \choose x}\Wrap{\frac{\lambda}{n}}^x \Wrap{1 - \frac{\lambda}{n}}^{n - x}             \\
+                            &= \lim_{n \to \infty} \dfrac{n!}{x!(n - x)!} \Wrap{\frac{\lambda}{n}}^x \Wrap{1 - \frac{\lambda}{n}}^{n - x}   \\
+                            &= \lim_{n \to \infty} \dfrac{n!}{x!(n - x)!} \frac{\lambda^x}{n^x} \Wrap{1 - \frac{\lambda}{n}}^{n - x}        \\
+                            &= \lim_{n \to \infty} \dfrac{\lambda^x}{x!} 
+                                \dfrac{n!}{n^x(n - x)!} \Wrap{1 - \frac{\lambda}{n}}^{n - x}                                                \\
+                            &= \dfrac{\lambda^x}{x!}  \lim_{n \to \infty} 
+                                \frac{n - x + 1}{n} \dots \frac{n - 1}{n}  \frac{n}{n} \Wrap{1 - \frac{\lambda}{n}}^{n} \frac{1}{(n - \lambda)^x} \\
+                            &= \dfrac{\lambda^x}{x!} e^{-\lambda} \lim_{n \to \infty} 
+                                \frac{n - x + 1}{n} \dots \frac{n - 1}{n}  \frac{n}{n} \frac{1}{(n - \lambda)^x} \\
+                            &= \dfrac{\lambda^x}{x!} e^{-\lambda} \lim_{n \to \infty} 
+                                (1) \dots (1)  \\
+                            &= \dfrac{\lambda^x}{x!} e^{-\lambda} 
+                    \end{align*}
+
+                    Por lo tanto cuando más grande sea $n$ más nuestra binomial se va a parecer a una Poisson con $\lambda = np$
+
+                \end{SmallIndentation}
+                
+
+
+            
+
+
+
+
 
 
 
