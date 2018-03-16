@@ -493,7 +493,7 @@
                     Entonces tenemos que un evento puede ser $A_1 = \Set{Cara}$ 
 
                     Si $\varepsilon_2:$ Lanzar un dado.
-                    Entonces tenemos que un evento puede ser $A_2 = \Set{1, 2, 4}, A_2.1 = \Set{5}$ 
+                    Entonces tenemos que un evento puede ser $A_2 = \Set{1, 2, 4}, A_{2.1} = \Set{5}$ 
                  
                  \end{SmallIndentation}
 
@@ -767,146 +767,165 @@
                 Cuando la repetición no esta permitida, por ejemplo en un conjunto de números de lotería
 
 
-        % ==============================================================
-        % ===============        FORMULAS         ======================
-        % ==============================================================
-        \clearpage
-        \section{Fórmulas}
-
-            \begin{itemize}
-                \item 
-                    Número de \textbf{permutaciones} de un conjunto de $n$ objetos
-                    \begin{equation}
-                        n!
-                    \end{equation}
-
-                \item
-                    Número de \textbf{muestras ordenadas} de tamaño $r$
-                    \textbf{con remplazo} de un conjunto de $n$ objetos
-                    \begin{equation}
-                        n^r
-                    \end{equation}
-
-                \item
-                    Número de \textbf{muestras ordenadas} de tamaño $r$
-                    \textbf{sin remplazo} de un conjunto de $n$ objetos
-                    \begin{align}
-                        {}_nP_r
-                            = \frac{n!}{(n - r)!}          
-                            = (n)(n-1)(n-2)\dots(n-r+1) 
-                    \end{align}
-
-                \item
-                    Número de \textbf{muestras no ordenadas} de tamaño $r$
-                    \textbf{sin remplazo} de un conjunto de $n$ objetos
-
-                    Esto es lo mismo que el número de subconjuntos de cardinalidad $r$ de
-                    un conjunto de $n$ elementos
-                    \begin{align}
-                        {n \choose r}
-                            = {}_nC_r 
-                            = \frac{{}_nP_r}{r!}          
-                            = \frac{n!}{r!(n-r)!}          
-                            = \frac{(n)(n-1)(n-2)\dots(n-r+1)}{r!}          
-                    \end{align}
-
-                \item
-                    Número de subconjuntos de un conjunto de $n$ elementos:
-                    \begin{equation}
-                        2^n
-                    \end{equation}
-
-
-            \end{itemize}
-
 
 
         % ==============================================================
-        % ===============        FORMULAS         ======================
+        % ===============      PERMUTACION        ======================
         % ==============================================================
         \clearpage
-        \section{Coheficientes Binomiales}
+        \section{Permutación}
 
-            % ====================================
-            % ======   INTERPRETACION    =========
-            % ====================================
-            \subsection{Interpretación}
+            Una permutación es un arreglo de objetos donde el ordén es importante. 
 
-                Podemos interpretarlos de muchas maneras, algunas son:
+            Entonces definimos a ${}_nP_r$ a la cantidad de muestras ordenadas de tamaño r sin remplazo
+            de un conjunto de n objetos.
+
+            Entonces decimos que:
+            \begin{equation*}
+                {}_nP_r
+                    = \frac{n!}{(n - r)!}          
+                    = (n)(n-1)(n-2)\dots(n-r+1)
+            \end{equation*}
+
+
+            % =====================================================
+            % =============      EJEMPLOS        ==================
+            % =====================================================
+            \vspace{1em}
+            \subsection{Ejemplos}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Ejemplo 1}:
+                    
+                    Considera $S = \Set{a, b, c, d}$, entonces podemos decir que:
+                    \begin{itemize}
+                        \item Hay 4 permutaciones distintas tomando solo una letra a la vez
+                        \item Hay 12 permutaciones distintas tomando solo dos letra a la vez
+                        \item Hay 24 permutaciones distintas tomando solo tres letra a la vez
+                    \end{itemize}
+
+                    Estas se pueden sacar facilmente con esta idea que creo que a todos nos enseñan,
+                    por ejemplo veamos como hacer el último punto:
+                    \begin{figure}[h]
+                        \includegraphics[width=0.6\textwidth]{PermutacionesEjemplo}
+                    \end{figure}
+                    
+                
+                \end{SmallIndentation}
+
+
+        % ==============================================================
+        % ===============      COMBINACION        ======================
+        % ==============================================================
+        \clearpage
+        \section{Combinación}
+
+            Una permutación es un arreglo de objetos donde el ordén NO es importante. 
+
+            Entonces definimos a ${}_nC_r$ a la cantidad de muestras sin ordenadas de tamaño r sin remplazo
+            de un conjunto de n objetos.
+
+            Entonces decimos que:
+            \begin{equation*}
+                {n \choose r}
+                = {}_nC_r 
+                = \dfrac{{}_nP_r}{r!}          
+                = \dfrac{n!}{r!(n-r)!}          
+                = \dfrac{(n)(n-1)(n-2)\dots(n-r+1)}{r!}
+            \end{equation*}
+
+            Esto tiene mucho sentido si lo ves desde otro angulo, pues en cuanto a las permutaciones
+            tendremos $(n)(n-1)(n-2)\dots(n-r+1)$, pero resulta que muchas de esas permutaciones son
+            basicamente la misma, solo cambiando el orden, así que si el orden ya no importa, es tan sencillo
+            como dividir entre la cantidad de veces que podemos ordenar esas permutaciones de tamaño $r$
+
+
+            % =====================================================
+            % ====      COMBINACIONES Y SUBCONJUNTOS       ========
+            % =====================================================
+            \vspace{1em}
+            \subsection{Combinaciones y Subconjuntos}
+
+                Resulta ser que hay dos grande problemas clásicos de teoría de conjuntos
+                que podemos resolver con combinaciones:
                 \begin{itemize}
+                    \item 
+                        El número de subconjuntos de cardinalidad $r$ de un conjunto de $n$ elementos
+                        \begin{align*}
+                            {n \choose r}
+                        \end{align*}
+
                     \item
-                        El número de formas de seleccionar $k$ objetos de un conjunto de $n$ elementos.
-                    \item
-                        El número de subconjuntos de elementos $k$ en un conjunto de $n$ elementos.
+                        Número de subconjuntos de un conjunto de $n$ elementos:
+                        \begin{equation*}
+                            \sum_{i = 0}^n {n \choose i} = 2^n
+                        \end{equation*}
                 \end{itemize}
 
 
-            % ====================================
-            % ======     PROPIEDADES     =========
-            % ====================================
-            \subsection{Propieades}
+            % =====================================================
+            % =============      EJEMPLOS        ==================
+            % =====================================================
+            \vspace{1em}
+            \subsection{Ejemplos}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Ejemplo 1}:
+                    
+                    Cuantos equipos se puede formar que incluyan 2 físicos y 1 matemático
+                    si se sabe que hay 4 físicos y 3 matemáticos.
+
+                    Ya que no nos importa el orden esto esta mas sencillo de lo que parece:
+                    \begin{align*}
+                        {4 \choose 2} {3 \choose 1}
+                            = \dfrac{4!}{2!(4-2)!}\dfrac{3!}{1!(3-1)!}
+                            = 18                     
+                    \end{align*}                    
+                
+                \end{SmallIndentation}
+                    
+
+
+            % ==============================================================
+            % ===============        FORMULAS         ======================
+            % ==============================================================
+            \clearpage
+            \subsection{Propiedades Coheficientes Binomiales}
 
                 \begin{itemize}
-                    \item 
-                        Número de \textbf{permutaciones} de un conjunto de $n$ objetos
-                        \begin{align}
-                            {n \choose r}
-                                &= \frac{n!}{k!(n-k)!} 
-                                    &&\Remember{ donde $n \in \Naturals$ y $k \in \Set{1, \dots, n}$ }     \\
-                                &= \frac{(n)(n-1)(n-2)\dots(n-k+1)}{k!}
-                        \end{align}
-
-                    \item 
-                        Número de \textbf{permutaciones} de un conjunto de $n$ objetos
-                        \begin{equation}
-                            {n \choose k} = \frac{n!}{k!(n-k)!}
-                        \end{equation}
 
                     \item 
                         Propiedades Simetrícas
-                        \begin{equation}
+                        \begin{equation*}
                             {n \choose k} = {n \choose n - k}
-                        \end{equation}
+                        \end{equation*}
 
                     \item 
                         Casos Especiales
-                        \begin{align}
+                        \begin{align*}
                             {n \choose 0} = {n \choose n} = 1
                             \MegaSpace \MegaSpace
                             {n \choose 1} = {n \choose n-1} = n   
-                        \end{align}
+                        \end{align*}
 
                     \item 
                         Teorema del Binomio
-                        \begin{equation}
+                        \begin{equation*}
                             (x + y)^n 
                                 = \sum_{k=0}^n {n \choose k} x^k y^{n-k}
-                        \end{equation}
+                        \end{equation*}
 
 
                     \item 
                         Teorema del Binomio (Caso Especial)
-                        \begin{equation}
+                        \begin{equation*}
                             \sum_{k=0}^n {n \choose k} p^k (1 - p)^{n-k} = 1
-                        \end{equation}
+                        \end{equation*}
 
                 \end{itemize}
 
-
-
-        % ==============================================================
-        % ===============        PROPIEDADES      ======================
-        % ==============================================================
-        \clearpage
-        \section{Propiedades}
-
-            \begin{itemize}
-               
-               \item 
-                    Las formas de permutar $n$ elementos en un círculo es
-                    $(n-1)!$
-
-           \end{itemize}   
 
 
 
@@ -1000,6 +1019,21 @@
                     f_X (x) = P(X = x)
                 \end{equation*}
 
+
+            % ======================================================
+            % =======         UNIFORME CONTINUA     ================
+            % ======================================================
+            \subsection{Uniforme Continua}
+                \begin{figure}[h]
+                    \includegraphics[width=0.45\textwidth]{UniformeDiscreta}
+                \end{figure}
+
+
+            % ======================================================
+            % =======              PROPIEDADES      ================
+            % ======================================================
+            \subsection{Propieadades}
+
                 Es una función de probabilidad, es decir tiene que cumplir que la suma de todos los posibles
                 valores de la variable aleatoria den uno.
 
@@ -1013,7 +1047,7 @@
             % ======================================================
             % ===========            EJEMPLOS       ================
             % ======================================================
-            \vspace{1em}
+            \clearpage
             \subsection{Ejemplos}
 
             % ======== EJEMPLO ========
@@ -2104,6 +2138,273 @@
 
 
             
+
+
+
+
+
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+% ///////////////////////       VARIABLES ALEATORIAS CONTINUAS       ///////////////////////////////////////
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+\part{Variables Aleatorias Continuas}
+\clearpage
+
+
+
+    % ===============================================================================
+    % ===============       VARIABLES ALEATORIAS CONTINUAS     ======================
+    % ===============================================================================
+    \chapter{Variables Aleatorias Continuas}
+
+
+
+        % ==============================================================
+        % ===========                DEFINICION         ================
+        % ==============================================================
+        \clearpage
+        \section{Variables Aleatorias}
+
+            Una variable aleatoria es una función que asigna a cada elemento $E_i \in S$ en el espacio
+            muestral a un número real $X(E_i) \in \Reals$, es decir, en español, lo que hace
+            es que es una función que nos da información de una característica de cada elemento
+            del espacio muestral.
+
+
+            % ==============================================================
+            % =======     VARIABLES ALEATORIAS CONTINUAS       =============
+            % ==============================================================
+            \vspace{2em}
+            \subsection{Variables Aleatorias Continuas}
+
+                Las variables aleatorias cuyo conjunto de valores posibles el de los números reales, 
+                nos permiten medir un parámetro continuo.
+
+                Recuerda que los números reales son densos, eso quiere decir que entre cuales quiera dos
+                reales, podemos encontrar otro real entre ambos.  
+
+
+
+        % ==============================================================
+        % ===========      FUNCION PROBABILIDAD         ================
+        % ==============================================================
+        \clearpage
+        \section{Función Probabilidad $f_X$}
+
+            % ======================================================
+            % =======    PROBABILIDAD PUNTUAL       ================
+            % ======================================================
+            \subsection{Probabilidad Puntual}
+
+                También se le conoce como función de probabilidad puntual.
+                Es tecnicamente la misma que en las variables aleatorias discretas, pero
+                al estar hablando de puede tomar cualquier real, entonces decimos que:
+                \begin{equation*}
+                    P(X = x) = 0
+                \end{equation*}
+
+
+            % ======================================================
+            % =======         DEFINICION            ================
+            % ======================================================
+            \subsection{Definición}
+
+                Vamos a definir a la función de densidad como aquella función $f_X(x)$ para la cual siempre se cumpla que
+                \begin{equation*}
+                    P(a < X < b) = \int_a^b f_X(x) dx
+                \end{equation*}
+
+                Recuerda que las probabilidades en el caso continuo se puede ver como áreas bajo la curva
+                delimitada según el interes.
+
+
+
+            % ======================================================
+            % =======         UNIFORME CONTINUA     ================
+            % ======================================================
+            \subsection{Uniforme Continua}
+                \begin{figure}[h]
+                    \includegraphics[width=0.45\textwidth]{UniformeContinua}
+                \end{figure}
+
+
+            % ======================================================
+            % =======           PROPIEDADES         ================
+            % ======================================================
+            \clearpage
+            \subsection{Propiedades}
+
+                Más formalmente tenemos que la función probabilidad es aquella función que cumple que:
+                \begin{itemize}
+                    \item $\forall a \in \Reals f_X(a) \geq 0$
+                    \item $\displaystyle \int_{-\infty}^\infty f_X(x) dx = 1$
+                \end{itemize}
+
+
+
+        % ==============================================================
+        % ===========      FUNCION ACUMULADA            ================
+        % ==============================================================
+        \clearpage
+        \section{Función P. Acumulada $F_X$}
+
+            % ======================================================
+            % ===========          DEFINICIÓN       ================
+            % ======================================================
+            \subsection{Definición}
+
+                Describimos a la función de probabilidad acumulada como:
+                \begin{equation*}
+                    \Over{F}_{X}(x) = P(X \leq x) = P(X < x)
+                \end{equation*}
+
+                Ya que recuerda que la probabilidad puntual no cuenta.
+
+
+
+
+
+
+
+
+
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+% ////////////////////////////              FORMULARIO             /////////////////////////////////////////
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+\part{CheatSheet - Formulario}
+\clearpage
+
+
+    % ===============================================================================
+    % ===============                FORMULARIO                ======================
+    % ===============================================================================
+    \chapter{CheatSheet - Formulario}
+
+
+        % ==============================================================
+        % ===========       TEORIA DE CONJUNTOS         ================
+        % ==============================================================
+        \clearpage
+        \section{Teoría de Conjuntos}
+
+        \begin{table}[ht]
+            \begin{tabular}{|m{16em}|m{16em}|@{}m{0pt}@{}}
+                \hline
+                \large{Nombre}          & \large{Propiedad}                             &\\[2em]    \hline\hline
+
+                \multicolumn{3}{|c|}{Operaciones Básicas}                                \\         \hline
+                Complemento  & $A' = \Set{x \Such x \notin X}$                          &\\[1em]    \hline
+                Intersección & $A \cap B = \Set{x \Such x \in A \text{ y } x \in B}$    &\\[1em]    \hline
+                Unión        & $A \cup B = \Set{x \Such x \in A \text{ ó } x \in B}$    &\\[1em]    \hline\hline
+
+                \multicolumn{3}{|c|}{Leyes de Morgan}                                    \\         \hline
+                Morgan sobre Unión          & $(A \cup B)' = A' \cap B'$                &\\[1em]    \hline
+                Morgan sobre Intersección   & $(A \cap B)' = A' \cup B'$                &\\[1em]    \hline\hline
+
+                \multicolumn{3}{|c|}{Combinatoria}                                       \\         \hline
+                Complemento  & $A' = \Set{x \Such x \notin X}$                          &\\[1em]    \hline
+                Intersección & $A \cap B = \Set{x \Such x \in A \text{ y } x \in B}$    &\\[1em]    \hline
+                Unión        & $A \cup B = \Set{x \Such x \in A \text{ ó } x \in B}$    &\\[1em]    \hline\hline
+              
+            \end{tabular}
+        \end{table}
+
+
+
+        % ==============================================================
+        % ===============        FORMULAS         ======================
+        % ==============================================================
+        \clearpage
+        \section{Combinatoria}
+
+            \begin{itemize}
+                \item 
+                    Número de \textbf{permutaciones} de un conjunto de $n$ objetos
+                    \begin{equation*}
+                        n!
+                    \end{equation*}
+
+                \item
+                    Número de \textbf{muestras ordenadas} de tamaño $r$
+                    \textbf{con remplazo} de un conjunto de $n$ objetos
+                    \begin{equation*}
+                        n^r
+                    \end{equation*}
+
+                \item
+                    Número de \textbf{muestras ordenadas} de tamaño $r$
+                    \textbf{sin remplazo} de un conjunto de $n$ objetos
+                    \begin{align*}
+                        {}_nP_r
+                            = \frac{n!}{(n - r)!}          
+                            = (n)(n-1)(n-2)\dots(n-r+1) 
+                    \end{align*}
+
+                \item
+                    Número de \textbf{muestras no ordenadas} de tamaño $r$
+                    \textbf{sin remplazo} de un conjunto de $n$ objetos
+
+                    Esto es lo mismo que el número de subconjuntos de cardinalidad $r$ de
+                    un conjunto de $n$ elementos
+                    \begin{align*}
+                        {n \choose r}
+                            = {}_nC_r 
+                            = \frac{{}_nP_r}{r!}          
+                            = \frac{n!}{r!(n-r)!}          
+                            = \frac{(n)(n-1)(n-2)\dots(n-r+1)}{r!}          
+                    \end{align*}
+
+                \item
+                    Número de subconjuntos de un conjunto de $n$ elementos:
+                    \begin{equation*}
+                        2^n
+                    \end{equation*}
+
+                item
+                    Las formas de permutar n elementos en un círculo es:
+                    \begin{equation*}
+                        (n - 1)!
+                    \end{equation*}
+
+
+            \end{itemize}
+
+            % ==============================================================
+            % ===============        FORMULAS         ======================
+            % ==============================================================
+            \clearpage
+            \subsection{Propiedades Coheficientes Binomiales}
+
+                \begin{itemize}
+
+                    \item 
+                        Propiedades Simetrícas
+                        \begin{equation*}
+                            {n \choose k} = {n \choose n - k}
+                        \end{equation*}
+
+                    \item 
+                        Casos Especiales
+                        \begin{align*}
+                            {n \choose 0} = {n \choose n} = 1
+                            \MegaSpace \MegaSpace
+                            {n \choose 1} = {n \choose n-1} = n   
+                        \end{align*}
+
+                    \item 
+                        Teorema del Binomio
+                        \begin{equation*}
+                            (x + y)^n 
+                                = \sum_{k=0}^n {n \choose k} x^k y^{n-k}
+                        \end{equation*}
+
+
+                    \item 
+                        Teorema del Binomio (Caso Especial)
+                        \begin{equation*}
+                            \sum_{k=0}^n {n \choose k} p^k (1 - p)^{n-k} = 1
+                        \end{equation*}
+
+                \end{itemize}
 
 
 
