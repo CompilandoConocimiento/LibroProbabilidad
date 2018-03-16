@@ -534,61 +534,53 @@
             \clearpage
             \subsection{Consecuencias}
 
-            \begin{itemize}
-                \item
-                    $P(S) = 1$
-                
-                \item
-                    Si $A_1, A_2, \dots, A_n$ son eventos mutuamente excluyentes entonces:
-                    \begin{equation*}
-                        P\Wrap{\cup_{i = 1}^n A_i} 
-                            = \sum_{i = 1}^n P(A_i)    
-                    \end{equation*}
-                
-                \item
-                    Si $A_1, A_2, \dots$ son una colección infinita, pero contable de eventos
-                    mutuamente excluyentes entonces:
-                    \begin{equation*}
-                        P\Wrap{\cup_{i = 1}^\infty A_i} 
-                            = \sum_{i = 1}^\infty P(A_i)    
-                    \end{equation*}
+                \begin{itemize}
+                    \item
+                        $P(S) = 1$
+                    
+                    \item
+                        Si $A_1, A_2, \dots, A_n$ son eventos mutuamente excluyentes entonces:
+                        \begin{equation*}
+                            P\Wrap{\cup_{i = 1}^n A_i} 
+                                = \sum_{i = 1}^n P(A_i)    
+                        \end{equation*}
+                    
+                    \item 
+                        $P(\emptyset) = 0$
+                    
+                    \item 
+                        $P(A') = 1 - P(A)$
 
-                \item 
-                    $P(\emptyset) = 0$
-                
-                \item 
-                    $P(A') = 1 - P(A)$
+                    \item 
+                        Si $A \subseteq B$ entonces $P(A) \leq P(B)$
 
-                \item 
-                    Si $A \subseteq B$ entonces $P(A) \leq P(B)$
+                    \item
+                        La probabilidad de la unión de n eventos de puede escribir de manera general como:
+                        \begin{equation*}
+                            P\Wrap{\cup_{i = 1}^n A_i} 
+                            = 
+                                \sum_{i = 1}^n P(A_i) 
+                                - \sum_{i < j}^n P(A_iA_j) 
+                                + \sum_{i < j < k}^n P(A_iA_jA_k)
+                                + \dots
+                                + (-1)^{n+1} P\Wrap{\cap_{i = 1}^n A_i}
+                        \end{equation*}
+                    
+                    \item Por consecuencia del caso general tenemos que: 
+                        \begin{equation*}
+                            P(A \cup B) = P(A) + P(B) - P(A \cap B)   
+                        \end{equation*}
+                    
+                    \item Por consecuencia del caso general tenemos que: 
+                        \begin{align*}
+                            P(A \cup B \cup C) 
+                                &=                                              \\
+                                &P(A) + P(B) + P(C)                             \\
+                                &-(P(A \cap B) + P(A \cap C) + P(B \cap C))     \\
+                                &+ P(A \cap B \cap C)   
+                        \end{align*}
 
-                \item
-                    La probabilidad de la unión de n eventos de puede escribir de manera general como:
-                    \begin{equation*}
-                        P\Wrap{\cup_{i = 1}^n A_i} 
-                        = 
-                            \sum_{i = 1}^n P(A_i) 
-                            - \sum_{i < j}^n P(A_iA_j) 
-                            + \sum_{i < j < k}^n P(A_iA_jA_k)
-                            + \dots
-                            + (-1)^{n+1} P\Wrap{\cap_{i = 1}^n A_i}
-                    \end{equation*}
-                
-                \item Por consecuencia del caso general tenemos que: 
-                    \begin{equation*}
-                        P(A \cup B) = P(A) + P(B) - P(A \cap B)   
-                    \end{equation*}
-                
-                \item Por consecuencia del caso general tenemos que: 
-                    \begin{align*}
-                        P(A \cup B \cup C) 
-                            &=                                              \\
-                            &P(A) + P(B) + P(C)                             \\
-                            &-(P(A \cap B) + P(A \cap C) + P(B \cap C))     \\
-                            &+ P(A \cap B \cap C)   
-                    \end{align*}
-
-            \end{itemize}
+                \end{itemize}
 
      
 
@@ -2286,27 +2278,27 @@
         \clearpage
         \section{Teoría de Conjuntos}
 
-        \begin{table}[ht]
-            \begin{tabular}{|m{16em}|m{16em}|@{}m{0pt}@{}}
-                \hline
-                \large{Nombre}          & \large{Propiedad}                             &\\[2em]    \hline\hline
+            \begin{table}[ht]
+                \begin{tabular}{|m{16em}|m{16em}|@{}m{0pt}@{}}
+                    \hline
+                    \large{Nombre}          & \large{Propiedad}                             &\\[2em]    \hline\hline
 
-                \multicolumn{3}{|c|}{Operaciones Básicas}                                \\         \hline
-                Complemento  & $A' = \Set{x \Such x \notin X}$                          &\\[1em]    \hline
-                Intersección & $A \cap B = \Set{x \Such x \in A \text{ y } x \in B}$    &\\[1em]    \hline
-                Unión        & $A \cup B = \Set{x \Such x \in A \text{ ó } x \in B}$    &\\[1em]    \hline\hline
+                    \multicolumn{3}{|c|}{Operaciones Básicas}                                \\         \hline
+                    Complemento  & $A' = \Set{x \Such x \notin X}$                          &\\[1em]    \hline
+                    Intersección & $A \cap B = \Set{x \Such x \in A \text{ y } x \in B}$    &\\[1em]    \hline
+                    Unión        & $A \cup B = \Set{x \Such x \in A \text{ ó } x \in B}$    &\\[1em]    \hline\hline
 
-                \multicolumn{3}{|c|}{Leyes de Morgan}                                    \\         \hline
-                Morgan sobre Unión          & $(A \cup B)' = A' \cap B'$                &\\[1em]    \hline
-                Morgan sobre Intersección   & $(A \cap B)' = A' \cup B'$                &\\[1em]    \hline\hline
+                    \multicolumn{3}{|c|}{Leyes de Morgan}                                    \\         \hline
+                    Morgan sobre Unión          & $(A \cup B)' = A' \cap B'$                &\\[1em]    \hline
+                    Morgan sobre Intersección   & $(A \cap B)' = A' \cup B'$                &\\[1em]    \hline\hline
 
-                \multicolumn{3}{|c|}{Combinatoria}                                       \\         \hline
-                Complemento  & $A' = \Set{x \Such x \notin X}$                          &\\[1em]    \hline
-                Intersección & $A \cap B = \Set{x \Such x \in A \text{ y } x \in B}$    &\\[1em]    \hline
-                Unión        & $A \cup B = \Set{x \Such x \in A \text{ ó } x \in B}$    &\\[1em]    \hline\hline
-              
-            \end{tabular}
-        \end{table}
+                    \multicolumn{3}{|c|}{Combinatoria}                                       \\         \hline
+                    Complemento  & $A' = \Set{x \Such x \notin X}$                          &\\[1em]    \hline
+                    Intersección & $A \cap B = \Set{x \Such x \in A \text{ y } x \in B}$    &\\[1em]    \hline
+                    Unión        & $A \cup B = \Set{x \Such x \in A \text{ ó } x \in B}$    &\\[1em]    \hline\hline
+                  
+                \end{tabular}
+            \end{table}
 
 
 
@@ -2368,6 +2360,7 @@
 
             \end{itemize}
 
+
             % ==============================================================
             % ===============        FORMULAS         ======================
             % ==============================================================
@@ -2408,6 +2401,69 @@
 
 
 
+        % ==============================================================
+        % =============       PROBABILIDAD        ======================
+        % ==============================================================
+        \clearpage
+        \section{Probabilidad Básica}
+
+            Definimos la probabilidad de un evento $A$ como:
+            \begin{equation*}
+                P(A) = \frac{|A|}{|S|} \Remember{Recuerda que $A$ es un evento y $S$ es espacio muestral}
+            \end{equation*}
+
+            % ====================================
+            % =======    CONSECUENCIAS   =========
+            % ====================================
+            \subsection{Consecuencias}
+
+                \begin{itemize}
+                    \item
+                        $P(S) = 1$
+                    
+                    \item
+                        Si $A_1, A_2, \dots, A_n$ son eventos mutuamente excluyentes entonces:
+                        \begin{equation*}
+                            P\Wrap{\cup_{i = 1}^n A_i} 
+                                = \sum_{i = 1}^n P(A_i)    
+                        \end{equation*}
+                    
+                    \item 
+                        $P(\emptyset) = 0$
+                    
+                    \item 
+                        $P(A') = 1 - P(A)$
+
+                    \item 
+                        Si $A \subseteq B$ entonces $P(A) \leq P(B)$
+
+                    \item
+                        La probabilidad de la unión de n eventos de puede escribir de manera general como:
+                        \begin{equation*}
+                            P\Wrap{\cup_{i = 1}^n A_i} 
+                            = 
+                                \sum_{i = 1}^n P(A_i) 
+                                - \sum_{i < j}^n P(A_iA_j) 
+                                + \sum_{i < j < k}^n P(A_iA_jA_k)
+                                + \dots
+                                + (-1)^{n+1} P\Wrap{\cap_{i = 1}^n A_i}
+                        \end{equation*}
+                    
+                    \item Por consecuencia del caso general tenemos que: 
+                        \begin{equation*}
+                            P(A \cup B) = P(A) + P(B) - P(A \cap B)   
+                        \end{equation*}
+                    
+                    \item Por consecuencia del caso general tenemos que: 
+                        \begin{align*}
+                            P(A \cup B \cup C) 
+                                &=                                              \\
+                                &P(A) + P(B) + P(C)                             \\
+                                &-(P(A \cap B) + P(A \cap C) + P(B \cap C))     \\
+                                &+ P(A \cap B \cap C)   
+                        \end{align*}
+
+                \end{itemize}
 
 
 
