@@ -580,6 +580,9 @@
                                 &+ P(A \cap B \cap C)   
                         \end{align*}
 
+                    \item
+                        $P(A - B) = P(A) - P(A \cap B)$
+
                 \end{itemize}
 
      
@@ -1079,7 +1082,7 @@
 
                 Más formalmente tenemos que la función probabilidad es aquella función que cumple que:
                 \begin{itemize}
-                    \item $\forall a \in \Reals f_X(a) \geq 0$
+                    \item $\forall a \in \Reals \MegaSpace 0 \leq f_X(a) \leq 1$
                     \item $\Set{x \Such f_X(x) \neq 0}$ es un conjunto finito o numerable
                     \item $\displaystyle \sum_x f_X(x) = 1$
                 \end{itemize}
@@ -1124,26 +1127,44 @@
 
                 Describimos a la función de probabilidad acumulada como:
                 \begin{equation*}
-                    \Over{F}_{X}(x) = \sum_{i < x} f_{X}(i)
+                    F_X(x) = \sum_{i \leq x} f_{X}(i)
                 \end{equation*}
 
             % ======================================================
             % ===========          PROPIEADES       ================
             % ======================================================
-            \vspace{1em}
             \subsection{Propieades}
+
+                \begin{itemize}
+                    \item
+                        Una característica muy común es que:
+                        \begin{itemize}
+                            \item $\lim_{x \to -\infty} F_X (x) = 0$
+                            \item $\lim_{x \to \infty} F_X (x) = 1$
+                        \end{itemize}
+                    \item
+                        Si $x_1 \leq x_2$ entonces $F_X(x_1) \leq F_X(x_2)$
+                \end{itemize}
+
+
+
+            % ======================================================
+            % =======     FUNCION FUNDAMENTAL       ================
+            % ======================================================
+            \subsection{Función Fundametal}
 
                 Podemos ver a la acumulada como una función fundamental, tal que
                 podemos escribir a todas las demás:
                 \begin{itemize}
-                    \item $P(X < x)             = \Over{F}_{X}(x - 1)$
-                    \item $P(X \leq x)          = \Over{F}_{X}(x)$
-                    \item $P(X > x)             = 1 - \Over{F}_{X}(x)$
-                    \item $P(X \geq x)          = 1 - \Over{F}_{X}(x - 1)$
-                    \item $P(a \leq X \leq b)   = \Over{F}_{X}(b) - \Over{F}_{X}(a - 1)$
-                    \item $P(a < X \leq b)      = \Over{F}_{X}(b) - \Over{F}_{X}(a)$
-                    \item $P(a \leq X < b)      = \Over{F}_{X}(b - 1) - \Over{F}_{X}(a)$
-                    \item $P(a < X < b)         = \Over{F}_{X}(b - 1) - \Over{F}_{X}(a - 1)$
+                    \item $P(X = x)             = F_X(x) - F_X(x - 1)$
+                    \item $P(X < x)             = F_X(x - 1)$
+                    \item $P(X \leq x)          = F_X(x)$
+                    \item $P(X > x)             = 1 - F_X(x)$
+                    \item $P(X \geq x)          = 1 - F_X(x - 1)$
+                    \item $P(a \leq X \leq b)   = F_X(b) - F_X(a - 1)$
+                    \item $P(a < X \leq b)      = F_X(b) - F_X(a)$
+                    \item $P(a \leq X < b)      = F_X(b - 1) - F_X(a)$
+                    \item $P(a < X < b)         = F_X(b - 1) - F_X(a - 1)$
                 \end{itemize}
                 
 
@@ -1162,7 +1183,7 @@
                 Decimos que el valor esperado, esperanza ó media de la variable $X$
                 se define como:
                 \begin{equation*}
-                    \mu_{X} = E(X) = \sum_x \; x f_X(x) = \sum_x x P(X = x)
+                    \mu_{X} = E(X) = \sum_x \; x \; f_X(x) = \sum_x \; x \; P(X = x)
                 \end{equation*}
 
                 Representa un promedio ponderado de los valores posibles de la variable basado en
@@ -1184,19 +1205,27 @@
                         $X$ existe si y solo si $\displaystyle \sum_x |x| f_X(x) < \infty$
 
                     \item
-                        Podemos dar una definición al evaular la media en 
-                        $E(g(x)) = \sum_x g(x) f_X(x)$
+                        Podemos dar una definición al evaular la esperanza sobre una función:
+                        \begin{equation*}
+                            E(g(x)) = \sum_x \; g(x) \; f_X(x)    
+                        \end{equation*}
 
                     \item Es un Operador Lineal, es decir:
-
-                        $E(\alpha X + \beta Y) = \alpha E(X) + \beta E(Y)$
+                        \begin{equation*}
+                            E(\alpha X + \beta Y) = \alpha E(X) + \beta E(Y)   
+                        \end{equation*}
 
                     \item
-                        Si $X, Y$ son independientes entonces $E(XY) = E(X) + E(Y)$
+                        Si $X, Y$ son independientes entonces:
+                        \begin{equation*}
+                            E(XY) = E(X) E(Y)  
+                        \end{equation*}
 
                     \item
                         Si $a$ es una constante, entonces: 
-                        $E(a) = a$
+                        \begin{equation*}
+                            E(a) = a
+                        \end{equation*}
 
                 \end{itemize}
 
@@ -1224,9 +1253,25 @@
                 su misma media, es decir, que tan dispersa o concentrada esta la distribución de 
                 los datos.
 
+            % ====================================================
+            % ===========    DESVICACIÓN ESTANDAR       ==========
+            % ====================================================
+            \vspace{1em}
+            \subsection{Desvianción Estandar}
+
+                Decimos que la desvianción estandar de la variable $X$
+                con $f_{X}(x)$ se define como:
+                \begin{equation*}
+                    \sigma(X) = \sqrt{v(X)}
+                \end{equation*}
+
+                Se usa generalmente por las unidades que tiene la varianza, nada mas
+
+
             % ==============================================================
             % ===============        PROPIEDADES      ======================
             % ==============================================================
+            \clearpage
             \subsection{Propiedades}
 
                 \begin{itemize}
@@ -1286,16 +1331,54 @@
                         
                         \end{SmallIndentation}
 
-                    \clearpage
 
                     \item 
                         $v(X + Y) = v(X) + v(Y) + 2Cov(X,Y)$
 
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            
+                            Esta esta larga:
+                            \begin{align*}
+                                v(X + Y) 
+                                    &= E(X + Y)^2 - (E(X+Y))^2                              \\
+                                    &= E(X) + E(Y) + 2E(XY) - (E(X+Y))^2                    \\
+                                    &= E(X) + E(Y) - (E(X)+E(Y))^2 + 2E(XY)                 \\
+                                    &= E(X) + E(Y) - E^2(X)-E^2(Y) + 2E(XY) -2E(X)E(Y)      \\
+                                    &= E(X) - E^2(X) + E(Y)-E^2(Y) + 2E(XY) -2E(X)E(Y)      \\
+                                    &= v(x) + v(Y) + 2E(XY) - 2E(X)E(Y)                     \\
+                                    &= v(x) + v(Y) + 2Cov(X, Y) 
+                            \end{align*}
+                        
+                        \end{SmallIndentation}
+
+                    \clearpage
+
                     \item 
                         $v(X - Y) = v(X) - v(Y) - 2Cov(X,Y)$
 
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            
+                            Es lo mismo, que la de arriba :v
+                        
+                        \end{SmallIndentation}
+                            
+
                     \item
                         Si $X$ y $Y$ son independientes, entonces $v(X + Y) = v(X) + v(Y)$
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            
+                            Es lo mismo que la de arriba, solo recuerda que si $X, Y$ son independientes
+                            entonces tenemos que $Cov(X, Y) = 0$
+                        
+                        \end{SmallIndentation}
+                            
 
                     \item
                         En general si $X_1, X_2, \dots, X_n$ son variables aleatorias, entonces
@@ -1304,28 +1387,17 @@
                             v\Wrap{\sum_{i = 1}^n X_i} = \sum_{i = 1}^n X_i + 2\sum_{i < j}^n Cov(X_i, X_j)
                         \end{align*}
 
-                    \end{itemize}
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            
+                            Es inducción :v
+                        
+                        \end{SmallIndentation}
                             
 
-
-        % ==============================================================
-        % ===========        DESVICACIÓN ESTANDAR       ================
-        % ==============================================================
-        \clearpage
-        \section{Desvianción Estandar}
-
-            Decimos que la varianza de la variable $X$
-            con $f_{X}(x)$ se define como:
-            \begin{equation*}
-                \sigma(X) = \sqrt{v(X)}
-            \end{equation*}
-
-            Podemos decir por su misma definición que la varianza siempre es positiva.
-
-            Es decir, este valor nos indica que tan lejos estan en promedio los valores de
-            su misma media, es decir, que tan dispersa o concentrada esta la distribución de 
-            los datos.
-
+                    \end{itemize}
+                            
 
 
         % ==============================================================
@@ -1424,7 +1496,7 @@
                     El k-ésimo momento alrededor del origen esta definida como:
                     \begin{equation}
                         \mu_k^0 
-                            = E\Brackets{(X)^k}
+                            = E\Wrap{X^k}
                             = \sum_x x^k P(X = x)
                     \end{equation}
 
@@ -1440,12 +1512,28 @@
                 \begin{itemize}
 
                     \item
-                        Ya hemos trabajo con momentos, por ejemplo, la varianza
-                        la podemos definir como:
-                        $v(X) = E(X^2) - \mu^2$ donde $E(X^2)$ es un segundo momento central
+                        Ya hemos trabajo con momentos, veamos algunos:
 
-                        O bien, verla como $v(X) = E[(X - \mu)^2]$ es decir
-                        la varianza es el segundo momento central.
+                        \begin{itemize}
+                            \item 
+                                \textbf{La Esperanza}
+
+                                Esta se puede ver como el primer momento alrededor del origen
+
+                                $\mu_X = \mu_1^0$
+
+                            \item 
+                                \textbf{La Varianza}
+
+                                Esta se puede ver como el primer momento alrededor central
+                                \begin{equation*}
+                                    v(X) = E[(X - \mu)^2] = \mu_2^c    
+                                \end{equation*}
+
+                                O bien podemos verlo como $v(X) = E(X^2) - \mu^2$ donde $E(X^2)$
+                                es un segundo momento alrededor del origen
+
+                         \end{itemize}
 
                 \end{itemize}
 
@@ -1479,17 +1567,36 @@
             % ==============================================================
             % ===============        PROPIEDADES      ======================
             % ==============================================================
+            \clearpage
             \subsection{Propiedades}
 
                 \begin{itemize}
+
+                    \item
+                        Nota que $\Psi_x(a) = E(e^{aX})$
 
                     \item
                         Si $Y = aX + b$ entonces tenemos que:
 
                         $\Psi_Y(t) = e^{bt} \Psi_X(at)$
 
-                    \item
-                        Nota que $\Psi_x(a) = E(e^{aX})$
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            
+                            Esta esta fácil, sea $Y = aX + b$:
+                            \begin{align*}
+                                \Psi_Y(t) 
+                                    &= E(e^{tY})                    \\
+                                    &= E(e^{t(aX + b)})             \\
+                                    &= E(e^{at X + tb})             \\
+                                    &= E(e^{at X} e^{tb})           \\
+                                    &= e^{tb} E(e^{at X})           \\
+                                    &= e^{tb} \Psi_X(at)
+                            \end{align*}
+                        
+                        \end{SmallIndentation}
+                            
 
                     \item
                         $\Psi_X (t = 0) = \mu_k$
@@ -1500,9 +1607,28 @@
                     \item
                         Nota que si tuvieramos un montón de variables aleatorias
                         $X_1, X_2, X_3, \dots, X_n$
-                        Y decimos que $Y = \sum_{i = 1}^n X_i$
+                        Y decimos que $\displaystyle Y = \sum_{i = 1}^n X_i$
 
-                        Entonces tenemos que $\Psi_Y(t) = \prod_{i = 1}^n \Psi_{X_i}(t)$
+                        Entonces tenemos que:
+                        \begin{equation*}
+                            \Psi_Y(t) = \prod_{i = 1}^n \Psi_{X_i}(t)
+                        \end{equation*}
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            
+                            Esta también es importante:
+                            \begin{align*}
+                                \Psi_Y(t)
+                                    &= E\Wrap{e^{tY}}                       \\
+                                    &= E\Wrap{e^{t\sum_{i = 1}^n X_i}}      \\
+                                    &= E\Wrap{\prod_{i = 1}^n e^{X_i}}      \\
+                                    &= \prod_{i = 1}^n E\Wrap{e^{X_i}}      \\
+                                    &= \prod_{i = 1}^n \Psi_{X_i}(t)
+                            \end{align*}
+                        
+                        \end{SmallIndentation}
 
 
                 \end{itemize}
@@ -2294,7 +2420,7 @@
 
                 Describimos a la función de probabilidad acumulada como:
                 \begin{equation*}
-                    \Over{F}_{X}(x) = P(X \leq x) = P(X < x)
+                    F_X(x) = P(X \leq x) = P(X < x)
                 \end{equation*}
 
                 Ya que recuerda que la probabilidad puntual no cuenta.
@@ -2511,6 +2637,9 @@
                                 &+ P(A \cap B \cap C)   
                         \end{align*}
 
+                    \item
+                        $P(A - B) = P(A) - P(A \cap B)$
+
                 \end{itemize}
 
 
@@ -2626,6 +2755,353 @@
                         = \dfrac{P(B | A_i) \; P(A_i)}{\displaystyle \sum_{i = 1}^n P(A_i) \; P(B | A_i)}
                 \end{align*}
 
+
+
+
+        % ==============================================================
+        % =======     VARIABLES ALEATORIAS DISCRETAS       =============
+        % ==============================================================
+        \clearpage
+        \section{Variables Aleatorias Discretas}
+
+
+            % ==============================================================
+            % ===========      FUNCION PROBABILIDAD         ================
+            % ==============================================================
+            \subsection{Función Probabilidad $f_X$}
+
+
+                % ======================================================
+                % =======              PROPIEDADES      ================
+                % ======================================================
+                \subsubsection{Propieadades}
+
+                    Es una función de probabilidad, es decir tiene que cumplir que la suma de todos los posibles
+                    valores de la variable aleatoria den uno.
+
+                    Más formalmente tenemos que la función probabilidad es aquella función que cumple que:
+                    \begin{itemize}
+                        \item $\forall a \in \Reals \MegaSpace 0 \leq f_X(a) \leq 1$
+                        \item $\Set{x \Such f_X(x) \neq 0}$ es un conjunto finito o numerable
+                        \item $\displaystyle \sum_x f_X(x) = 1$
+                    \end{itemize}
+
+
+            % ==============================================================
+            % ===========      FUNCION ACUMULADA            ================
+            % ==============================================================
+            \clearpage
+            \subsection{Función P. Acumulada $F_X$}
+
+                % ======================================================
+                % ===========          DEFINICIÓN       ================
+                % ======================================================
+                \subsubsection{Definición}
+
+                    Describimos a la función de probabilidad acumulada como:
+                    \begin{equation*}
+                        F_X(x) = \sum_{i \leq x} f_{X}(i)
+                    \end{equation*}
+
+                % ======================================================
+                % ===========          PROPIEADES       ================
+                % ======================================================
+                \subsubsection{Propieades}
+
+                    \begin{itemize}
+                        \item
+                            Una característica muy común es que:
+                            \begin{itemize}
+                                \item $\lim_{x \to -\infty} F_X (x) = 0$
+                                \item $\lim_{x \to \infty} F_X (x) = 1$
+                            \end{itemize}
+                        \item
+                            Si $x_1 \leq x_2$ entonces $F_X(x_1) \leq F_X(x_2)$
+                    \end{itemize}
+
+
+
+                % ======================================================
+                % =======     FUNCION FUNDAMENTAL       ================
+                % ======================================================
+                \subsubsection{Función Fundametal}
+
+                    Podemos ver a la acumulada como una función fundamental, tal que
+                    podemos escribir a todas las demás:
+                    \begin{itemize}
+                        \item $P(X = x)             = F_X(x) - F_X(x - 1)$
+                        \item $P(X < x)             = F_X(x - 1)$
+                        \item $P(X \leq x)          = F_X(x)$
+                        \item $P(X > x)             = 1 - F_X(x)$
+                        \item $P(X \geq x)          = 1 - F_X(x - 1)$
+                        \item $P(a \leq X \leq b)   = F_X(b) - F_X(a - 1)$
+                        \item $P(a < X \leq b)      = F_X(b) - F_X(a)$
+                        \item $P(a \leq X < b)      = F_X(b - 1) - F_X(a)$
+                        \item $P(a < X < b)         = F_X(b - 1) - F_X(a - 1)$
+                    \end{itemize}
+                    
+
+
+            % ==============================================================
+            % ===========           ESPERANZA O MEDIA       ================
+            % ==============================================================
+            \clearpage
+            \subsection{Esperanza o Media}
+
+                % ======================================================
+                % ===========          DEFINICIÓN       ================
+                % ======================================================
+                \subsubsection{Definición}
+
+                    Decimos que el valor esperado, esperanza ó media de la variable $X$
+                    se define como:
+                    \begin{equation*}
+                        \mu_{X} = E(X) = \sum_x \; x \; f_X(x) = \sum_x \; x \; P(X = x)
+                    \end{equation*}
+
+                % =========================================================
+                % ===============        PROPIEDADES      =================
+                % =========================================================
+                \subsubsection{Propiedades}
+
+                    \begin{itemize}
+
+                        \item 
+                            Si $X$ puede tomar un número infinito de valores entonces la esperanza de 
+                            $X$ existe si y solo si $\displaystyle \sum_x |x| f_X(x) < \infty$
+
+                        \item
+                            Podemos dar una definición al evaular la esperanza sobre una función:
+                            \begin{equation*}
+                                E(g(x)) = \sum_x \; g(x) \; f_X(x)    
+                            \end{equation*}
+
+                        \item Es un Operador Lineal, es decir:
+                            \begin{equation*}
+                                E(\alpha X + \beta Y) = \alpha E(X) + \beta E(Y)   
+                            \end{equation*}
+
+                        \item
+                            Si $X, Y$ son independientes entonces:
+                            \begin{equation*}
+                                E(XY) = E(X) E(Y)  
+                            \end{equation*}
+
+                        \item
+                            Si $a$ es una constante, entonces: 
+                            \begin{equation*}
+                                E(a) = a
+                            \end{equation*}
+
+                    \end{itemize}
+
+
+            % ==============================================================
+            % ===========              VARIANZA             ================
+            % ==============================================================
+            \clearpage
+            \subsection{Varianza}
+
+                % ======================================================
+                % ===========          DEFINICIÓN       ================
+                % ======================================================
+                \subsubsection{Definición}
+
+                    Decimos que la varianza de la variable $X$
+                    con $f_{X}(x)$ se define como:
+                    \begin{equation*}
+                        v(X) = E((X - \mu)^2)
+                    \end{equation*}
+
+   
+                % ====================================================
+                % ===========    DESVICACIÓN ESTANDAR       ==========
+                % ====================================================
+                \vspace{1em}
+                \subsubsection{Desvianción Estandar}
+
+                    Decimos que la desvianción estandar de la variable $X$
+                    con $f_{X}(x)$ se define como:
+                    \begin{equation*}
+                        \sigma(X) = \sqrt{v(X)}
+                    \end{equation*}
+
+                    Se usa generalmente por las unidades que tiene la varianza, nada mas
+
+
+                % ==============================================================
+                % ===============        PROPIEDADES      ======================
+                % ==============================================================
+                \subsubsection{Propiedades}
+
+                    \begin{itemize}
+
+                        \item
+                            $v(X) = E(X^2) - (E(X))^2$
+
+                        \item 
+                            $V(a) = 0$
+
+                        \item 
+                            $v(aX) = a^2 v(X)$
+
+
+                        \item 
+                            $v(X + Y) = v(X) + v(Y) + 2Cov(X,Y)$
+
+                        \item 
+                            $v(X - Y) = v(X) - v(Y) - 2Cov(X,Y)$
+                                
+
+                        \item
+                            Si $X$ y $Y$ son independientes, entonces $v(X + Y) = v(X) + v(Y)$
+
+
+                        \item
+                            En general si $X_1, X_2, \dots, X_n$ son variables aleatorias, entonces
+                            tenemos que:
+                            \begin{align*}
+                                v\Wrap{\sum_{i = 1}^n X_i} = \sum_{i = 1}^n X_i + 2\sum_{i < j}^n Cov(X_i, X_j)
+                            \end{align*}
+
+                    \end{itemize}
+                                
+
+
+            % ==============================================================
+            % ===========            COVARIANZA             ================
+            % ==============================================================
+            \clearpage
+            \subsection{Covarianza}
+
+                % ======================================================
+                % ===========          DEFINICIÓN       ================
+                % ======================================================
+                \subsubsection{Definición}
+
+                    Sea $X, Y$ dos variables independientes, entonces
+                    definimos a la covarianza como:
+                    \begin{equation*}
+                        Cov(X, Y)
+                            = E\Wrap{(X - \mu_{X})(Y - \mu_{Y})}
+                    \end{equation*}
+
+                    Es una manera de medir la dispersión conjunta de ambas variables.
+
+
+
+                
+                % =====================================================
+                % ===============        PROPIEDADES      =============
+                % =====================================================
+                \subsubsection{Propiedades}
+
+                    \begin{itemize}
+
+                        \item 
+                            $Cov(X, Y) = E(X Y) - \mu_{X}\mu_{Y}$
+
+
+                        \item La covarianza de 2 variables independientes es cero
+
+                                
+                    \end{itemize}
+
+
+
+
+            % ==============================================================
+            % ===========        MOMENTOS CENTRALES         ================
+            % ==============================================================
+            \clearpage
+            \subsection{Momentos Centrales}
+
+                Si $X$ es una variable aleatoria tal que $E(X) = \mu_x$ entonces tenemos que:
+                \begin{itemize}
+                    \item 
+                        El k-ésimo momento central esta definida como:
+                        \begin{equation}
+                            \mu_k^c 
+                                = E\Brackets{(X - \mu)^k}
+                                = \sum_x (x - \mu)^k P(X = x)
+                        \end{equation}
+
+                    \item 
+                        El k-ésimo momento alrededor del origen esta definida como:
+                        \begin{equation}
+                            \mu_k^0 
+                                = E\Wrap{X^k}
+                                = \sum_x x^k P(X = x)
+                        \end{equation}
+
+                \end{itemize}
+
+
+
+
+
+
+                % ==============================================================
+                % ===========     FUNCION GENERADORA      ======================
+                % ==============================================================
+                \clearpage
+                \subsubsection{Función Generadora de Momentos}
+
+                    La podemos definir como:
+                    \begin{equation*}
+                        \Psi_X (t) 
+                            = E(e^{tX})
+                            = \sum_x e^{tx} P(X = x)
+                    \end{equation*}
+
+                    Solemos decir que la k-ésima derivada de la función generadora
+                    de momentos evaluada en $t = 0$ da como resultado el k-ésimo momento central al origen
+
+                    Es decir, siguen el siguiente patrón:
+                    \begin{itemize}
+                        \item $\Psi_X' (t = 0) = E(X)$ 
+                        \item $\Psi_X'' (t = 0) = E(X^2)$ 
+                        \item $\Psi_X''' (t = 0) = E(X^3)$ 
+                        \item $\Psi_X^{(n)} (t = 0) = E(X^n)$ 
+                    \end{itemize}
+
+
+
+                % ==============================================================
+                % ===============        PROPIEDADES      ======================
+                % ==============================================================
+                \subsubsection{Propiedades}
+
+                    \begin{itemize}
+
+                        \item
+                            Nota que $\Psi_x(a) = E(e^{aX})$
+
+                        \item
+                            Si $Y = aX + b$ entonces tenemos que:
+
+                            $\Psi_Y(t) = e^{bt} \Psi_X(at)$
+
+
+                        \item
+                            $\Psi_X (t = 0) = \mu_k$
+
+                        \item
+                            $\Psi_X (t = 0) = E(X)$
+
+                        \item
+                            Nota que si tuvieramos un montón de variables aleatorias
+                            $X_1, X_2, X_3, \dots, X_n$
+                            Y decimos que $\displaystyle Y = \sum_{i = 1}^n X_i$
+
+                            Entonces tenemos que:
+                            \begin{equation*}
+                                \Psi_Y(t) = \prod_{i = 1}^n \Psi_{X_i}(t)
+                            \end{equation*}
+
+
+
+                    \end{itemize}
 
 
 
