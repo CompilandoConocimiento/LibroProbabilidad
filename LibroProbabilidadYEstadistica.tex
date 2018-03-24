@@ -1075,7 +1075,7 @@
             % ======================================================
             % =======              PROPIEDADES      ================
             % ======================================================
-            \subsection{Propieadades}
+            \subsection{Propiedades}
 
                 Es una función de probabilidad, es decir tiene que cumplir que la suma de todos los posibles
                 valores de la variable aleatoria den uno.
@@ -1133,7 +1133,7 @@
             % ======================================================
             % ===========          PROPIEADES       ================
             % ======================================================
-            \subsection{Propieades}
+            \subsection{Propiedades}
 
                 \begin{itemize}
                     \item
@@ -1873,7 +1873,7 @@
             % ====                  PROPIEDADES                 ============
             % ==============================================================
             \clearpage
-            \subsubsection{Propieades}
+            \subsubsection{Propiedades}
 
                 \begin{itemize}
                     \item Sea $P(X > a) = q^a$ con $a$ un natural positivo
@@ -2357,6 +2357,25 @@
         \section{Función Probabilidad $f_X$}
 
             % ======================================================
+            % =======         DEFINICION            ================
+            % ======================================================
+            \subsection{Definición}
+
+                Vamos a definir a la función de probabilidad de una variable
+                aleatoria continua como aquella función $f_X(x)$ para la cual siempre se cumplan 2 cosas:
+                \begin{itemize}
+                    \item 
+                        $\displaystyle \int_{-\infty}^\infty f_X(x) \; dx = 1$
+
+                    \item 
+                        $\displaystyle P(a < X < b) = \int_a^b f_X(x) \; dx$
+                \end{itemize}
+
+                Recuerda que las probabilidades en el caso continuo se puede ver como áreas bajo la curva
+                delimitada según el interes.
+
+
+            % ======================================================
             % =======    PROBABILIDAD PUNTUAL       ================
             % ======================================================
             \subsection{Probabilidad Puntual}
@@ -2368,42 +2387,24 @@
                     P(X = x) = 0
                 \end{equation*}
 
-
-            % ======================================================
-            % =======         DEFINICION            ================
-            % ======================================================
-            \subsection{Definición}
-
-                Vamos a definir a la función de densidad como aquella función $f_X(x)$ para la cual siempre se cumpla que
+                Esto nos lleva una propiedad muy importante que vamos a ocupar a cada rato:
                 \begin{equation*}
-                    P(a < X < b) = \int_a^b f_X(x) dx
+                    P(a < X < b) = P(a < X \leq b) = P(a \leq X < b) = P(a \leq X \leq b)
                 \end{equation*}
 
-                Recuerda que las probabilidades en el caso continuo se puede ver como áreas bajo la curva
-                delimitada según el interes.
+                % ======== DEMOSTRACION ========
+                    
+                \begin{SmallIndentation}[1em]
 
+                    \textbf{Demostración}:
 
+                    \begin{itemize}
+                        \item $P(a < X \leq b)    = P(a < X < b) + P(b) = P(a < X < b) + 0 = P(a < X < b)$
+                        \item $P(a \leq X < b)    = P(a < X < b) + P(a) = P(a < X < b) + 0 = P(a < X < b)$
+                        \item $P(a \leq X \leq b) = P(a < X < b) + P(a) + P(b) = P(a < X < b) + 0 + 0 = P(a < X < b)$
+                    \end{itemize}
+                \end{SmallIndentation}
 
-            % ======================================================
-            % =======         UNIFORME CONTINUA     ================
-            % ======================================================
-            \subsection{Uniforme Continua}
-                \begin{figure}[h]
-                    \includegraphics[width=0.45\textwidth]{UniformeContinua}
-                \end{figure}
-
-
-            % ======================================================
-            % =======           PROPIEDADES         ================
-            % ======================================================
-            \clearpage
-            \subsection{Propiedades}
-
-                Más formalmente tenemos que la función probabilidad es aquella función que cumple que:
-                \begin{itemize}
-                    \item $\forall a \in \Reals f_X(a) \geq 0$
-                    \item $\displaystyle \int_{-\infty}^\infty f_X(x) dx = 1$
-                \end{itemize}
 
 
 
@@ -2418,12 +2419,54 @@
             % ======================================================
             \subsection{Definición}
 
-                Describimos a la función de probabilidad acumulada como:
+                Vamos a definir a la función de distribución o acumulada como:
                 \begin{equation*}
-                    F_X(x) = P(X \leq x) = P(X < x)
+                    F_X(x) = P(X \leq x) = \int_{-\infty}^x f_X(x) dx
                 \end{equation*}
 
-                Ya que recuerda que la probabilidad puntual no cuenta.
+                Recuerda que las probabilidades en el caso continuo se puede ver como áreas bajo la curva
+                delimitada según el interes.
+
+
+            % ======================================================
+            % ===========          PROPIEADES       ================
+            % ======================================================
+            \subsection{Propiedades}
+
+                \begin{itemize}
+                    \item
+                        $f_X(x) = \Derivate{F_X(x)}{x} \;$ si es que tiene sentido la derivada en ese punto
+                        sino $f_X(x) = 0$
+                \end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            % ======================================================
+            % =======         UNIFORME CONTINUA     ================
+            % ======================================================
+            \clearpage
+            \subsection{Uniforme Continua}
+                \begin{figure}[h]
+                    \includegraphics[width=0.45\textwidth]{UniformeContinua}
+                \end{figure}
+
 
 
 
@@ -2589,7 +2632,7 @@
             % ====================================
             % =======    PROPIEDADES     =========
             % ====================================
-            \subsection{Propieades}
+            \subsection{Propiedades}
 
                 \begin{itemize}
                     \item
@@ -2806,7 +2849,7 @@
                 % ======================================================
                 % ===========          PROPIEADES       ================
                 % ======================================================
-                \subsubsection{Propieades}
+                \subsubsection{Propiedades}
 
                     \begin{itemize}
                         \item
