@@ -1863,7 +1863,7 @@
                     donde:
                     \begin{itemize}
                         \item $x$: Nuestra variable
-                        \item $p$: Probabilidad de Exito
+                        \item $p$: Probabilidad de Exito de cada experimiento Bernoulli
                     \end{itemize}
 
 
@@ -1971,6 +1971,7 @@
                     
                 \end{SmallIndentation}
 
+
             % ==============================================================
             % =========          FUNCION VARIANZA               ============
             % ==============================================================
@@ -1991,16 +1992,53 @@
                     \begin{align*}
                         v(X) 
                             &= v\Wrap{\sum_{i=0}^n X_i}         \\
-                            &= \sum_{i=0}^n v(X_i)              \\
-                            &= \sum_{i=0}^n pq                  \\
+                            &= \sum_{i=1}^n v(X_i)              \\
+                            &= \sum_{i=1}^n pq                  \\
                             &= npq
                     \end{align*}
                 
                 \end{SmallIndentation}
                     
+                    
+            % ==============================================================
+            % =========          PROPIEDADES                    ============
+            % ==============================================================
+            \clearpage
+            \subsection{Propiedades}
+
+                \begin{itemize}
+                    
+                    \item 
+                        Sean $X_1, X_2, \dots, X_k$ $k$ variables aleatorias discretas independientes
+                        y $X_i \sim Bin(x_i; n_i, p)$ con $i = 1, 2, \dots, k$.
+
+                        Entonces la variable aleatoria $X = X_1 + X_2 + \dots + X_k$ tiene una 
+                        distribución binomial tal que $X \sim Bin\Wrap{x; \sum_{i=1}^k n_i, p}$ 
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            
+                            Veamos que:
+                            \begin{align*}
+                                \Psi_X(t)
+                                    &= \Psi_{X_1 + X_2 + \dots + X_k}(t)                        \\
+                                    &= \prod_{i=1}^k \Psi_{X_i}                                 \\
+                                    &= (q +pe^t)^{n_1}(q +pe^t)^{n_2} \dots (q +pe^t)^{n_k}     \\
+                                    &= (q +pe^t)^{\sum_{i=i}^k n_i}
+                            \end{align*}
+
+                            Es decir $\Psi_X(t) = (q +pe^t)^n$ con $n = \sum_{i=i}^k n_i$, es decir
+                            vimos que $X \sim Bin\Wrap{x; \sum_{i=1}^k n_i, p}$
+                            
+                        
+                        \end{SmallIndentation}
+
+
+                \end{itemize}
 
                     
-
+                    
 
 
         % ==============================================================
@@ -2009,96 +2047,179 @@
         \clearpage
         \section{Geométrica}
 
-            Supón que se repiten de manera independiente ensayos Bernoulli
-            con una probabilidad de exito constante de $p$ hasta obtener el primer
-            exito.
+            % ==============================================================
+            % ==============          DEFINICION           =================
+            % ==============================================================
+            \subsection{Definición}
 
-            La variable discreta es el número de experimentos hasta un primer exito
-            donde sus posibles valores fueron $X = \Set{0, 1, \dots, }$.
+                Supón que se repiten de manera independiente ensayos Bernoulli
+                con una probabilidad de exito constante de $p$ hasta obtener el primer
+                exito.
 
-            Observa que la variable aleatoria se puede ver como la suma de Bernoullis independientes.
+                La variable discreta es el número de experimentos hasta un primer exito
+                donde sus posibles valores fueron $X = \Set{1, 2, 3, \dots}$.
 
-            Ahora veamos algunas caracteristicas:
-            \begin{itemize}
-                \item \textbf{Función Probabilidad}
 
-                    Esta esta fácil $f_X(x) = q^{x - 1}p$
+                % ======================================================
+                % =========    VARIABLE ALEATORIA       ================
+                % ======================================================
+                \vspace{1em}
+                \subsubsection{Variable Aleatoria}
 
-                    Es decir, es la propabilidad de que todos los anteriores sean fracasos y el actual
-                    sea el exito.
+                    Ahora, nuestra variable aleatoria sera:
+                    \begin{equation*}
+                        X : \text{Número de experimentos hasta un exito}
+                    \end{equation*}
 
-                \item \textbf{Función Acumulada}
+                    Ahora, los valores posibles que puede tomar son muy muy sencillos,
+                    porque puede que pase en el primer experimento o en el segundo, 
+                    es decir la variable aleatoria puede tomar cualquier valor en los enteros
+                    positivos.
 
-                    $F_X(x) = 1 - q^x$
+                    Solemos entonces escribir esta distribución como:
+                    \begin{equation*}
+                        X \sim G(x; p)
+                    \end{equation*}
 
-                    Esta esta fácil:
+                    donde:
+                    \begin{itemize}
+                        \item $x$: Nuestra variable
+                        \item $p$: Probabilidad de Exito de cada experimento Bernoulli
+                    \end{itemize}
+
+
+            % ==============================================================
+            % ==========     FUNCIÓN PROBABILIDAD          =================
+            % ==============================================================
+            \clearpage
+            \subsection{Función Probabilidad}
+
+                Esta esta fácil:
+                \begin{align*}
+                    f_X(x) = q^{x - 1} \; p
+                \end{align*}
+
+                Es decir, es la propabilidad de que todos los anteriores sean
+                fracasos y el actual sea el exito.
+
+
+            % ==============================================================
+            % =========   FUNCION PROBABILIDAD ACUMULADA        ============
+            % ==============================================================
+            \vspace{1em}
+            \subsection{Función P. Acumulada}
+
+                Esta también es sencilla:
+                \begin{align*}
+                    F_X(x) = 1 - q^x
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Esta esta fácil, solo espero que recuerdes
+                    la suma de la serie geométrica:
                     \begin{align*}
                         F_X(x) 
                             &= \sum_{i=1}^x pq^{i - 1}      \\
-                            &= p\sum_{i=0}^{x-1} q^i        \\
-                            &= p\frac{1-q^x}{1-q}           \\
-                            &= p\frac{1-q^x}{p}             \\
+                            &= (p)\sum_{i=0}^{x-1} q^i      \\
+                            &= (p)\frac{1-q^x}{1-q}         \\
+                            &= (p)\frac{1-q^x}{p}           \\
                             &= 1-q^x
                     \end{align*}
-
-                \clearpage
-
-                \item \textbf{Esperanza de X}
-
-                    Esta es muy famosa: $E(X) = \frac{1}{p}$
-
-                    % ======== DEMOSTRACION ========
-                    \begin{SmallIndentation}[1em]
-                        \textbf{Demostración}:
-                        \begin{align*}
-                             E(X)
-                                &= \sum_{x=1}^\infty xP(X = x)                          \\
-                                &= \sum_{x=1}^\infty x q^{x - 1}p                       \\
-                                &= p\sum_{x=1}^\infty x q^{x - 1}                       \\
-                                &= p \MiniDerivate \sum_{x=1}^\infty x q^{x - 1}        \\
-                                &= p \MiniDerivate \sum_{x=1}^\infty q^x                \\
-                                &= p \MiniDerivate \frac{1}{1 - q}                      \\
-                                &= p \frac{1}{(1- q)^2}                                 \\
-                                &= p \frac{1}{p^2}                                      \\
-                                &= \frac{1}{p}                                  
-                        \end{align*}    
-                    
-                    \end{SmallIndentation}
-                      
-                \clearpage  
-
-                \item \textbf{Varianza}
-
-                        $v(X) = \frac{1-p}{p^2}$
-
-                        \begin{align*}
-                            v(X) 
-                                &= E(X^2) - \mu^2                                           \\
-                                &= E(X^2) - \frac{1}{p^2}                                   \\
-                                &= \sum_{x=1}^\infty x^2P(X = x) - \frac{1}{p^2}            \\
-                                &= \sum_{x=1}^\infty x^2 p q^{x-1} - \frac{1}{p^2}          \\
-                                &= p\sum_{x=1}^\infty x^2 q^{x-1} - \frac{1}{p^2}           \\
-                                &= p\frac{1+q}{(1-q)^3} - \frac{1}{p^2}                     \\
-                                &= \frac{1+q}{p^2} - \frac{1}{p^2}                          \\
-                                &= \frac{q}{p^2}                                            \\
-                                &= \frac{1-p}{p^2}
-                        \end{align*}
-
-                \item \textbf{Función Genera de Momentos}
-
-                        Por definición tenemos que:
-                        \begin{align*}
-                            \Psi (t) = E\Wrap{e^{tX}}                                       \\
-                            \Psi (t) = \sum_{x=1}^\infty e^{tx} q^{x-1}p                    \\
-                            \Psi (t) = p \sum_{x=1}^\infty e^{tx} q^{x-1}                   \\
-                            \Psi (t) = p \sum_{x=1}^\infty e^{tx} q^{x-1}                   \\
-                            \Psi (t) = p e^t \sum_{x=1}^\infty (qe^t)^x                     \\
-                            \Psi (t) = p e^t \frac{1}{1 - qe^t}                             \\
-                            \Psi (t) = \frac{pe^t}{1-qe^t} 
-                        \end{align*}
                 
-            \end{itemize}
+                \end{SmallIndentation}
+                    
 
+            % ==============================================================
+            % =========          FUNCION ESPERANZA              ============
+            % ==============================================================
+            \clearpage
+            \subsection{Esperanza}
+
+                Esta es muy famosa, y lo repito, que no se te olvide la geométrica
+                \begin{align*}
+                    E(X) = \frac{1}{p}
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    \begin{align*}
+                         E(X)
+                            &= \sum_{x=1}^\infty xP(X = x)                          \\
+                            &= \sum_{x=1}^\infty x q^{x - 1}p                       \\
+                            &= p\sum_{x=1}^\infty x q^{x - 1}                       \\
+                            &= p \MiniDerivate \sum_{x=1}^\infty x q^{x - 1}        \\
+                            &= p \MiniDerivate \sum_{x=1}^\infty q^x                \\
+                            &= p \MiniDerivate \frac{1}{1 - q}                      \\
+                            &= p \frac{1}{(1- q)^2}                                 \\
+                            &= p \frac{1}{p^2}                                      \\
+                            &= \frac{1}{p}                                  
+                    \end{align*}    
+                
+                \end{SmallIndentation}
+                      
+            % ==============================================================
+            % =========          FUNCION VARIANZA               ============
+            % ==============================================================
+            \clearpage
+            \subsection{Varianza}
+
+                Esta también es sencilla:
+                \begin{align*}
+                    v(X) = \frac{1-p}{p^2}
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    \begin{align*}
+                        v(X) 
+                            &= E(X^2) - \mu^2                                           \\
+                            &= E(X^2) - \frac{1}{p^2}                                   \\
+                            &= \sum_{x=1}^\infty x^2P(X = x) - \frac{1}{p^2}            \\
+                            &= \sum_{x=1}^\infty x^2 p q^{x-1} - \frac{1}{p^2}          \\
+                            &= p\sum_{x=1}^\infty x^2 q^{x-1} - \frac{1}{p^2}           \\
+                            &= p\frac{1+q}{(1-q)^3} - \frac{1}{p^2}                     \\
+                            &= \frac{1+q}{p^2} - \frac{1}{p^2}                          \\
+                            &= \frac{q}{p^2}                                            \\
+                            &= \frac{1-p}{p^2}
+                    \end{align*}
+                
+                \end{SmallIndentation}
+
+                 
+            % ==============================================================
+            % =========   FUNCION GENERADORA DE MOMENTOS        ============
+            % ==============================================================
+            \clearpage
+            \subsection{Función Generadora}   
+
+                Esta también saldra por definición no somos cobardes:
+                \begin{align*}
+                    \Psi (t) = \frac{pe^t}{1-qe^t}  
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Por definición tenemos que:
+                    \begin{align*}
+                        \Psi (t) = E\Wrap{e^{tX}}                                       \\
+                        \Psi (t) = \sum_{x=1}^\infty e^{tx} q^{x-1}p                    \\
+                        \Psi (t) = p \sum_{x=1}^\infty e^{tx} q^{x-1}                   \\
+                        \Psi (t) = p \sum_{x=1}^\infty e^{tx} q^{x-1}                   \\
+                        \Psi (t) = p e^t \sum_{x=1}^\infty (qe^t)^x                     \\
+                        \Psi (t) = p e^t \frac{1}{1 - qe^t}                             \\
+                        \Psi (t) = \frac{pe^t}{1-qe^t} 
+                    \end{align*}
+                
+                \end{SmallIndentation}
+                    
 
             % ==============================================================
             % ====                  PROPIEDADES                 ============
