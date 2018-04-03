@@ -1384,7 +1384,7 @@
                         En general si $X_1, X_2, \dots, X_n$ son variables aleatorias, entonces
                         tenemos que:
                         \begin{align*}
-                            v\Wrap{\sum_{i = 1}^n X_i} = \sum_{i = 1}^n X_i + 2\sum_{i < j}^n Cov(X_i, X_j)
+                            v\Wrap{\sum_{i = 1}^n X_i} = \sum_{i = 1}^n v(X_i) + 2\sum_{i < j}^n Cov(X_i, X_j)
                         \end{align*}
 
                         % ======== DEMOSTRACION ========
@@ -1548,7 +1548,7 @@
                 \begin{equation*}
                     \Psi_X (t) 
                         = E(e^{tX})
-                        = \sum_x e^{tx} P(X = x)
+                        = \sum_x \; e^{tx} \; P(X = x)
                 \end{equation*}
 
                 Solemos decir que la k-ésima derivada de la función generadora
@@ -1650,18 +1650,108 @@
         \clearpage
         \section{Bernoulli}
 
-            Suponte un experimento en el que solo tienes dos salidas, 
-            $0, 1$, suponte que la probabilidad de que salga $0$ es $q$
-            y la que salga $1$ es $p$.
 
-            Ahora veamos algunas caracteristicas:
-            \begin{itemize}
-                \item \textbf{Función Probabilidad}
+            % ==============================================================
+            % ==============          DEFINICION           =================
+            % ==============================================================
+            \subsection{Definición}
 
-                    Esta esta fácil $f_X(x) = p^x q^{1-x}$
+                Suponte un experimento en el que solo tienes dos salidas, 
+                $0, 1$, $0$ para el fracaso y $1$ para el exito,
+                suponte que la probabilidad de que salga $1$ es $p$
+                y la que salga $0$ es $q = 1 - p$.
 
-                \item \textbf{Esperanza de X}
 
+                % ======================================================
+                % =========    VARIABLE ALEATORIA       ================
+                % ======================================================
+                \vspace{1em}
+                \subsubsection{Variable Aleatoria}
+
+                    Ahora, nuestra variable aleatoria sera:
+                    \begin{equation*}
+                        X : \text{Resultado del experimento}
+                    \end{equation*}
+
+                    Ahora, los valores posibles que puede tomar son muy muy sencillos, basicamente porque
+                    solo hay 2 opciones, o salio bien, o salio mal, es decir $X$ puede tomar los valores
+                    $0, 1$.
+
+                    Solemos entonces escribir esta distribución como:
+                    \begin{equation*}
+                        X \sim Ber(x; p)
+                    \end{equation*}
+
+                    donde:
+                    \begin{itemize}
+                        \item $x$: Nuestra variable
+                        \item $p$: Probabilidad de Exito
+                    \end{itemize}
+
+
+            % ==============================================================
+            % ==========     FUNCIÓN PROBABILIDAD          =================
+            % ==============================================================
+            \clearpage
+            \subsection{Función Probabilidad}
+
+                Esta es clásica:
+                \begin{align*}
+                    f_X(x) = (p^x) ((1-p)^{1-x}) = p^x q^{1-x}
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Esta esta fácil, podemos hacerla por partes, como parece
+                    más natural y ver que:
+                    \begin{align*}
+                        F_X(x) = 
+                            \begin{cases}
+                                q \Space& x = 0             \\
+                                p \Space& x = 1             \\
+                            \end{cases}
+                    \end{align*}
+
+                    Podemos extender esta idea de muchas maneras a una expresión
+                    la que damos es solo una de ellas.
+                
+                \end{SmallIndentation}
+                    
+            % ==============================================================
+            % =========   FUNCION PROBABILIDAD ACUMULADA        ============
+            % ==============================================================
+            \vspace{1em}
+            \subsection{Función P. Acumulada}
+
+                Por definición tenemos que:
+                \begin{align*}
+                    F_X(x) = 
+                        \begin{cases}
+                            0 \Space& x < 0             \\
+                            q \Space& 0 \leq x < 1      \\
+                            p \Space& 1 \leq x 
+                        \end{cases}
+                \end{align*}
+
+                Y esta conviene mejor dejarla así.
+
+            % ==============================================================
+            % =========          FUNCION ESPERANZA              ============
+            % ==============================================================
+            \clearpage
+            \subsection{Esperanza}
+
+                Esta es la distribución con la esperanza más fácil que veras:
+                \begin{align*}
+                    E(X) = p
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
                     Nota que por definición tenemos que:
                     \begin{align*}
                         \mu_X 
@@ -1669,9 +1759,26 @@
                             &= 0(q) + 1(p)              \\
                             &= p
                     \end{align*}
+                    
+                
+                \end{SmallIndentation}
 
-                \item \textbf{Varianza}
 
+            % ==============================================================
+            % =========          FUNCION VARIANZA               ============
+            % ==============================================================
+            \vspace{1em}
+            \subsection{Varianza}
+
+                Esta es igualmente sencilla:
+                \begin{align*}
+                    v(X) = p(1-p) = p - p^2 = pq
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
                     Por definición tenemos que:
                     \begin{align*}
                         v(X)
@@ -1683,21 +1790,25 @@
                             &= p(1 - p)                     \\
                             &= pq
                     \end{align*}
+                
+                \end{SmallIndentation}
+                        
 
-                \item \textbf{Acumulada}
+            % ==============================================================
+            % =========   FUNCION GENERADORA DE MOMENTOS        ============
+            % ==============================================================
+            \clearpage
+            \subsection{Función Generadora}
 
-                    Por definición tenemos que:
-                    \begin{align*}
-                        F_X(x) = 
-                            \begin{cases}
-                                0 \Space& x < 0             \\
-                                q \Space& 0 \leq x < 1      \\
-                                p \Space& 1 \leq x 
-                            \end{cases}
-                    \end{align*}
+                Esta igual es muy bonita:
+                \begin{align*}
+                    \Psi(t) = (q) + e^t(p)
+                \end{align*}
 
-                \item \textbf{Función Genera de Momentos}
-
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
                     Por definición tenemos que:
                     \begin{align*}
                         \Psi(t) 
@@ -1706,9 +1817,9 @@
                             &= e^{0t}(q) + e^{1t}(p)        \\
                             &= (q) + e^t(p)   
                     \end{align*}
-
-            \end{itemize}
-
+                
+                \end{SmallIndentation}
+                    
 
         % ==============================================================
         % ====                  BINOMIAL                    ============
@@ -1716,59 +1827,179 @@
         \clearpage
         \section{Binomial}
 
-            Es un experimento binomial que consiste en $n$ ensayos Bernoulli
-            independientees, con una probabilidad de exito individual constante.
+            % ==============================================================
+            % ==============          DEFINICION           =================
+            % ==============================================================
+            \subsection{Definición}
 
-            La variable discreta es el número de exitos de los experimentos individuales
-            donde sus posibles valores fueron $X = \Set{0, 1, \dots, n}$.
+                Un experimento binomial consiste en $n$ ensayos Bernoulli
+                independientes, con una probabilidad de exito individual constante.
 
-            Observa que la variable aleatoria se puede ver como la suma de Bernoullis independientes.
+                La variable aleatoria discreta es el número de exitos de los experimentos individuales
+                donde sus posibles valores fueron $X = \Set{0, 1, \dots, n}$.
 
-            Ahora veamos algunas caracteristicas:
-            \begin{itemize}
-                \item \textbf{Función Probabilidad}
+                Observa que la variable aleatoria se puede ver como la suma de Bernoullis independientes,
+                es decir $X = X_1 + X_2 + X_3 + \dots + X_n$
 
-                    Esta esta fácil $f_X(x) = {n \choose x}p^x q^{n - x}$
+                % ======================================================
+                % =========    VARIABLE ALEATORIA       ================
+                % ======================================================
+                \vspace{1em}
+                \subsubsection{Variable Aleatoria}
 
+                    Ahora, nuestra variable aleatoria sera:
+                    \begin{equation*}
+                        X : \text{Número de Exitos en los experimentos}
+                    \end{equation*}
+
+                    Ahora, los valores posibles que puede tomar son muy muy sencillos, suponte que haremos
+                    n experimentos, entonces $X$ tiene que tomar valores entre $0 \dots n$
+
+                    Solemos entonces escribir esta distribución como:
+                    \begin{equation*}
+                        X \sim Bin(x; n, p)
+                    \end{equation*}
+
+                    donde:
+                    \begin{itemize}
+                        \item $x$: Nuestra variable
+                        \item $p$: Probabilidad de Exito
+                    \end{itemize}
+
+
+            % ==============================================================
+            % ==========     FUNCIÓN PROBABILIDAD          =================
+            % ==============================================================
+            \clearpage
+            \subsection{Función Probabilidad}
+            
+                Esta esta fácil:
+                \begin{align*}
+                    f_X(x) 
+                        = {n \choose x} p^x q^{n - x}
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
                     ¿Porque? Porque estamos hablando de eventos independientes por lo
                     tanto su probabilidad conjunta es el producto de las individuales, 
                     y literlalmente estamos usando la definición de combinación.
+                
+                \end{SmallIndentation}
+                        
 
-                \item \textbf{Función Acumulada}
+            % ==============================================================
+            % =========   FUNCION PROBABILIDAD ACUMULADA        ============
+            % ==============================================================
+            \vspace{1em}
+            \subsection{Función P. Acumulada}
 
-                    Esta esta fácil $F_X(x) = \sum_{i=0}^x {n \choose i}p^i q^{n - i}$
+                    Esta esta fácil:
+                    \begin{align*}
+                        F_X(x) = \sum_{i=0}^x {n \choose i}p^i q^{n - i}
+                    \end{align*}
 
-                \item \textbf{Esperanza de X}
+                    % ======== DEMOSTRACION ========
+                    \begin{SmallIndentation}[1em]
+                        \textbf{Demostración}:
+                        
+                        Literalmente es la definición.
+                    
+                    \end{SmallIndentation}
+                   
+            % ==============================================================
+            % =========   FUNCION GENERADORA DE MOMENTOS        ============
+            % ==============================================================
+            \clearpage
+            \subsection{Función Generadora}  
 
+                Por definición tenemos que:
+                \begin{align*}
+                    \Psi (t) = \Wrap{q + e^tp}^n   
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Espera, espera, me explico mejor, lo que pasa es la binomial se puede ver
+                    como una suma de variables independientes entonces solo basta con recordar
+                    que ya demostramos que la función generadora de momentos de una suma
+                    de variables independientes es el producto de la función generadora
+                    de momentos de cada una.
+
+                    Es decir:
+                    \begin{align*}
+                        \Psi_X (t) 
+                            &= \prod_{i = 1}^n \Psi_{X_i} (t)   \\
+                            &= \prod_{i = 1}^n \Psi_{X_i} (t)   \\
+                            &= \prod_{i = 1}^n q + e^t p        \\
+                            &= \Wrap{q + e^tp}^n                  
+                    \end{align*} 
+
+                \end{SmallIndentation}
+                    
+            % ==============================================================
+            % =========          FUNCION ESPERANZA              ============
+            % ==============================================================
+            \vspace{1em}
+            \subsection{Esperanza}  
+
+                Esta también es sencilla:
+                \begin{align*}
+                    E(X) = np
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
                     Podemos usar que la variable aleatoria se puede ver como la suma
                     de Bernoullis independientes.
 
-                    Es decir $Y = \sum_x x_i$
+                    Es decir $X = \sum_x X_i$
 
                     \begin{align*}
                         \mu_X 
-                            &= E(Y)                 \\
-                            &= E(\sum_x x_i)        \\
-                            &= \sum_x E(x_i)        \\
+                            &= E(X)                 \\
+                            &= E(\sum_x X_i)        \\
+                            &= \sum_x E(X_i)        \\
                             &= np
                     \end{align*}
+                    
+                \end{SmallIndentation}
 
+            % ==============================================================
+            % =========          FUNCION VARIANZA               ============
+            % ==============================================================
+            \vspace{1em}
+            \subsection{Varianza}
 
-                \item \textbf{Varianza}
+                Esta es bonita también:
+                \begin{align*}
+                    v(X) = npq   
+                \end{align*}
 
-                        Por definición tenemos que:
-                        \begin{align*}
-                            v(X) = npq   
-                        \end{align*}
-
-                \item \textbf{Función Genera de Momentos}
-
-                        Por definición tenemos que:
-                        \begin{align*}
-                            \Psi (t) = \Wrap{q + e^tp}^n   
-                        \end{align*}
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Esta la haremos usando propiedades de la varianza, recuerda que
+                    son la suma de eventos independientes:
+                    \begin{align*}
+                        v(X) 
+                            &= v\Wrap{\sum_{i=0}^n X_i}         \\
+                            &= \sum_{i=0}^n v(X_i)              \\
+                            &= \sum_{i=0}^n pq                  \\
+                            &= npq
+                    \end{align*}
                 
-            \end{itemize}
+                \end{SmallIndentation}
+                    
+
+                    
 
 
 
