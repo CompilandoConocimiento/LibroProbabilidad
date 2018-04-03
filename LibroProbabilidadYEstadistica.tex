@@ -2037,9 +2037,6 @@
 
                 \end{itemize}
 
-                    
-                    
-
 
         % ==============================================================
         % ====                  GEOMETRICA                  ============
@@ -2209,13 +2206,14 @@
                     
                     Por definición tenemos que:
                     \begin{align*}
-                        \Psi (t) = E\Wrap{e^{tX}}                                       \\
-                        \Psi (t) = \sum_{x=1}^\infty e^{tx} q^{x-1}p                    \\
-                        \Psi (t) = p \sum_{x=1}^\infty e^{tx} q^{x-1}                   \\
-                        \Psi (t) = p \sum_{x=1}^\infty e^{tx} q^{x-1}                   \\
-                        \Psi (t) = p e^t \sum_{x=1}^\infty (qe^t)^x                     \\
-                        \Psi (t) = p e^t \frac{1}{1 - qe^t}                             \\
-                        \Psi (t) = \frac{pe^t}{1-qe^t} 
+                        \Psi (t) 
+                            &= E\Wrap{e^{tX}}                                       \\
+                            &= \sum_{x=1}^\infty e^{tx} q^{x-1}p                    \\
+                            &= p \sum_{x=1}^\infty e^{tx} q^{x-1}                   \\
+                            &= p \sum_{x=1}^\infty e^{tx} q^{x-1}                   \\
+                            &= p e^t \sum_{x=1}^\infty (qe^t)^x                     \\
+                            &= p e^t \frac{1}{1 - qe^t}                             \\
+                            &= \frac{pe^t}{1-qe^t} 
                     \end{align*}
                 
                 \end{SmallIndentation}
@@ -2228,7 +2226,9 @@
             \subsubsection{Propiedades}
 
                 \begin{itemize}
-                    \item Sea $P(X > a) = q^a$ con $a$ un natural positivo
+                    
+                    \item 
+                        Sea $P(X > a) = q^a$ con $a$ un natural positivo
 
                         % ======== DEMOSTRACION ========
                         \begin{SmallIndentation}[1em]
@@ -2246,7 +2246,11 @@
                         
                         \end{SmallIndentation}
 
-                    \item Sea $P(X > a + b \Such X > a) = P(X > b)$ con $a, b$ un naturales positivos
+                    \item 
+                        Podemos decir que esta distribución no tiene memoria, me explico
+                        mejor.
+
+                        Sea $P(X > a + b \Such X > a) = P(X > b)$ con $a, b$ un naturales positivos
 
                         % ======== DEMOSTRACION ========
                         \begin{SmallIndentation}[1em]
@@ -2270,9 +2274,7 @@
                         \end{SmallIndentation}
                             
                 \end{itemize}
-
-
-                
+ 
 
         % ==============================================================
         % ==========     HIPER -GEOMETRICA                  ============
@@ -2286,8 +2288,8 @@
             \subsection{Definición}
 
                 Supongamos que tenemos una población de tamaño $r$, ahora
-                esta particionado de 2 maneras, como elementos del tipo $r_1$
-                o $r_2$.
+                esta particionado de 2 maneras, con elementos del tipo $r_1$
+                o $r_2$, consideraremos exitosos los elementos de tipo $r_1$
 
                 Ahora vamos a tomar una muestra aleatoria de tamaño $n$ sin reemplazo
                 ni sustitución.
@@ -2299,7 +2301,7 @@
                 % ======================================================
                 % =========    VARIABLE ALEATORIA       ================
                 % ======================================================
-                \space{1em}
+                \vspace{1em}
                 \subsubsection{Variable Aleatoria}
 
                     Ahora, nuestra variable aleatoria sera:
@@ -2307,17 +2309,36 @@
                         X : \text{Número de elementos del tipo $r_1$ en una muestra aleatoria de tamaño $n$}
                     \end{equation*}
 
-                    Ahora, los valores posibles que puede tomar es $max(0, n - r_2) \leq x \leq min(r_1, n)$
+                    Ahora, los valores posibles que puede tomar son $max(0, n - r_2) \leq x \leq min(r_1, n)$
+
                     Ahora, ¿Porque esos números tan feos?
-                    Por un lado tenemos que que lo peor que nos puede pasar son dos cosas, o bien su tu
-                    muestra es muy pequeña $n$ compara con todo el espacio $r$ y $r_1$ entonces
-                    entonces bien que puedes tener toda la mala suerte de que todas caigan donde tu no querías
-                    por lo tanto, podría pasar que $X = 0$, pero, pero que pasaría que tu $n$ fuera
-                    lo suficientemente grande tal que si que si entrará todo tus fragmentos que no quieres
-                    entonces lo mínimo que puede entrar es $n - r_2$.
 
-                    El cálculo para el límite mayor es parecido.
+                    Por un lado tenemos que que lo peor que nos puede pasar son dos cosas:
+                    \begin{itemize}
+                        \item 
+                            O bien si el tamaño de tu muestra $n$ es muy pequeña, entonces puedes
+                            tener toda la mala suerte del mundo y que pase que todas caigan donde
+                            tu no querías por lo tanto, podría pasar que no seleccionará
+                            ningún elemento de $r_1$ entonces $X = 0$.
 
+                        \item
+                            Pero, pero que pasaría que tu $n$ fuera lo suficientemente grande tal que
+                            incluso si seleccionará todos los que no quería $r_2$, aún quedarán elementos
+                            por seleccionar, entonces los mínimos elementos $r_1$ que podría seleccionar 
+                            es $n - r_2$, entonces $X = n - r_2$ 
+
+                    \end{itemize}
+
+                    El cálculo para el límite mayor es parecido
+                    \begin{itemize}
+                        \item 
+                            Si tienes que $n <= r_1$, entonces lo mejor que te puede pasar es que todos
+                            caigan donde tu quieras
+                        \item
+                            Si es que $n > r_1$ entonces puedes seleccionar todos los elementos de $r_1$
+                    \end{itemize}
+
+                    \clearpage
 
                     Solemos entonces escribir esta distribución como:
                     \begin{equation*}
@@ -2342,7 +2363,7 @@
 
                 Esta esta muy interesante, es:
                 \begin{equation*}
-                    f_X(x) = \dfrac{{r_1 \choose x}{r_2 \choose n-x} }{{r \choose n}}
+                    f_X(x) = \dfrac{\binom{r_1}{x}\binom{r_2}{n - x}}{{r \choose n}}
                 \end{equation*}
 
                 % ======== DEMOSTRACION ========
@@ -2369,9 +2390,11 @@
                 \begin{align*}
                     F_X(x) 
                         = P(X \leq x)              
-                        = \dfrac{1}{\binom{r}{n}}                      
-                            \sum_{i = max (0, n - r_2)}^x                
+                        = \dfrac{
+                                \sum_{i = max (0, n - r_2)}^x                
                                 \binom{r_1}{i} \binom{r_2}{n - i}
+                            }
+                            {\binom{r}{n}}                      
                 \end{align*}
 
                 % ======== DEMOSTRACION ========
@@ -2427,12 +2450,20 @@
                             &= n \pfrac{r_1}{r}   
                     \end{align*}
                     
-                
                 \end{SmallIndentation}
+
+            % ==============================================================
+            % =========          FUNCION VARIANZA               ============
+            % ==============================================================
+            \subsection{Varianza}
+
+                Esta esta muy dificíl, así que se deja para el lector :p
+                \begin{align*}
+                    v(X) = n \pfrac{r_1}{r} \Wrap{1 - \frac{r_1}{r}} \Wrap{1 - \frac{n - 1}{r - 1}}
+                \end{align*}
                     
 
                 
-
 
             % ==============================================================
             % =========   FUNCION GENERADORA DE MOMENTOS        ============
@@ -2448,6 +2479,70 @@
                             \sum_{i = max (0, n - r_2)}^{min(n, r_1)}               
                                e^{ti} \binom{r_1}{i} \binom{r_2}{n - i}
                 \end{align*}
+
+
+            % ==============================================================
+            % ==========     RELACION CON LA BINOMIAL      =================
+            % ==============================================================
+            \clearpage
+            \subsection{Relación con la Binomial}
+
+                Suponte que tienes una población de $r$ elementos, con $r_1$ de un tipo \Quote{bueno}
+                y $r_2 := n - r$ de un tipo \Quote{malo}.
+
+                Ahora vamos a tomar una muestra aleatoria de tamaño $n$,
+                sea entonces $X : $ Número de elementos de tipo bueno en nuestra muetra 
+
+                ahora podemos tener
+                entonces 2 posibles distribuciones dependiendo de una pregunta clave.
+
+                ¿Hay reemplazo?
+
+                \begin{itemize}
+                    \item 
+                        \textbf{Si es que tiene Reemplazo:}
+
+                        Entonces lo que pasa es que la probabilidad de exito es constante, por 
+                        lo tanto es simplemente $n$ experimentos de tipo Bernoulli.
+
+                        La probabilidad de exito también es bastante sencilla de sacarse, es
+                        como $p = \frac{r_1}{r}$
+
+                        Por lo tanto podemos decir que:
+                        \begin{align*}
+                            X \sim B(x; n, p)
+                        \end{align*}
+
+                        Es decir, tendremos (como ya sabemos como se comporta una binomial):
+                        \begin{itemize}
+                            \item $E(X) = np = \frac{nr_1}{r}$
+                            \item $v(X) = npq = \frac{nr_1}{r}\Wrap{1 - \frac{r_1}{r}}$
+                        \end{itemize}
+
+                    \item 
+                        \textbf{Si es que NO tiene Reemplazo:}
+
+                        Entonces lo que pasa es que la probabilidad de exito ya no es constante,
+                        de hecho, llegamos a la definición de la Hipergeométrica, es decir:
+
+                        Por lo tanto podemos decir que:
+                        \begin{align*}
+                            X \sim H(x; n, r_1, r_2)
+                        \end{align*}
+
+                        Es decir, tendremos (como ya sabemos como se comporta una hipergeometrica):
+                        \begin{itemize}
+                            \item $E(X) = np = \frac{nr_1}{r}$
+                            \item $v(X) = npq = \frac{nr_1}{r}\Wrap{1 - \frac{r_1}{r}}\Wrap{1 - \frac{n-1}{r-1}}$
+                        \end{itemize}
+
+                \end{itemize}
+
+                Es decir, sin importar si hay o no reemplazo, el valor esperado es el mismo, pero
+                si es que no hay reemplazos tenemos una varianza es menor.
+
+                Podemos también darnos cuenta de que mientras más población la diferencia entre
+                el reemplazo y sin reemplazo cada vez será menor.
 
 
 
@@ -2654,7 +2749,41 @@
                 \end{SmallIndentation}
                 
 
+            % ==============================================================
+            % ====                  PROPIEDADES                 ============
+            % ==============================================================
+            \clearpage
+            \subsubsection{Propiedades}
 
+                \begin{itemize}
+                    
+                    \item 
+                        Sea $X_1, X_2, \dots, X_k$ variables aleatorias independientes
+                        y $X_i \sim P(x_i; \lambda_i)$ 
+
+                        Entonces $X = \sum_{i = 1}^k X_i$ cumple que $X$ se distribuye como
+                        una Poisson con parámetro $\lambda = \sum_{i=1}^k \lambda_i$
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+
+                            Sabes que para cada una de ellas tienes que $\Psi_{X_i}(t) = e^{\lambda_i(e^t - 1)}$
+                            entonces al ser una suma de variables aleatorias tenemos que su generadora
+                            es el producto de cada generadora, es decir:
+                            \begin{align*}
+                                \Psi_X(t) 
+                                    &= \prod{i=1}^k \Psi_{X_i}(t)                 \\
+                                    &= \prod{i=1}^k e^{\lambda_i(e^t - 1)}        \\
+                                    &= e^{(\sum_{i=1}^k\lambda_i)(e^t - 1)}        \\
+                            \end{align*}
+
+                            Es decir se parece muchísimo a una Poisson con una lamda igual a
+                            $\lambda = \sum_{i=1}^k \lambda_i$
+                        
+                        \end{SmallIndentation}
+
+                \end{itemize}
             
 
 
