@@ -1049,6 +1049,7 @@
         \clearpage
         \section{Función Probabilidad $f_X$}
 
+           
             % ======================================================
             % ===========          DEFINICIÓN       ================
             % ======================================================
@@ -1061,15 +1062,6 @@
                 \begin{equation*}
                     f_X (x) = P(X = x)
                 \end{equation*}
-
-
-            % ======================================================
-            % =======         UNIFORME CONTINUA     ================
-            % ======================================================
-            \subsection{Uniforme Continua}
-                \begin{figure}[h]
-                    \includegraphics[width=0.45\textwidth]{UniformeDiscreta}
-                \end{figure}
 
 
             % ======================================================
@@ -1687,6 +1679,17 @@
                         \item $x$: Nuestra variable
                         \item $p$: Probabilidad de Exito
                     \end{itemize}
+
+
+                % ======================================================
+                % =======         UNIFORME DISCRETA     ================
+                % ======================================================
+                \vspace{1em}
+                \subsection{Uniforme Discreta}
+                    \begin{figure}[h]
+                        \includegraphics[width=0.37\textwidth]{UniformeDiscreta}
+                    \end{figure}
+
 
 
             % ==============================================================
@@ -2830,6 +2833,8 @@
                 reales, podemos encontrar otro real entre ambos.  
 
 
+                Obviamente se conservan practicamente todas las propiedades de cuando trabajamos con las
+                variables aleatorias discretas.
 
         % ==============================================================
         % ===========      FUNCION PROBABILIDAD         ================
@@ -2921,39 +2926,628 @@
                 \end{itemize}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        % ==============================================================
+        % ===========      FUNCION ESPERANZA            ================
+        % ==============================================================
+        \clearpage
+        \section{Esperanza}
 
             % ======================================================
-            % =======         UNIFORME CONTINUA     ================
+            % ===========          DEFINICIÓN       ================
             % ======================================================
+            \subsection{Definición}
+
+                Vamos a definir a la esperanza de una variable aleatoria continua como:
+                \begin{equation*}
+                    E(x) = \mu_X = \int_{-\infty}^{\infty} x \; f_X (x) \; dx
+                \end{equation*}
+
+
+        % ==============================================================
+        % ===========      FUNCION VARIANZA             ================
+        % ==============================================================
+        \vspace{1em}
+        \section{Varianza}
+
+            % ======================================================
+            % ===========          DEFINICIÓN       ================
+            % ======================================================
+            \subsection{Definición}
+
+                Vamos a definir a la varianza de una variable aleatoria continua como:
+                \begin{align*}
+                    v(x) 
+                        &= \int_{-\infty}^\infty (x - \mu_x)^2 \; f(x) \; dx       \\
+                        &= \Wrap{\int_{-\infty}^\infty x^2 f(x) \; dx} - \mu_x^2
+                \end{align*}
+
+
+        % ==============================================================
+        % ========     FUNCION GENERADORA DE MOMENTOS     ==============
+        % ==============================================================
+        \vspace{1em}
+        \section{Función Generadora de Momentos}
+
+            % ======================================================
+            % ===========          DEFINICIÓN       ================
+            % ======================================================
+            \subsection{Definición}
+
+                Vamos a definir a la esperanza de una variable aleatoria continua como:
+                \begin{equation*}
+                    \Psi_X (t) = E(e^{tX}) = \int_{-\infty}^\infty  e^{tx} f_X (x) \; dx
+                \end{equation*}
+
+
+
+    % ===============================================================================
+    % ===============       DISTRIBUCIONES CONTINUAS FAMOSAS    =====================
+    % ===============================================================================
+    \chapter{Distribuciones Continuas Famosas}
+
+
+        % ==============================================================
+        % ==========               UNIFORME                 ============
+        % ==============================================================
+        \clearpage
+        \section{Uniforme}
+
+            % ==============================================================
+            % ==============          DEFINICION           =================
+            % ==============================================================
+            \subsection{Definición}
+
+                La mas sencilla de todas las distribuciones continuas es la uniforme.
+
+                % ======================================================
+                % =========    VARIABLE ALEATORIA       ================
+                % ======================================================
+                \vspace{1em}
+                \subsubsection{Variable Aleatoria}
+
+
+                    Ahora, los valores posibles que puede tomar nuestra variable aleatoria es
+                    $ a< x < b$.
+
+                    Solemos entonces escribir esta distribución como:
+                    \begin{equation*}
+                        X \sim U(x; a, b)
+                    \end{equation*}
+
+                    donde:
+                    \begin{itemize}
+                        \item $a$: Inicio de la muestra
+                        \item $b$: Inicio de la muestra
+                    \end{itemize}
+
+
+            % ==============================================================
+            % ==========     FUNCIÓN PROBABILIDAD          =================
+            % ==============================================================
             \clearpage
-            \subsection{Uniforme Continua}
-                \begin{figure}[h]
-                    \includegraphics[width=0.45\textwidth]{UniformeContinua}
-                \end{figure}
+            \subsection{Función Probabilidad}
+
+                Esto es lo que distingue a una distribución uniforme:
+                \begin{equation*}
+                    f_X(x) = 
+                        \begin{cases}
+                            \dfrac{1}{b - a}  \MegaSpace &a < x < b           \\
+                            0                 \MegaSpace &$en otro caso$
+                        \end{cases}
+                \end{equation*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Idea de la Demostración}:
+                    
+                    La razón de que sea así es que tiene que cumplir que 
+                    $\int_{-\infty}^\infty f(x) dx = 1$
+                    y claro que lo cumple:
+                    \begin{align*}
+                        \int_{-\infty}^\infty f(x) dx
+                            &= \int_a^b \frac{1}{b-a} dx        \\
+                            &= \frac{1}{b-a} \int_a^b dx        \\
+                            &= \frac{1}{b-a} [b - a]            \\
+                            &= 1
+                    \end{align*}
+                
+                \end{SmallIndentation}
+                    
+
+            % ==============================================================
+            % =========   FUNCION PROBABILIDAD ACUMULADA        ============
+            % ==============================================================
+            \vspace{1em}
+            \subsection{Función P. Acumulada}
+
+                Esta esta muy interesante, es:
+                \begin{align*}
+                    F_X(x) = \dfrac{x - a}{b - a}                  
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Idea de la Demostración}:
+                    
+                    Es por definición men :v
+                    \begin{align*}
+                        F_X(x)
+                            &= \int_{-\infty}^x f(x) dx         \\
+                            &= \int_a^x \frac{1}{b-a} dx        \\
+                            &= \frac{1}{b-a} \int_a^x dx        \\
+                            &= \frac{x - a}{b - a}
+                    \end{align*}
+                
+                \end{SmallIndentation}
+                    
+
+
+            % ==============================================================
+            % =========          FUNCION ESPERANZA              ============
+            % ==============================================================
+            \clearpage
+            \subsection{Esperanza}
+
+                Esta esta muy interesante:
+                \begin{align*}
+                    E(X) = \dfrac{a+b}{2}                    
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Esta también sale bonita:
+                    \begin{align*}
+                        E(X)
+                            &= \int_{-\infty}^\infty x f_X (x) dx           \\
+                            &= \int_a^b x \dfrac{1}{b-a} dx                 \\
+                            &= \pfrac{1}{b-a} \int_a^b x  dx                \\
+                            &= \pfrac{1}{b-a} \frac{b^2 - a^2}{2}           \\
+                            &= \pfrac{1}{b-a} \frac{(b-a)(b+a)}{2}          \\
+                            &= \dfrac{a+b}{2}
+                    \end{align*}
+                    
+                \end{SmallIndentation}
+
+            % ==============================================================
+            % =========          FUNCION VARIANZA               ============
+            % ==============================================================
+            \clearpage
+            \subsection{Varianza}
+
+                Esta esta muy dificíl, pero si se puede:
+                \begin{align*}
+                    v(X) = \dfrac{(a-b)^2}{12}
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Primero hay que hacer que:
+                    \begin{align*}
+                        E(X^2) 
+                            &= \int_{-\infty}^\infty x^2 f_X (x) dx                 \\
+                            &= \int_a^b x^2 \dfrac{1}{b-a} dx                       \\
+                            &= \pfrac{1}{b-a} \int_a^b x^2 dx                       \\
+                            &= \pfrac{1}{b-a} \dfrac{b^3 - a^3}{3}                  \\
+                            &= \pfrac{1}{b-a} \dfrac{(b-a)(b^2 + ab + a^2)}{3}      \\
+                            &= \dfrac{b^2 + ab + a^2}{3}                            \\
+                    \end{align*}
+
+                    Ahora podemos sacar a la varianza:
+                    \begin{align*}
+                        v(X)
+                            &= E(X^2) -\mu_X^2                                              \\
+                            &= E(X^2) -\dfrac{(a+b)^2}{4}                                   \\
+                            &= \dfrac{b^2 + ab + a^2}{3} -\dfrac{a^2+ 2ab + b^2}{4}         \\
+                            &= \dfrac{4b^2 + 4ab + 4a^2}{12} -\dfrac{3a^2+ 6ab + 3b^2}{12}  \\
+                            &= \dfrac{a^2 + b^2 - 2ab}{12}                                  \\
+                            &= \dfrac{(a-b)^2}{12} 
+                    \end{align*}
+                
+                \end{SmallIndentation}
+                    
+
+                   
+
+            % ==============================================================
+            % =========   FUNCION GENERADORA DE MOMENTOS        ============
+            % ==============================================================
+            \clearpage
+            \subsection{Función Generadora}
+
+                Esta esta muy interesante, es:
+                \begin{align*}
+                    \Psi_X(t) = \dfrac{e^{bt} - e^{at}}{t(b -a)}
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Ahora vamos a demostrarlo:
+                    \begin{align*}
+                        E(e^{tX}) 
+                            &= \int_{-\infty}^\infty e^{tx} f_X (x) dx              \\
+                            &= \pfrac{1}{b-a} \int_a^b e^{tx} dx                    \\
+                            &= \pfrac{1}{b-a} \frac{e^{bt} - e^{at}}{t}             \\
+                            &= \dfrac{e^{bt} - e^{at}}{t(b -a)}
+                    \end{align*}
+
+                \end{SmallIndentation}
+                    
+
+
+
+        % ==============================================================
+        % ==========               EXPONENCIAL              ============
+        % ==============================================================
+        \clearpage
+        \section{Exponencial}
+
+            % ==============================================================
+            % ==============          DEFINICION           =================
+            % ==============================================================
+            \subsection{Definición}
+
+                Se utiliza generalmente para representar una distribución del tiempo
+                que transcurre antes de la ocurrencia de un suceso.
+
+
+                % ======================================================
+                % =========    VARIABLE ALEATORIA       ================
+                % ======================================================
+                \vspace{1em}
+                \subsubsection{Variable Aleatoria}
+
+                    Ahora, los valores posibles que puede tomar nuestra variable aleatoria es
+                    $x > 0$
+
+                    Solemos entonces escribir esta distribución como:
+                    \begin{equation*}
+                        X \sim E(x; \beta)
+                    \end{equation*}
+
+                    donde:
+                    \begin{itemize}
+                        \item $\beta$: Es un párametro que tiene que ser un entero positivo
+                    \end{itemize}
+
+
+            % ==============================================================
+            % ==========     FUNCIÓN PROBABILIDAD          =================
+            % ==============================================================
+            \clearpage
+            \subsection{Función Probabilidad}
+
+                Esto es lo que distingue a una distribución uniforme:
+                \begin{equation*}
+                    f_X(x) = 
+                        \begin{cases}
+                            \beta e^{-\beta x}  \MegaSpace & x > 0           \\
+                            0                   \MegaSpace & x \leq 0
+                        \end{cases}
+                \end{equation*}
+                    
+
+            % ==============================================================
+            % =========   FUNCION PROBABILIDAD ACUMULADA        ============
+            % ==============================================================
+            \vspace{1em}
+            \subsection{Función P. Acumulada}
+
+                Esta esta muy interesante, es:
+                \begin{align*}
+                    F_X(x) = 1 - e^{-\beta x}                
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Idea de la Demostración}:
+                    
+                    Es por definición men :v
+                    \begin{align*}
+                        F_X(x)
+                            &= \int_{-\infty}^x f(t) dt                 \\
+                            &= \frac{0}{x} \beta e^{-\beta t} dt        \\
+                            &= -e^{-\beta t} \Evaluate_0^x              \\
+                            &= 1 -e^{-\beta x}
+                    \end{align*}
+                
+                \end{SmallIndentation}
+
+
+            % ==============================================================
+            % =========   FUNCION GENERADORA DE MOMENTOS        ============
+            % ==============================================================
+            \clearpage
+            \subsection{Función Generadora}
+
+                Esta esta muy interesante, es:
+                \begin{align*}
+                    \Psi_X(t) = \frac{\beta}{\beta-t}
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Ahora vamos a demostrarlo:
+                    \begin{align*}
+                        E(e^{tX}) 
+                            &= \int_{-\infty}^\infty e^{tx} f_X (x) dx                      \\
+                            &= \int_0^\infty e^{tx} \beta e^{-\beta x} dx                   \\
+                            &= \beta \int_0^\infty e^{(t -\beta) x} dx                      \\
+                            &= \beta \frac{1}{t-\beta} e^{(t -\beta) x} \Evaluate_0^\infty  \\
+                            &= \beta \frac{1}{t-\beta} (-1)                                 \\
+                            &= \frac{\beta}{\beta-t}
+                    \end{align*}
+
+                \end{SmallIndentation}
+                    
+
+
+            % ==============================================================
+            % =========          FUNCION ESPERANZA              ============
+            % ==============================================================
+            \vspace{1em}
+            \subsection{Esperanza}
+
+                Esta esta muy interesante:
+                \begin{align*}
+                    E(X) = \frac{1}{B}                    
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Esta también sale bonita:
+                    \begin{align*}
+                        E(X)
+                            &= \Psi_X' (0)                                      \\
+                            &= \MiniDerivate{t} \frac{B}{B - t} \Evaluate_0     \\
+                            &= \frac{B}{(B - t)^2} \Evaluate_0                  \\
+                            &= \frac{B}{(B)^2}                                  \\
+                            &= \frac{1}{B}
+                    \end{align*}
+                    
+                \end{SmallIndentation}
+
+            % ==============================================================
+            % =========          FUNCION VARIANZA               ============
+            % ==============================================================
+            \vspace{1em}
+            \subsection{Varianza}
+
+                Esta esta muy dificíl, pero si se puede:
+                \begin{align*}
+                    v(X) = \frac{1}{B^2}
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    \begin{align*}
+                        E(X^2)
+                            &= \Psi_X'' (0)                                     \\
+                            &= \MiniDerivate \frac{B}{(B - t)^2} \Evaluate_0    \\
+                            &= \frac{2B}{(B - t)^3} \Evaluate_0                 \\
+                            &= \frac{2B}{(B)^3}                                  \\
+                            &= \frac{2}{B^2}
+                    \end{align*}
+
+                    Entonces la varianza sale rapido:
+                    \begin{align*}
+                        v(X)
+                            &= E(X^2) - \mu_X^2                     \\
+                            &= \frac{2}{B^2} - \frac{1}{B^2}        \\
+                            &= \frac{1}{B^2}
+                    \end{align*}
+                
+                \end{SmallIndentation}
 
 
 
 
+            % ==============================================================
+            % ====                  PROPIEDADES                 ============
+            % ==============================================================
+            \clearpage
+            \subsection{Propiedades}
+
+                \begin{itemize}
+                    
+
+                    \item 
+                        Podemos decir que esta distribución no tiene memoria, me explico
+                        mejor.
+
+                        Sea $P(X > a + b \Such X > a) = P(X > b)$ con $a, b$ un naturales positivos
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            \begin{align*}
+                                P(X > a + b \Such X > a)
+                                    &= \frac{P(X > a + b \text{ y } X > a)}{P(X > a)}       \\  
+                                    &= \frac{P(X > a + b)}{P(X > b)}                        \\
+                                    &= \frac{1 - F_X(a+b)}{1 - F_X(b)}                      \\
+                                    &= \frac{e^{-a\beta - b\beta}}{e^{-b\beta}}             \\
+                                    &= e^{-b\beta}    
+                            \end{align*}    
+                        
+                        \end{SmallIndentation}
+                            
+                    \item 
+                        Sea $X_1, X_2, \dots, X_k$ variables aleatorias independientes
+                        y $X_i \sim E(x_i; \beta)$ 
+
+                        Entonces $X = min(X_1, X_2, \dots, X_k)$ también cumple que $X$ se distribuye como
+                        una Exponencial con parámetro $\beta = n\beta$
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+
+                            Esa sale rápido:
+                            \begin{align*}
+                                P(X > t)
+                                    &= P(X_1 > t) P(X_2 > t) \dots (X_k > t)        \\
+                                    &= e^{-t\beta} \dots e^{-t\beta}                \\
+                                    &= e^{-t (n\beta)}
+                            \end{align*}
+
+                            Es decir se parece muchísimo a una Exponencial con una beta igual a
+                            $\beta = n \beta$
+                        
+                        \end{SmallIndentation}
+
+                \end{itemize}
+ 
+
+              
+
+        % ==============================================================
+        % ==========               GAMMA                    ============
+        % ==============================================================
+        \clearpage
+        \section{Gamma}
+
+            % ==============================================================
+            % ==============       FUNCION GAMMA           =================
+            % ==============================================================
+            \subsection{Función Gamma}
+
+                La función Gamma se puede ver para $a > 0$ como:
+                \begin{align*}
+                    \Gamma(a) = \int_0^\infty x^{a - 1} \; e^{-x} dx
+                \end{align*}
+
+                % ==============================================================
+                % ==============       PROPIEDADES             =================
+                % ==============================================================
+                \subsubsection{Propiedades}
+
+                    La función gamma tiene un par de propieades interesantes
+                    \begin{itemize}
+                        \item 
+                            $\Gamma(1) = 1$
+                            % ======== DEMOSTRACION ========
+                            \begin{SmallIndentation}[1em]
+                                \textbf{Demostración}:
+                                
+                                Nota que:
+                                \begin{align*}
+                                    \Gamma(1)
+                                        &= \int_0^\infty x^{1 - 1} \; e^{-x} dx     \\
+                                        &= \int_0^\infty  e^{-x} dx                 \\
+                                        &= - e^{-x} \Evaluate_0^\infty              \\
+                                        &= e^0 - 0                                  \\
+                                        &= 1
+                                \end{align*}
+                            
+                            \end{SmallIndentation}
+                            
+                        \item $\Gamma(a) = (a - 1)\Gamma(a - 1)$
+
+                            % ======== DEMOSTRACION ========
+                            \begin{SmallIndentation}[1em]
+                                \textbf{Demostración}:
+                                
+                                Esto es clave:
+                                \begin{align*}
+                                    \Gamma(a)
+                                        &= \int_0^\infty x^{a - 1} \; e^{-x} dx     \\                                   
+                                \end{align*}
+
+                                Esta se puede intentar resolver por partes, entonces
+                                tenemos que:
+                                \begin{itemize}
+                                    \item $u  = x^{a - 1}$
+                                    \item $du  = (a -1)x^{a - 2} dx$
+                                    \item $dv  = e^{-x}$
+                                    \item $v   = -e^{-x}$
+                                \end{itemize}
+
+                                Entonces decimos que:
+                                \begin{align*}
+                                    \Gamma(a)
+                                        &= \int_0^\infty x^{a - 1} \; e^{-x} dx         \\   
+                                        &= -x^{a-1} e^{-x} \Evaluate_0^\infty + 
+                                            \int_0^\infty e^{-x} (a - 1)x^{a - 2} dx     \\
+                                        &= \Gamma(a) = (a - 1)\Gamma(a - 1)
+                                \end{align*}
+                            
+                            \end{SmallIndentation}
+                                
+
+                        \item Si $n \in \Integers^+$ entonces $\Gamma(n) = (n-1)!$
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            
+                            Es simplemente recursividad es decir:
+                            \begin{align*}
+                                \Gamma(n)
+                                    &= (n-1)\Gamma(n-2)         \\
+                                    &= (n-1)(n-2)\Gamma(n-3)    \\
+                                    &= \dots                    \\
+                                    &= (n-1)!
+                            \end{align*}
+                        
+                        \end{SmallIndentation}
+                            
+                    \end{itemize}
 
 
+            % ==============================================================
+            % ==============          DEFINICION           =================
+            % ==============================================================
+            \subsection{Definición}
 
+                Se utiliza generalmente para representar una distribución del tiempo
+                que transcurre antes de la ocurrencia de un suceso.
+
+
+                % ======================================================
+                % =========    VARIABLE ALEATORIA       ================
+                % ======================================================
+                \vspace{1em}
+                \subsubsection{Variable Aleatoria}
+
+                    Ahora, los valores posibles que puede tomar nuestra variable aleatoria es
+                    $x > 0$
+
+                    Solemos entonces escribir esta distribución como:
+                    \begin{equation*}
+                        X \sim \Gamma(x; a, \beta)
+                    \end{equation*}
+
+                    donde:
+                    \begin{itemize}
+                        \item $a$: Entero positivo
+                        \item $\beta$: Es un párametro que tiene que ser un entero positivo
+                    \end{itemize}
+      
+            % ==============================================================
+            % ==========     FUNCIÓN PROBABILIDAD          =================
+            % ==============================================================
+            \clearpage
+            \subsection{Función Probabilidad}
+
+                Esto es lo que distingue a una distribución uniforme:
+                \begin{equation*}
+                    f_X(x) = 
+                        \begin{cases}
+                            \dfrac{\beta^x}{\Gamma(x)} \; x^{a - 1} \MegaSpace & x > 0           \\
+                            0                                       \MegaSpace & x \leq 0
+                        \end{cases}
+                \end{equation*}
 
 
 
