@@ -2607,7 +2607,7 @@
                 \begin{align*}
                     F_X(x) 
                         = P(X \leq x)              
-                        = e{-\lambda}\sum_{i = 0}^x \dfrac{\lambda^i}{i!}
+                        = e^{-\lambda}\sum_{i = 0}^x \dfrac{\lambda^i}{i!}
                 \end{align*}
 
                 % ======== DEMOSTRACION ========
@@ -3360,8 +3360,6 @@
             \subsection{Propiedades}
 
                 \begin{itemize}
-                    
-
                     \item 
                         Podemos decir que esta distribución no tiene memoria, me explico
                         mejor.
@@ -3403,6 +3401,34 @@
 
                             Es decir se parece muchísimo a una Exponencial con una beta igual a
                             $\beta = n \beta$
+                        
+                        \end{SmallIndentation}
+
+
+                    \item 
+                        Sea $X_1, X_2, \dots, X_\alpha$ variables aleatorias independientes
+                        y $X_i \sim E(x_i; \beta)$ 
+
+                        Entonces $X = X_1 + X_2 + \dots + X_\alpha$ se distruye como
+                        como $X \sim \Gamma(x_i; \alpha, \beta)$
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+
+                            Nota que:
+                            \begin{align*}
+                                \Psi_{X_i}(t) = \dfrac{\beta}{\beta - t}
+                            \end{align*}
+
+                            Entonces tenemos que:
+                            \begin{align*}
+                                \Psi_{X}(t) 
+                                    &= \prod_{i=1}^\alpha \dfrac{\beta}{\beta - t}      \\
+                                    &= \Wrap{\dfrac{\beta}{\beta - t}}^\alpha     
+                            \end{align*}
+
+                            Es decir, es una función generadora de la gamma, y ya :v
                         
                         \end{SmallIndentation}
 
@@ -3548,6 +3574,223 @@
                             0                                       \MegaSpace & x \leq 0
                         \end{cases}
                 \end{equation*}
+
+
+            % ==============================================================
+            % ==========     FUNCIÓN ACUMULADA             =================
+            % ==============================================================
+            \subsection{Función Acumulada}
+
+                Esta esta rara, pero ve que.
+                \begin{align*}
+                    F_X(x) = 1 - F_X^P (\alpha - 1) \MegaSpace \text{Con $\lambda = \beta x$}
+                \end{align*}
+
+                Es decir:
+                \begin{align*}
+                    F_X(x) = 1 - e^{-\beta x} \sum_{i = 0}^{\alpha - 1} \frac{(\beta x)^i}{i!}
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Esta esta bien genial:
+                    Primero veamos que lo que queremos sacar es:
+                    \begin{align*}
+                        P(X \geq x) = \frac{\beta^\alpha}{\Gamma(x)} 
+                                            \int_x^\infty x^{\alpha-1} e^{-\beta x} dx     \\
+                    \end{align*}
+
+                    Ahora hay que notar al patrón que sale de hacer por partes:
+                    \begin{align*}
+                         P(X \geq x) 
+                            &= \frac{\beta^\alpha}{\Gamma(x)} 
+                                            \int_x^\infty x^{\alpha-1} e^{-\beta x} dx     \\
+                            &= 
+                                \dfrac{(\beta x)^{\alpha -1}}{\Gamma(\alpha - 1)!}e^{-\beta x}
+                                +
+                                \dfrac{(\beta x)^{\alpha -2}}{\Gamma(\alpha - 2)!}e^{-\beta x}
+                                +
+                                \dfrac{(\beta x)^{\alpha -3}}{\Gamma(\alpha - 3)!}e^{-\beta x}
+                                + \dots
+                    \end{align*}
+
+                    Ahora ve que $\alpha$ es un entero positivo 
+
+                    Por lo tanto tenemos que:
+                    \begin{align*}
+                        P(X \geq x) 
+                            &= \sum_{i = 0}^\alpha - 1 \dfrac{(\beta x)^i}{\Gamma(i)!}e^{-\beta x}
+                    \end{align*}
+
+                    Nota que esto no es más que una Poisson, más explicitamente tenemos que:
+                    \begin{align*}
+                        \sum_{i = 0}^\alpha - 1 \dfrac{(\beta x)^i}{\Gamma(i)!}e^{-\beta x}
+                            = F_{X}^P (\alpha - 1)
+                    \end{align*}
+
+                    Entonces nos damos cuenta al final que:
+                    \begin{align*}
+                        F_X(x) = 1 - P(X \geq x) = 1 - F_{X}^P (\alpha - 1)
+                    \end{align*}
+                    
+                    Donde tenemos que $\alpha = \beta x$
+
+                
+                \end{SmallIndentation}
+                
+
+
+            % ==============================================================
+            % ==========     GENERADORA DE MOMENTOS        =================
+            % ==============================================================
+            \clearpage
+            \subsection{Generadora de Momentos}
+
+                Esto es lo que distingue a una distribución uniforme:
+                \begin{equation*}
+                    \Psi_X(t) = \pfrac{\beta}{\beta - t}^\alpha
+                \end{equation*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    \begin{align*}
+                        \Psi_X(t)
+                            &= E(e^{tX})        \\
+                            &= \frac{\beta^n}{\Gamma^n} \int_{-\infty}^\infty e^{tx} x^{\alpha-1} e^{-\beta x} dx   \\
+                            &= \frac{\beta^n}{\Gamma^n} \int_{-\infty}^\infty e^{-x(\beta - t)} x^{\alpha-1} dx     \\
+                    \end{align*}
+
+                    Ahora vemos que:
+                    $x = \frac{u}{\beta - t}$ 
+                            $u = [\beta - t]x$ $\to$ $du = [\beta - t]dx$ $to$ $dx = \frac{du}{\beta - t}$  
+
+                    Ahora vemos que:
+                    \begin{align*}
+                        \Psi_X(t)
+                            &= \frac{\beta^n}{\Gamma^n} \int_{-\infty}^\infty 
+                                \Brackets{\frac{u}{b- t}}^{\alpha - 1} e^{-u} \frac{du}{\beta - t}                  \\
+                            &= \frac{\beta^\alpha}{(\beta -t)^\alpha \Gamma(\alpha)} 
+                                \int_0^\infty u^{\alpha - 1}e^{-u}                                                  \\
+                            &= \frac{\beta^\alpha}{(\beta -t)^\alpha}                                               \\
+                            &= \pfrac{\beta}{\beta - t}^\alpha
+                    \end{align*}
+
+                \end{SmallIndentation}
+
+
+            % ==============================================================
+            % ==========                ESPERANZA          =================
+            % ==============================================================
+            \clearpage
+            \subsection{Esperanza}
+
+                Usando la función generadora tenemos que:
+                \begin{equation*}
+                    E(X) = \dfrac{\alpha}{\beta}
+                \end{equation*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    \begin{align*}
+                        E(X)
+                            &= \Psi_X'(0)                                                                           \\
+                            &= \MiniDerivate{t} \Brackets{\dfrac{\beta}{\beta - t}}^\alpha \Evaluate_{t = 0}        \\
+                            &= \beta^\alpha \MiniDerivate{t} \Wrap{\beta - t}^{-\alpha} \Evaluate_{t = 0}           \\
+                            &= \beta^\alpha \alpha(\beta - t)^{-\alpha - 1} \Evaluate_{t = 0}                       \\
+                            &= \beta^\alpha \alpha \beta^{-\alpha - 1}                                              \\
+                            &= \dfrac{\alpha}{\beta}
+                    \end{align*}
+                
+                \end{SmallIndentation}
+
+
+
+            % ==============================================================
+            % ==========                VARIANZA           =================
+            % ==============================================================
+            \subsection{Varianza}
+
+                Usando la función generadora tenemos que:
+                \begin{equation*}
+                    E(X) = \dfrac{\alpha}{\beta^2}
+                \end{equation*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    \begin{align*}
+                        E(X^2)
+                            &= \Psi_X'(0)               \\
+                            &=  \beta^\alpha \alpha 
+                                    \MiniDerivate{t} [\beta - t]^{-\alpha -1} \Evaluate_{t = 0}         \\
+                            &= \beta^\alpha \alpha (-\alpha -1) 
+                                    \MiniDerivate{t} [\beta - t]^{-\alpha -2}(-1) \Evaluate_{t = 0}     \\
+                            &= \beta^\alpha \alpha (\alpha+1) 
+                                    \MiniDerivate{t} [\beta - t]^{-\alpha -2} \Evaluate_{t = 0}         \\
+                            &= \beta^\alpha \alpha (\alpha+1) 
+                                    \beta^{-2}                                                          \\
+                            &= \dfrac{\alpha(\alpha + 1)}{\beta^2}
+                    \end{align*}
+
+                    Por lo tanto finalmente tenemos que:
+                    \begin{align*}
+                        v(X)
+                            &= E(X^2) - E(X)^2                                                                \\
+                            &= \dfrac{\alpha(\alpha + 1)}{\beta^2} - \Wrap{\dfrac{\alpha}{\beta}}             \\
+                            &= \dfrac{\alpha}{\beta^2}
+                    \end{align*}
+                
+                \end{SmallIndentation}
+
+
+
+            % ==============================================================
+            % ====                  PROPIEDADES                 ============
+            % ==============================================================
+            \clearpage
+            \subsection{Propiedades}
+
+                \begin{itemize}
+
+                    \item 
+                        Sea $X_1, X_2, \dots, X_k$ variables aleatorias independientes
+                        y $X_i \sim \Gamma(x_i; \alpha_i, \beta)$ 
+
+                        Entonces $X = X_1 + X_2 + \dots + X_k$ se distruye como
+                        como $X \sim \Gamma(x_i; \sum_{i=1}^k \alpha, \beta)$
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+
+                            Nota que:
+                            \begin{align*}
+                                \Psi_{X_i}(t) = \Wrap{\dfrac{\beta}{\beta - t}}^\alpha
+                            \end{align*}
+
+                            Entonces tenemos que:
+                            \begin{align*}
+                                \Psi_{X}(t) 
+                                    &= \prod_{i=1}^k \Wrap{\dfrac{\beta}{\beta - t}}^\alpha      \\
+                                    &= \Wrap{\dfrac{\beta}{\beta - t}}^{\sum_{i=1}^k \alpha_i }     
+                            \end{align*}
+
+                            Es decir, es una función generadora de la gamma, y ya :v
+                        
+                        \end{SmallIndentation}
+
+                \end{itemize}
+ 
+
+                    
+                    
 
 
 
