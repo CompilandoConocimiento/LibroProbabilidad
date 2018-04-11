@@ -3789,9 +3789,261 @@
                 \end{itemize}
  
 
+        % ==============================================================
+        % ==========               NORMAL                   ============
+        % ==============================================================
+        \clearpage
+        \section{Normal}            
                     
+ 
+            % ==============================================================
+            % ==============          DEFINICION           =================
+            % ==============================================================
+            \subsection{Definición}
+
+                Es la más famosa de todas las continuas, es simetrica con respecto al valor
+                central $\mu$
+
+
+                % ======================================================
+                % =========    VARIABLE ALEATORIA       ================
+                % ======================================================
+                \vspace{1em}
+                \subsubsection{Variable Aleatoria}
+
+                    Ahora, los valores posibles que puede tomar nuestra variable aleatoria
+                    son todos los reales
+
+                    Solemos entonces escribir esta distribución como:
+                    \begin{equation*}
+                        X \sim N(x; \mu, \sigma^2)
+                    \end{equation*}
+
+                    donde:
+                    \begin{itemize}
+                        \item $\mu$: El valor central, es cualquier real
+                        \item $\sigma^2$:La varianza, es un real positivo
+                    \end{itemize}
+
+                    Nota que si pasa que $X \sim N(x; \mu = 0, \sigma^2 = 1)$
+                    entonces se suele denotar como:
+                    \\$Z \sim N(0, 1)$ 
+
+                    Se le conoce como normal estandar.
+
+            % ==============================================================
+            % ==============       ESTANDARIZACION         =================
+            % ==============================================================
+            \subsection{Estandarización}  
+
+                Ya que tenemos una normal estandar, es decir una que cumple que $\mu = 0$,
+                $\sigma^2 = 1$
+
+                Ahora, hay una forma muy facil de \Quote{estandarizar} es decir
+                de transformar cualquier punto sobre una normal a ese punto en la estandar
+                esta esta dada por:
+                \begin{align*}
+                    Z = \dfrac{X - \mu}{\sigma}
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Lo que hacemos es primero sacar la distancia al punto central, una vez que lo tengamos
+                    lo que hacemos es dividir entre la desviación estandar porque es una nueva escala
+                    una que nunca cambia.
+                
+                \end{SmallIndentation}
                     
 
+                Y obviamente tiene su inversa:
+                \begin{align*}
+                    X = Z\sigma  + \mu
+                \end{align*}
+
+
+            % ==============================================================
+            % ==========     FUNCIÓN PROBABILIDAD          =================
+            % ==============================================================
+            \clearpage
+            \subsection{Función Probabilidad}
+
+                Esto es lo que distingue a una distribución uniforme:
+                \begin{equation*}
+                    f_X(x) = \dfrac{1}{\sigma \sqrt{2\pi}} \; e^{-\dfrac{1}{2}\pfrac{x - \mu}{\sigma}^2 }
+                \end{equation*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración que es una función de Probabilidad}:
+                    
+                    Supon que $I = \int_{-\infty}^\infty f_X(x) dx$, por lo tanto basta con hacer
+                    demostrar que $I^2 = 1$.
+
+                    Primero haremos el cambio de variable a $u = \dfrac{x - \mu}{\sigma}$
+                    y $du = \dfrac{dx}{\sigma}$, es decir, vamos a mejor resolver la estandar:
+                    \begin{align*}
+                        I
+                            = \int_{-\infty}^\infty 
+                                    \dfrac{1}{\sigma \sqrt{2\pi}} 
+                                        e^{-\dfrac{1}{2}u^2 } du
+                    \end{align*}
+
+                    Entonces decimos ahora que:
+                    \begin{align}
+                        I^2
+                            &= \dfrac{1}{2\pi} \Wrap{\int_{-\infty}^\infty e^{\dfrac{1}{2}u^2} du}^2    \\
+                            &= \dfrac{1}{2\pi} 
+                                \int_{-\infty}^\infty 
+                                    \int_{-\infty}^\infty e^{-\dfrac{1}{2}(u^2 + v^2)} du dv 
+                    \end{align}
+
+                    Ahora simplemente cambiamos a coordenada polares:
+                    \begin{align}
+                        I^2
+                            &= \dfrac{1}{2\pi} 
+                                \int_{-\infty}^\infty 
+                                    \int_{-\infty}^\infty e^{\dfrac{1}{2}(u^2 + v^2)} du dv             \\
+                            &= \dfrac{1}{2\pi} 
+                                \int_0^{2\pi}
+                                    \int_0^\infty e^{-\dfrac{r^2}{2}} r dr d\theta                      \\
+                            &= \dfrac{1}{2\pi} 
+                                \int_0^{2\pi}
+                                    \Brackets{-e^{-\dfrac{r^2}{2}} \Evaluate_0^\pi } d\theta            \\
+                            &= \dfrac{1}{2\pi} \int_0^{2\pi} d\theta                                    \\
+                            &= \dfrac{1}{2\pi} \theta \Evaluate_0^{2\pi}                                \\
+                            &= 1
+                    \end{align}
+
+                \end{SmallIndentation}
+                    
+
+            % ==============================================================
+            % ==========     GENERADORA DE MOMENTOS        =================
+            % ==============================================================
+            \clearpage
+            \subsection{Generadora de Momentos}
+
+                Esta es sencilla:
+                \begin{align*}
+                    \Psi_X(t) = e^{t\mu + \dfrac{1}{2}(t^2\sigma^2)}
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Hagamos la definición:
+                    \begin{align*}
+                        \Psi_X(t) 
+                            &= \int_{-\infty}^\infty e^{tx} f_x dx                                  
+                                && \Remember{Por definición}                                        \\
+                            &= \int_{-\infty}^\infty e^{tx} 
+                                    \dfrac{1}{\sigma \sqrt{2\pi}} \; 
+                                        e^{-\frac{1}{2}\pfrac{x - \mu}{\sigma}^2} dx               
+                                && \Remember{Definición igual :v}                                   \\
+                            &= \dfrac{1}{\sqrt{2\pi}}
+                                    \int_{-\infty}^\infty 
+                                        e^{t(\mu + \sigma u) - \frac{1}{2}u^2} du
+                                && \Remember{La hacemos estandar 
+                                    $u=\dfrac{x-\mu}{\sigma}$ y $du=\dfrac{dx}{\sigma}$}            \\
+                            &= \dfrac{1}{\sqrt{2\pi}}
+                                    \int_{-\infty}^\infty 
+                                        e^{t\mu}
+                                        e^{-\frac{1}{2} \Wrap{u^2 -2t\sigma u}^2} du
+                                && \Remember{Ponemos bonito}                                        \\
+                            &= \dfrac{e^{t\mu}}{\sqrt{2\pi}}
+                                    \int_{-\infty}^\infty 
+                                        e^{-\frac{1}{2} 
+                                            \Wrap{u^2 -2t\sigma u + (t^2\sigma^2) - (t^2\sigma^2)}^2
+                                        } du
+                                && \Remember{Ponemos bonito}                                        \\
+                            &= \dfrac{e^{t\mu + \frac{1}{2}(t^2\sigma^2)}}{\sqrt{2\pi}}
+                                    \int_{-\infty}^\infty 
+                                        e^{-\frac{1}{2} 
+                                            \Wrap{u^2 -2t\sigma u + (t^2\sigma^2)}^2
+                                        } du
+                                && \Remember{Completamos el cuadrado}                               \\
+                            &= \dfrac{e^{t\mu + \frac{1}{2}(t^2\sigma^2)}}{\sqrt{2\pi}}
+                                    \int_{-\infty}^\infty 
+                                        e^{-\frac{1}{2} \
+                                            \Wrap{z}^2
+                                        } dz
+                                && \Remember{$z = u - t\sigma$ $dz=du$}                             \\
+                            &= e^{t\mu + \frac{1}{2}(t^2\sigma^2)}
+                                \int_{-\infty}^\infty 
+                                    {\sqrt{2\pi}}
+                                        e^{-\frac{1}{2} \
+                                            \Wrap{z}^2
+                                        } dz
+                                && \Remember{Acomodo para hacer una normal estandar}                \\
+                            &= e^{t\mu + \frac{1}{2}(t^2\sigma^2)}
+                                && \Remember{Recuerda que por ser función de probabilidad}
+                    \end{align*}
+                
+                \end{SmallIndentation}
+
+
+            % ==============================================================
+            % ==========               MEDIA               =================
+            % ==============================================================
+            \clearpage
+            \subsection{Media}
+
+                Mira, que loco :v
+                \begin{align*}
+                    E(X) = \mu
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Mira, que bonito es todo:
+                    \begin{align*}
+                        E(X)
+                            &= \Psi_X(0)'                                           \\
+                            &= e^{t\mu + \frac{1}{2}(t^2\sigma^2)} 
+                                \Brackets{\mu + \frac{2t\sigma^2}{2}} \Evaluate_0   \\
+                            &= e^0 (\mu)                                            \\
+                            &= \mu
+                    \end{align*}
+                
+                \end{SmallIndentation}
+                    
+                    
+            % ==============================================================
+            % ==========               VARIANZA            =================
+            % ==============================================================
+            \vspace{1em}
+            \subsection{Varianza}
+
+                Mira, que loco :v
+                \begin{align*}
+                    v(X) = \sigma^2
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Mira, que bonito es todo:
+                    \begin{align*}
+                        v(X)
+                            &= E(X^2) - \mu^2                                       \\
+                            &= \Psi_X(0)'' - \mu^2                                  \\
+                            &= \mu^2 + \sigma^2 - \mu^2                             \\
+                            &= \sigma^2
+                    \end{align*}
+                
+                \end{SmallIndentation}
+
+                
+
+
+
+      
 
 
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
