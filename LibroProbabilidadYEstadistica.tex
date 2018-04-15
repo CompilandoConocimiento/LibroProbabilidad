@@ -1681,16 +1681,6 @@
                     \end{itemize}
 
 
-                % ======================================================
-                % =======         UNIFORME DISCRETA     ================
-                % ======================================================
-                \vspace{1em}
-                \subsection{Uniforme Discreta}
-                    \begin{figure}[h]
-                        \includegraphics[width=0.37\textwidth]{UniformeDiscreta}
-                    \end{figure}
-
-
 
             % ==============================================================
             % ==========     FUNCIÓN PROBABILIDAD          =================
@@ -1717,7 +1707,7 @@
                             \end{cases}
                     \end{align*}
 
-                    Podemos extender esta idea de muchas maneras a una expresión
+                    Podemos extender esta idea de muchas maneras a una expresión,
                     la que damos es solo una de ellas.
                 
                 \end{SmallIndentation}
@@ -1836,9 +1826,10 @@
             \subsection{Definición}
 
                 Un experimento binomial consiste en $n$ ensayos Bernoulli
-                independientes, con una probabilidad de exito individual constante.
+                independientes, con una probabilidad de exito individual constante e igual en 
+                todos los experimentos
 
-                La variable aleatoria discreta es el número de exitos de los experimentos individuales
+                La variable aleatoria discreta nos medirá el número de exitos de los experimentos individuales,
                 donde sus posibles valores fueron $X = \Set{0, 1, \dots, n}$.
 
                 Observa que la variable aleatoria se puede ver como la suma de Bernoullis independientes,
@@ -1868,6 +1859,33 @@
                         \item $x$: Nuestra variable
                         \item $p$: Probabilidad de Exito de cada experimiento Bernoulli
                     \end{itemize}
+
+
+                % ======================================================
+                % =========    DEFINICION ALTERNA       ================
+                % ======================================================
+                \vspace{1em}
+                \subsubsection{Definición Alterna}
+
+                    Sea $X_i$ variables aleatorias de Bernoulli, tal que esten
+                    definidas por: 
+                    \begin{align*}
+                        X_i = 
+                            \begin{cases}
+                                1 & \text{Si el i ésimo experimento fue exitoso}        \\
+                                0 & \text{Si el i ésimo experimento fue un fallo}       \\
+                            \end{cases}
+                            \Space
+                            \forall i \in [1, 2, \dots, n]
+                    \end{align*}
+
+                    Nota que cada $X_i$ es independiente
+
+                    Entonces podemos ver a una Binomial como suma de Bernoulli INDEPENDIENTES es decir:
+                    \begin{align*}
+                        X = X_1 + X_2 + \dots + X_n
+                    \end{align*}
+
 
 
             % ==============================================================
@@ -1911,39 +1929,7 @@
                         Literalmente es la definición.
                     
                     \end{SmallIndentation}
-                   
-            % ==============================================================
-            % =========   FUNCION GENERADORA DE MOMENTOS        ============
-            % ==============================================================
-            \clearpage
-            \subsection{Función Generadora}  
 
-                Por definición tenemos que:
-                \begin{align*}
-                    \Psi (t) = \Wrap{q + e^tp}^n   
-                \end{align*}
-
-                % ======== DEMOSTRACION ========
-                \begin{SmallIndentation}[1em]
-                    \textbf{Demostración}:
-                    
-                    Espera, espera, me explico mejor, lo que pasa es la binomial se puede ver
-                    como una suma de variables independientes entonces solo basta con recordar
-                    que ya demostramos que la función generadora de momentos de una suma
-                    de variables independientes es el producto de la función generadora
-                    de momentos de cada una.
-
-                    Es decir:
-                    \begin{align*}
-                        \Psi_X (t) 
-                            &= \prod_{i = 1}^n \Psi_{X_i} (t)   \\
-                            &= \prod_{i = 1}^n \Psi_{X_i} (t)   \\
-                            &= \prod_{i = 1}^n q + e^t p        \\
-                            &= \Wrap{q + e^tp}^n                  
-                    \end{align*} 
-
-                \end{SmallIndentation}
-                    
             % ==============================================================
             % =========          FUNCION ESPERANZA              ============
             % ==============================================================
@@ -1978,7 +1964,7 @@
             % ==============================================================
             % =========          FUNCION VARIANZA               ============
             % ==============================================================
-            \vspace{1em}
+            \clearpage
             \subsection{Varianza}
 
                 Esta es bonita también:
@@ -2001,6 +1987,40 @@
                     \end{align*}
                 
                 \end{SmallIndentation}
+                   
+            % ==============================================================
+            % =========   FUNCION GENERADORA DE MOMENTOS        ============
+            % ==============================================================
+            \vspace{1em}
+            \subsection{Función Generadora}  
+
+                Por definición tenemos que:
+                \begin{align*}
+                    \Psi (t) = \Wrap{q + e^tp}^n   
+                \end{align*}
+
+                % ======== DEMOSTRACION ========
+                \begin{SmallIndentation}[1em]
+                    \textbf{Demostración}:
+                    
+                    Espera, espera, me explico mejor, lo que pasa es la binomial se puede ver
+                    como una suma de variables independientes entonces solo basta con recordar
+                    que ya demostramos que la función generadora de momentos de una suma
+                    de variables independientes es el producto de la función generadora
+                    de momentos de cada una.
+
+                    Es decir:
+                    \begin{align*}
+                        \Psi_X (t) 
+                            &= \Psi_{\sum_{i=1}^n X_i} (t)      \\
+                            &= \prod_{i = 1}^n \Psi_{X_i} (t)   \\
+                            &= \prod_{i = 1}^n q + e^t p        \\
+                            &= \Wrap{q + e^tp}^n                  
+                    \end{align*} 
+
+                \end{SmallIndentation}
+                    
+            
                     
                     
             % ==============================================================
@@ -2056,8 +2076,8 @@
                 con una probabilidad de exito constante de $p$ hasta obtener el primer
                 exito.
 
-                La variable discreta es el número de experimentos hasta un primer exito
-                donde sus posibles valores fueron $X = \Set{1, 2, 3, \dots}$.
+                La variable discreta es el número de experimentos hasta un primer exito,
+                donde sus posibles valores son $X = \Set{1, 2, 3, \dots}$.
 
 
                 % ======================================================
@@ -2151,7 +2171,6 @@
                             &= \sum_{x=1}^\infty xP(X = x)                          \\
                             &= \sum_{x=1}^\infty x q^{x - 1}p                       \\
                             &= p\sum_{x=1}^\infty x q^{x - 1}                       \\
-                            &= p \MiniDerivate \sum_{x=1}^\infty x q^{x - 1}        \\
                             &= p \MiniDerivate \sum_{x=1}^\infty q^x                \\
                             &= p \MiniDerivate \frac{1}{1 - q}                      \\
                             &= p \frac{1}{(1- q)^2}                                 \\
@@ -2226,12 +2245,12 @@
             % ====                  PROPIEDADES                 ============
             % ==============================================================
             \clearpage
-            \subsubsection{Propiedades}
+            \subsection{Propiedades}
 
                 \begin{itemize}
                     
                     \item 
-                        Sea $P(X > a) = q^a$ con $a$ un natural positivo
+                        Sea $X \sim G(x; p)$ entonces tenemos que $P(X > a) = q^a$ con $a$ un natural positivo
 
                         % ======== DEMOSTRACION ========
                         \begin{SmallIndentation}[1em]
@@ -2250,10 +2269,14 @@
                         \end{SmallIndentation}
 
                     \item 
-                        Podemos decir que esta distribución no tiene memoria, me explico
-                        mejor.
+                        Podemos decir que esta distribución no tiene memoria es decir que ya voy $a$ experimentos
+                        y no ha pasado nada entonces, debería ya ser mas probable que para $a + b$ ya me tocará,
+                        me explico mejor ... ¿No? ¡Pues no!
 
-                        Sea $P(X > a + b \Such X > a) = P(X > b)$ con $a, b$ un naturales positivos
+                        Espera, me explico mejor:
+
+                        Sea $X \sim G(x; p)$ entonces $P(X > a + b \Such X > a) = P(X > b)$ 
+                        con $a, b$ un naturales positivos
 
                         % ======== DEMOSTRACION ========
                         \begin{SmallIndentation}[1em]
@@ -2345,17 +2368,42 @@
 
                     Solemos entonces escribir esta distribución como:
                     \begin{equation*}
-                        X \sim H(x; n, r_1, r_2)
+                        X \sim H(x; r_1, r_2, n)
                     \end{equation*}
 
                     donde:
                     \begin{itemize}
                         \item $x$: Nuestra variable
-                        \item $n$: Tamaño de la muestra
-                        \item $r$: Tamaño de TODA la población
                         \item $r_1$: Tamaño de nuestra población de interes
                         \item $r_2$: Tamaño de la población que no es de interes, sale de $r_2 = r - r_1$
+                        \item $n$: Tamaño de la muestra
                     \end{itemize}
+
+
+                % ======================================================
+                % =========    DEFINICION ALTERNA       ================
+                % ======================================================
+                \vspace{1em}
+                \subsubsection{Definición Alterna}
+
+                    Sea $X_i$ variables aleatorias de Bernoulli, tal que esten
+                    definidas por: 
+                    \begin{align*}
+                        X_i = 
+                            \begin{cases}
+                                1 & \text{Al sacar el elemento i-esímo fue de tipo $r_1$}        \\
+                                0 & \text{Al sacar el elemento i-esímo NO fue de tipo $r_1$}     \\
+                            \end{cases}
+                            \Space
+                            \forall i \in [1, 2, \dots, n]
+                    \end{align*}
+
+                    Entonces podemos ver a una hipergeométrica como:
+                    \begin{align*}
+                        X = X_1 + X_2 + \dots + X_n
+                    \end{align*}
+
+                    Lo importante aquí es que como cada una de ellas no son independientes
 
 
             % ==============================================================
@@ -2394,7 +2442,7 @@
                     F_X(x) 
                         = P(X \leq x)              
                         = \dfrac{
-                                \sum_{i = max (0, n - r_2)}^x                
+                                \displaystyle \sum_{i = max (0, n - r_2)}^x                
                                 \binom{r_1}{i} \binom{r_2}{n - i}
                             }
                             {\binom{r}{n}}                      
@@ -2433,8 +2481,8 @@
                     \begin{align*}
                         X_i = 
                             \begin{cases}
-                                1 & \text{Si $X_i$ es de tipo $r_1$}        \\
-                                0 & \text{Si $X_i$ no es de tipo $r_1$}
+                                1 & \text{Al sacar el elemento i-esímo fue de tipo $r_1$}        \\
+                                0 & \text{Al sacar el elemento i-esímo NO fue de tipo $r_1$}     \\
                             \end{cases}
                     \end{align*}
 
@@ -4038,6 +4086,90 @@
                     \end{align*}
                 
                 \end{SmallIndentation}
+
+
+            % ==============================================================
+            % ====                  PROPIEDADES                 ============
+            % ==============================================================
+            \clearpage
+            \subsection{Propiedades}
+
+                \begin{itemize}
+
+                    \item 
+                        Sea $X_1, X_2, \dots, X_k$ variables aleatorias independientes
+                        y $X_i \sim N(x_i; \mu_i, \sigma_i^2)$  
+
+                        Entonces $X = X_1 + X_2 + \dots + X_k$ se distruye como
+                        como $X \sim N(x_i; \sum_{i=1}^k \mu_i, \sum_{i=1}^k \sigma_i^2)$
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            
+                            Empecemos por ver que $X_i \sim N(x; \mu_i, \sigma^2_i)$
+                            Es decir $\Psi_{X_i}(t) = e^{t\mu_i + \dfrac{1}{2}(t^2\sigma^2_i)}$
+                            entonces vemos que:
+                            \begin{align*}
+                                \Psi_X(t)
+                                    &= \Psi_{\sum_{i=0}^n X_i} (t)                                                          \\
+                                    &= \prod_{i=1}^n \Psi_{X_i} (t)                                                         \\
+                                    &= e^{\sum_{i=1}^n t\mu_i + \dfrac{1}{2}(t^2\sigma^2_i)}                                \\    
+                                    &= e^{t\Wrap{ \sum_{i=1}^n \mu_i} + \dfrac{1}{2}(t^2\Wrap{\sum_{i=1}^n \sigma^2_i})} 
+                            \end{align*}
+
+                            Por lo tanto como puedes ver tiene una media de $\mu_X = \sum_{i=1}^n \mu_i$
+                            y una varianza de $\sigma^2_X = \sum_{i=1}^n \sigma^2_i$
+
+                        \end{SmallIndentation}
+                            
+
+
+                    \item 
+                        Sea $X_i \sim N(x_i; \mu, \sigma^2)$  
+
+                        Entonces $Y = aX + b$ se distruye como
+                        como $Y \sim N(x_i; a\mu + b, a\sigma_i^2)$
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            
+                            Empecemos por ver que $X \sim N(x; \mu, \sigma^2)$
+                            entonces vemos que:
+                            \begin{align*}
+                                \Psi_Y(t)
+                                    &= E(e^{tY})                                            \\
+                                    &= E(e^{t(aX + b)})                                     \\
+                                    &= e^{tb} E(e^{taX})                                    \\
+                                    &= e^{tb} \Psi_X(at)                                    \\
+                                    &= e^{tb} e^{at\mu + \frac{1}{2} a^2 t^2 \sigma^2}      \\
+                                    &= e^{t(b + a\mu) + \frac{1}{2} a^2 t^2 \sigma^2}      
+                            \end{align*}
+
+                            Por lo tanto como puedes ver tiene una media de $\mu_Y = a\mu + b$
+                            y una varianza de $\sigma^2_Y = a^2 \sigma^2$
+                        
+                        \end{SmallIndentation}
+                            
+
+                    \item 
+                        Sea $X_1, X_2, \dots, X_k$ variables aleatorias independientes
+                        y $X_i \sim N(x_i; \mu, \sigma^2)$  
+
+                        Entonces $\Over{X} = \frac{1}{n} \sum_{i=1}^n X_i$ se distruye como
+                        como $\Over{X} \sim N(\Over{x_i}; \mu, \sum_{i=1}^k \frac{\sigma_i^2}{n})$
+
+                        % ======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            
+                            Colorario jovén, es un colorario :v
+                        
+                        \end{SmallIndentation}
+                            
+
+                \end{itemize}
 
                 
 
