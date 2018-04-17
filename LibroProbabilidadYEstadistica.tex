@@ -2441,11 +2441,9 @@
                 \begin{align*}
                     F_X(x) 
                         = P(X \leq x)              
-                        = \dfrac{
-                                \displaystyle \sum_{i = max (0, n - r_2)}^x                
+                        = \dfrac{1}{\binom{r}{n}}
+                            \displaystyle \sum_{i = max (0, n - r_2)}^x                
                                 \binom{r_1}{i} \binom{r_2}{n - i}
-                            }
-                            {\binom{r}{n}}                      
                 \end{align*}
 
                 % ======== DEMOSTRACION ========
@@ -2596,9 +2594,6 @@
                 el reemplazo y sin reemplazo cada vez será menor.
 
 
-
-
-
         % ==============================================================
         % ==========             POISSON                    ============
         % ==============================================================
@@ -2713,7 +2708,7 @@
                 \begin{SmallIndentation}[1em]
                     \textbf{Demostración}:
                     
-                    Esta sale o bien por definición o usando la generadora de momentos y dicieno que:
+                    Esta sale o bien por definición o usando la generadora de momentos y diciendo que:
                     \begin{align*}
                         \Psi(t = 0)'
                             &= e^{\lambda(e^t - 1)} \lambda(e^t) \Evaluate_{t = 0}      \\
@@ -2804,7 +2799,7 @@
             % ====                  PROPIEDADES                 ============
             % ==============================================================
             \clearpage
-            \subsubsection{Propiedades}
+            \subsection{Propiedades}
 
                 \begin{itemize}
                     
@@ -3345,7 +3340,7 @@
 
                 Esta esta muy interesante:
                 \begin{align*}
-                    E(X) = \frac{1}{B}                    
+                    E(X) = \frac{1}{\beta}                    
                 \end{align*}
 
                 % ======== DEMOSTRACION ========
@@ -3355,11 +3350,11 @@
                     Esta también sale bonita:
                     \begin{align*}
                         E(X)
-                            &= \Psi_X' (0)                                      \\
-                            &= \MiniDerivate{t} \frac{B}{B - t} \Evaluate_0     \\
-                            &= \frac{B}{(B - t)^2} \Evaluate_0                  \\
-                            &= \frac{B}{(B)^2}                                  \\
-                            &= \frac{1}{B}
+                            &= \Psi_X' (0)                                              \\
+                            &= \MiniDerivate{t} \frac{\beta}{\beta - t} \Evaluate_0     \\
+                            &= \frac{\beta}{(\beta - t)^2} \Evaluate_0                  \\
+                            &= \frac{\beta}{(\beta)^2}                                  \\
+                            &= \frac{1}{\beta}
                     \end{align*}
                     
                 \end{SmallIndentation}
@@ -3372,7 +3367,7 @@
 
                 Esta esta muy dificíl, pero si se puede:
                 \begin{align*}
-                    v(X) = \frac{1}{B^2}
+                    v(X) = \frac{1}{\beta^2}
                 \end{align*}
 
                 % ======== DEMOSTRACION ========
@@ -3381,19 +3376,19 @@
                     
                     \begin{align*}
                         E(X^2)
-                            &= \Psi_X'' (0)                                     \\
-                            &= \MiniDerivate \frac{B}{(B - t)^2} \Evaluate_0    \\
-                            &= \frac{2B}{(B - t)^3} \Evaluate_0                 \\
-                            &= \frac{2B}{(B)^3}                                  \\
-                            &= \frac{2}{B^2}
+                            &= \Psi_X'' (0)                                             \\
+                            &= \MiniDerivate \frac{\beta}{(\beta - t)^2} \Evaluate_0    \\
+                            &= \frac{2\beta}{(\beta - t)^3} \Evaluate_0                 \\
+                            &= \frac{2\beta}{(\beta)^3}                                 \\
+                            &= \frac{2}{\beta^2}
                     \end{align*}
 
                     Entonces la varianza sale rapido:
                     \begin{align*}
                         v(X)
-                            &= E(X^2) - \mu_X^2                     \\
-                            &= \frac{2}{B^2} - \frac{1}{B^2}        \\
-                            &= \frac{1}{B^2}
+                            &= E(X^2) - \mu_X^2                                         \\
+                            &= \frac{2}{\beta^2} - \frac{1}{\beta^2}                    \\
+                            &= \frac{1}{\beta^2}
                     \end{align*}
                 
                 \end{SmallIndentation}
@@ -3618,7 +3613,7 @@
                 \begin{equation*}
                     f_X(x) = 
                         \begin{cases}
-                            \dfrac{\beta^x}{\Gamma(x)} \; x^{a - 1} \MegaSpace & x > 0           \\
+                            \dfrac{\beta^x}{\Gamma(a)} \; x^{a - 1} \MegaSpace & x > 0           \\
                             0                                       \MegaSpace & x \leq 0
                         \end{cases}
                 \end{equation*}
@@ -4175,6 +4170,31 @@
 
 
 
+
+
+    % ===============================================================================
+    % ===============       VARIABLES ALEATORIAS CONTINUAS     ======================
+    % ===============================================================================
+    \chapter{Probabilidad Hardcore}
+
+        % ==============================================================
+        % ========     TEOREMA CENTRAL DEL LIMITE         ==============
+        % ==============================================================
+        \vspace{1em}
+        \section{Teorema Central del Límite}
+
+            % ======================================================
+            % ===========          DEFINICIÓN       ================
+            % ======================================================
+            \subsection{Definición}
+
+                Garantiza que para $n$ (tamaño de muestra) suficientemente grande ($n \geq 30$)
+                entonces:
+
+                \begin{itemize}
+                    \item $\Over{X} \approx N(x; \mu = \mu, \sigma^2 = \dfrac{\sigma^2}{n})$
+                    \item $\sum_{i=0}^n X_i \approx N(x; \mu_x = n \mu, \sigma^2_x = n\sigma^2)$
+                \end{itemize}
       
 
 
