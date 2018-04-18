@@ -4195,7 +4195,30 @@
                     \item $\Over{X} \approx N(x; \mu = \mu, \sigma^2 = \dfrac{\sigma^2}{n})$
                     \item $\sum_{i=0}^n X_i \approx N(x; \mu_x = n \mu, \sigma^2_x = n\sigma^2)$
                 \end{itemize}
-      
+
+
+        % ==============================================================
+        % ========            TEOREMA DE CHEBYSHEU        ==============
+        % ==============================================================
+        \vspace{1em}
+        \section{Teorema Central de Chebyshue}
+
+            % ======================================================
+            % ===========          DEFINICIÓN       ================
+            % ======================================================
+            \subsection{Definición}
+
+                Si no se conoce la distribución de la variable aleatoria, pero por circunstancias
+                raras tenegamos la media y la varianza entonces podemos conocer información de
+                la variable.
+
+                
+                Tenemos que:
+                \begin{align*}
+                    P(\mu -k\sigma \leq X \leq \mu + k\sigma) &\geq 1 - \dfrac{1}{k^2}      \\   
+                    P(|X - \mu| \leq k\sigma) &\geq 1 - \dfrac{1}{k^2}                      \\   
+                    P(|X - \mu| > k\sigma) &< \dfrac{1}{k^2}     
+                \end{align*}      
 
 
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
