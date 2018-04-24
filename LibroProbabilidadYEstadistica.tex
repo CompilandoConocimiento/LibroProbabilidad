@@ -259,6 +259,9 @@
 
     \DeclareMathOperator \Evaluate  {\Big|}                         %Use: \Evaluate por Notation
 
+    % ====== INTEGRALS ============
+    \newcommand{\inftyInt} {\int_{-\infty}^{\infty}}                %Use: \inftyInt for simple integrants    
+
     % =========================================
     % ========    GENERAL STYLE     ===========
     % =========================================
@@ -4219,6 +4222,102 @@
                     P(|X - \mu| \leq k\sigma) &\geq 1 - \dfrac{1}{k^2}                      \\   
                     P(|X - \mu| > k\sigma) &< \dfrac{1}{k^2}     
                 \end{align*}      
+
+
+
+
+
+
+
+
+
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+% ///////////////////////       PROBABILIDAD CONJUNTA                ///////////////////////////////////////
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+\part{Probabilidades Conjuntas}
+\clearpage
+
+
+
+    % ===============================================================================
+    % ===============        PROBABILIDADES CONJUNTA           ======================
+    % ===============================================================================
+    \chapter{Probabilidades Conjuntas}
+
+
+        % ==============================================================
+        % ========               DEFINICION               ==============
+        % ==============================================================
+        \clearpage
+        \section{Definición}
+
+            La función de probabilidad conjunta de una variable bidimensional se peude ver de dos
+            maneras:
+
+            % =====================================================
+            % ========           DISCRETO            ==============
+            % =====================================================
+            \vspace{1em}
+            \subsection{Discreto}
+
+                La definimos como:
+                \begin{align*}
+                    f_{X, Y}(x, y) := P(X = x, Y = y)
+                \end{align*}
+
+                Y cumple con que:
+                \begin{itemize}
+                    \item $P(X = x, Y = y) \in [0, 1]$
+                    \item $\displaystyle \sum_y \sum_x P(X = x, Y = y) = 1$ 
+                \end{itemize}
+
+            % =====================================================
+            % ========           CONTINUO            ==============
+            % =====================================================
+            \vspace{1em}
+            \subsection{Continuo}
+
+                Es la función de dos variables que cumple que:
+                \begin{itemize}
+                    \item $f_{X, Y}(x, y)$ nunca es negativa
+                    \item $\displaystyle \inftyInt \inftyInt f_{X, Y}(x, y) \; dx \; dy = 1$ 
+                \end{itemize}
+                
+
+        % ==============================================================
+        % ========               FUNCION MARGINAL         ==============
+        % ==============================================================
+        \clearpage
+        \section{Función Marginal}
+
+            % =====================================================
+            % ========           DISCRETO            ==============
+            % =====================================================
+            \vspace{1em}
+            \subsection{Discreto}
+
+                La definimos de 2 maneras:
+                \begin{itemize}
+                    \item
+                        $\displaystyle f_X(x) := \sum_y P(X = x, Y = y)$ 
+                    \item
+                        $\displaystyle f_Y(y) := \sum_x P(X = x, Y = y)$ 
+                \end{itemize}
+
+
+            % =====================================================
+            % ========           CONTINUO            ==============
+            % =====================================================
+            \vspace{1em}
+            \subsection{Continuo}
+
+                \begin{itemize}
+                    \item
+                        $\displaystyle f_X(x) := \inftyInt f_{X, Y}(x, y) \; dy$ 
+                    \item
+                        $\displaystyle f_Y(y) := \inftyInt f_{X, Y}(x, y) \; dx$ 
+                \end{itemize}
+
 
 
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
