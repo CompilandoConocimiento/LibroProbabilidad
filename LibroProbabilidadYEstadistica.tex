@@ -4242,16 +4242,16 @@
     % ===============================================================================
     % ===============        PROBABILIDADES CONJUNTA           ======================
     % ===============================================================================
-    \chapter{Probabilidades Conjuntas}
+    \chapter{Variables A. Multidimensionales}
 
 
         % ==============================================================
         % ========               DEFINICION               ==============
         % ==============================================================
         \clearpage
-        \section{Definición}
+        \section{Función de Probabilidad}
 
-            La función de probabilidad conjunta de una variable bidimensional se peude ver de dos
+            La función de probabilidad conjunta de una variable bidimensional se puede ver de dos
             maneras:
 
             % =====================================================
@@ -4284,11 +4284,45 @@
                 \end{itemize}
                 
 
+
         % ==============================================================
-        % ========               FUNCION MARGINAL         ==============
+        % ========          DISTRIBUCION ACUMULADA        ==============
         % ==============================================================
         \clearpage
-        \section{Función Marginal}
+        \section{Distribución Acumulada}
+
+            % =====================================================
+            % ========           DISCRETO            ==============
+            % =====================================================
+            \vspace{1em}
+            \subsection{Discreto}
+
+                La definimos como:
+                \begin{align*}
+                    F_{X, Y} := P(X \leq x, Y \leq y)
+                \end{align*}
+
+
+            % =====================================================
+            % ========           CONTINUO            ==============
+            % =====================================================
+            \vspace{1em}
+            \subsection{Continuo}
+
+                La definimos como:
+                \begin{align*}
+                    F_{X, Y} := \int_{-\infty}^y \int_{-\infty}^x f_{X, Y}(x, y) dx dy 
+                \end{align*}
+
+                Nota que $\dfrac{\partial^2}{\partial x \partial y} F_{X, Y}(x, y) = f_{X, Y}(x, y)$
+
+
+
+        % ==============================================================
+        % ========          DISTRIBUCION MARGINAL         ==============
+        % ==============================================================
+        \clearpage
+        \section{Distribución Marginal}
 
             % =====================================================
             % ========           DISCRETO            ==============
@@ -4316,6 +4350,77 @@
                         $\displaystyle f_X(x) := \inftyInt f_{X, Y}(x, y) \; dy$ 
                     \item
                         $\displaystyle f_Y(y) := \inftyInt f_{X, Y}(x, y) \; dx$ 
+                \end{itemize}
+
+
+        % ==============================================================
+        % ========          DISTRIBUCION CONDICIONAL      ==============
+        % ==============================================================
+        \clearpage
+        \section{Distribución Condicional}
+
+            % =====================================================
+            % ============        DISCRETO        =================
+            % =====================================================
+            \subsection{Discreto}
+
+                Podemos definirlo como:
+                \begin{align*}
+                    f_{X | y}(x | y) = \dfrac{P(X = x, Y = y)}{P(Y = y)} \Space \forall x
+                \end{align*}
+
+                Sus valores posibles son los valores de la variable aleatoria $X$.
+
+                Tenemos una distribución diferente para cada valor de $Y$
+
+
+            % =====================================================
+            % ============        CONTINUO        =================
+            % =====================================================
+            \subsection{Continuo}
+
+                Podemos definirlo como:
+                \begin{align*}
+                    f_{X | y}(x | y) = \dfrac{f_{X, Y}(x, y)}{f_{Y}(y)}
+                \end{align*}
+
+                Sus valores posibles son los valores de la variable aleatoria $X$.
+
+                Tenemos una distribución diferente para cada valor de $Y$
+
+
+
+        % ==============================================================
+        % ========          INDEPENDENCIA DE VARIABLES    ==============
+        % ==============================================================
+        \clearpage
+        \section{Independencia de Variables}
+
+            Sea una variable aleatoria dimensional $X, Y$, son independientes
+            si y solo si:
+            \begin{align*}
+                P(X = x , Y = y) = P(X = x) P(Y = y)
+             \end{align*} 
+
+            O dicho en otras palabras:
+            \begin{align*}
+                f_{X, Y}(x, y) = f_X(x) F_Y(y)
+            \end{align*}
+
+
+            % ==============================================================
+            % ========          PROPIEDADES                   ==============
+            % ==============================================================
+            \vspace{1em}
+            \subsection{Propiedades}
+                    
+                \begin{itemize}
+                    \item 
+                        $X$, $Y$ son linealmente independientes
+                        si y solo si $P(X = x | Y = y) = P(X = x)$
+                        o dicho de otra manera si $f_{X |Y} (x, y) = f_X(x)$
+
+
                 \end{itemize}
 
 
