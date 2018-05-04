@@ -745,7 +745,8 @@
                     \item
                         Si $P(A \cap B) = 0$ entonces $A, B$ no son eventos independientes
 
-
+                    \item
+                        $P(A | B) = \dfrac{P(B|A)P(A)}{P(B)}$
 
                             
                             
@@ -773,9 +774,11 @@
                 Gracias a esto podemos decir que:
                 \begin{align*}
                     P(A_i | B) 
-                        = \frac{P(A_i \cap B)}{P(B)}                                                        \\
-                        = \dfrac{P(B | A_i) \; P(A_i)}{\displaystyle \sum_{i = 1}^n P(A_i) \; P(B | A_i)}
+                        &= \frac{P(A_i \cap B)}{P(B)}                                                        \\
+                        &= \dfrac{P(B | A_i) \; P(A_i)}{\displaystyle \sum_{i = 1}^n P(A_i) \; P(B | A_i)}
                 \end{align*}
+
+
 
 
 
@@ -4422,6 +4425,10 @@
 
 
                 \end{itemize}
+
+
+
+
 
 
 
