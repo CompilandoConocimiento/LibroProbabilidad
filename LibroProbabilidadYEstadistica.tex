@@ -3459,7 +3459,7 @@
                         y $X_i \sim E(x_i; \beta)$ 
 
                         Entonces $X = X_1 + X_2 + \dots + X_\alpha$ se distruye como
-                        como $X \sim \Gamma(x_i; \alpha, \beta)$
+                        como $X \sim \Gamma(x; \alpha, \beta)$
 
                         % ======== DEMOSTRACION ========
                         \begin{SmallIndentation}[1em]
@@ -3619,8 +3619,8 @@
                 \begin{equation*}
                     f_X(x) = 
                         \begin{cases}
-                            \dfrac{\beta^x}{\Gamma(a)} \; x^{a - 1} \MegaSpace & x > 0           \\
-                            0                                       \MegaSpace & x \leq 0
+                            \dfrac{\beta^a}{\Gamma(a)} \; x^{a - 1} e^{-\beta x}    \MegaSpace & x > 0           \\
+                            0                                                       \MegaSpace & x \leq 0
                         \end{cases}
                 \end{equation*}
 
@@ -3808,12 +3808,16 @@
 
                 \begin{itemize}
 
+                    \item
+                        Si tenemos una distribución Gamma pero donde $\alpha = 1$, entonces lo que
+                        en realidad tenemos es una distribución exponencial con la misma $\beta$
+
                     \item 
                         Sea $X_1, X_2, \dots, X_k$ variables aleatorias independientes
                         y $X_i \sim \Gamma(x_i; \alpha_i, \beta)$ 
 
                         Entonces $X = X_1 + X_2 + \dots + X_k$ se distruye como
-                        como $X \sim \Gamma(x_i; \sum_{i=1}^k \alpha, \beta)$
+                        como $X \sim \Gamma(x; \sum_{i=1}^k \alpha_i, \beta)$
 
                         % ======== DEMOSTRACION ========
                         \begin{SmallIndentation}[1em]
@@ -3871,7 +3875,7 @@
                     donde:
                     \begin{itemize}
                         \item $\mu$: El valor central, es cualquier real
-                        \item $\sigma^2$:La varianza, es un real positivo
+                        \item $\sigma^2$: La varianza, es un real positivo
                     \end{itemize}
 
                     Nota que si pasa que $X \sim N(x; \mu = 0, \sigma^2 = 1)$
@@ -3976,7 +3980,7 @@
 
                 Esta es sencilla:
                 \begin{align*}
-                    \Psi_X(t) = e^{t\mu + \dfrac{1}{2}(t^2\sigma^2)}
+                    \Psi_X(t) = e^{t\mu + \frac{1}{2}(t^2\sigma^2)}
                 \end{align*}
 
                 % ======== DEMOSTRACION ========
@@ -4130,7 +4134,7 @@
                         Sea $X_i \sim N(x_i; \mu, \sigma^2)$  
 
                         Entonces $Y = aX + b$ se distruye como
-                        como $Y \sim N(x_i; a\mu + b, a\sigma_i^2)$
+                        como $Y \sim N(y; a\mu + b, a\sigma^2)$
 
                         % ======== DEMOSTRACION ========
                         \begin{SmallIndentation}[1em]
@@ -4159,7 +4163,7 @@
                         y $X_i \sim N(x_i; \mu, \sigma^2)$  
 
                         Entonces $\Over{X} = \frac{1}{n} \sum_{i=1}^n X_i$ se distruye como
-                        como $\Over{X} \sim N(\Over{x_i}; \mu, \sum_{i=1}^k \frac{\sigma_i^2}{n})$
+                        como $\Over{X} \sim N(\Over{x}; \mu, \frac{\sigma^2}{n})$
 
                         % ======== DEMOSTRACION ========
                         \begin{SmallIndentation}[1em]
@@ -4183,10 +4187,14 @@
     % ===============================================================================
     \chapter{Probabilidad Hardcore}
 
+
+
+
+
         % ==============================================================
         % ========     TEOREMA CENTRAL DEL LIMITE         ==============
         % ==============================================================
-        \vspace{1em}
+        \clearpage
         \section{Teorema Central del Límite}
 
             % ======================================================
@@ -4198,8 +4206,18 @@
                 entonces:
 
                 \begin{itemize}
-                    \item $\Over{X} \approx N(x; \mu = \mu, \sigma^2 = \dfrac{\sigma^2}{n})$
-                    \item $\sum_{i=0}^n X_i \approx N(x; \mu_x = n \mu, \sigma^2_x = n\sigma^2)$
+                    \item 
+                        Si tienes una variable aleatoria que es la media muestral de otras variables aleatorias entonces
+                        mientras mas variables aleatoria muestrees entonces más se va aproximar:
+
+                        $\Over{X} \approx N(x; \mu = \mu, \sigma^2 = \dfrac{\sigma^2}{n})$
+                    
+                    \item 
+                        Si tienes una variable aleatoria que esta compuesta por la suma de muchas otras variables
+                        aleatorias entonces mientras mas grande sea la cantidad de variables aleatorias más se
+                        aproxima a una normal:
+                        
+                        $\sum_{i=0}^n X_i \approx N(x; \mu_x = n \mu, \sigma^2_x = n\sigma^2)$
                 \end{itemize}
 
 
@@ -4225,8 +4243,6 @@
                     P(|X - \mu| \leq k\sigma) &\geq 1 - \dfrac{1}{k^2}                      \\   
                     P(|X - \mu| > k\sigma) &< \dfrac{1}{k^2}     
                 \end{align*}      
-
-
 
 
 
