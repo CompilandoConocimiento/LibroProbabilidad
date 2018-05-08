@@ -113,6 +113,7 @@
     \newcommand \Quote {\qq}                                        %Use: \Quote to use quotes
     \newcommand \Over {\overline}                                   %Use: \Bar to use just for short
     \newcommand \ForceNewLine {$\Space$\\}                          %Use it in theorems for example
+    \newcommand \ForceColumnBreak {\vfill\null\columnbreak}         %Use only in multicols
 
     % =====  SPACES  ====================
     \DeclareMathOperator \Space {\quad}                             %Use: \Space for a cool mega space
@@ -3271,7 +3272,7 @@
             \clearpage
             \subsection{Función Probabilidad}
 
-                Esto es lo que distingue a una distribución uniforme:
+                Esto es lo que distingue a una distribución exponencial:
                 \begin{equation*}
                     f_X(x) = 
                         \begin{cases}
@@ -3615,7 +3616,7 @@
             \clearpage
             \subsection{Función Probabilidad}
 
-                Esto es lo que distingue a una distribución uniforme:
+                Esto es lo que distingue a una distribución gamma:
                 \begin{equation*}
                     f_X(x) = 
                         \begin{cases}
@@ -3697,7 +3698,7 @@
             \clearpage
             \subsection{Generadora de Momentos}
 
-                Esto es lo que distingue a una distribución uniforme:
+                Esto es sencillo:
                 \begin{equation*}
                     \Psi_X(t) = \pfrac{\beta}{\beta - t}^\alpha
                 \end{equation*}
@@ -5117,6 +5118,1329 @@
 
 
                     \end{itemize}
+
+
+
+
+        % ==============================================================
+        % =======      DISTRIBUCIONES DISCRETAS            =============
+        % ==============================================================
+        \clearpage
+        \section{Distribuciones Discretas}
+
+
+            % ==============================================================
+            % ===========           BERNOULLI               ================
+            % ==============================================================
+            \subsection{Bernoulli}
+
+                \begin{multicols}{2}
+                \begin{SmallIndentation}[0em]
+
+                    % ==============================================================
+                    % ==========         DEFINICION                =================
+                    % ==============================================================
+                    \subsubsection{Definición}
+
+                        Suponte un experimento en el que solo tienes dos salidas, 
+                        $0, 1$, $0$ para el fracaso y $1$ para el exito,
+                        suponte que la probabilidad de que salga $1$ es $p$
+                        y la que salga $0$ es $q = 1 - p$.
+
+                        Ahora, nuestra variable aleatoria sera:
+                        \begin{equation*}
+                            X : \text{Resultado del experimento}
+                        \end{equation*}
+
+                        Por lo tanto los valores posibles son $X \sim \Set{0, 1}$
+
+                        Solemos entonces escribir esta distribución como:
+                        \begin{equation*}
+                            X \sim Ber(x; p)
+                        \end{equation*}
+
+                        donde:
+                        \begin{itemize}
+                            \item $x$: Nuestra variable
+                            \item $p$: Probabilidad de Exito
+                        \end{itemize}
+
+
+                
+                    \ForceColumnBreak
+
+                    % ==============================================================
+                    % ==========     FUNCIÓN PROBABILIDAD          =================
+                    % ==============================================================
+                    \subsubsection{Función Probabilidad}
+
+                        Esta es clásica:
+                        \begin{align*}
+                            f_X(x) 
+                                &= 
+                                \begin{cases}
+                                    q \Space& x = 0                     \\
+                                    p \Space& x = 1                     \\
+                                \end{cases}                             \\
+                                &= (p^x) ((1-p)^{1-x}) = p^x q^{1-x}
+                        \end{align*}
+
+
+                    % ==============================================================
+                    % =========   FUNCION PROBABILIDAD ACUMULADA        ============
+                    % ==============================================================
+                    \subsubsection{Función P. Acumulada}
+
+                        Por definición men:
+                        \begin{align*}
+                            F_X(x) = 
+                                \begin{cases}
+                                    0 \Space& x < 0             \\
+                                    q \Space& 0 \leq x < 1      \\
+                                    p \Space& 1 \leq x 
+                                \end{cases}
+                        \end{align*}
+
+
+                    % ==============================================================
+                    % =========          FUNCION ESPERANZA              ============
+                    % ==============================================================
+                    \subsubsection{Esperanza}
+
+                        Esta es la distribución con la esperanza más fácil que veras:
+                        \begin{align*}
+                            E(X) = p
+                        \end{align*}
+
+
+                    % ==============================================================
+                    % =========          FUNCION VARIANZA               ============
+                    % ==============================================================
+                    \subsubsection{Varianza}
+
+                        Esta es igualmente sencilla:
+                        \begin{align*}
+                            v(X) = p(1-p) = p - p^2 = pq
+                        \end{align*}
+
+                    % ==============================================================
+                    % =========   FUNCION GENERADORA DE MOMENTOS        ============
+                    % ==============================================================
+                    \subsubsection{Función Generadora}
+
+                        Esta igual es muy bonita:
+                        \begin{align*}
+                            \Psi(t) = (q) + e^t(p)
+                        \end{align*}
+
+
+                \end{SmallIndentation}
+                \end{multicols}
+
+
+            % ==============================================================
+            % ===========           BINOMIAL                ================
+            % ==============================================================
+            \clearpage
+            \subsection{Binomial}
+
+                \begin{multicols}{2}
+                \begin{SmallIndentation}[0em]
+
+                    % ==============================================================
+                    % ==============          DEFINICION           =================
+                    % ==============================================================
+                    \subsubsection{Definición}
+
+                        Un experimento binomial consiste en $n$ ensayos Bernoulli
+                        independientes, con una probabilidad de exito individual constante e igual en 
+                        todos los experimentos
+
+                        La variable aleatoria discreta nos medirá el número de exitos de los experimentos individuales,
+                        donde sus posibles valores fueron $X = \Set{0, 1, \dots, n}$.
+
+                        Observa que la variable aleatoria se puede ver como la suma de Bernoullis independientes,
+                        es decir $X = X_1 + X_2 + X_3 + \dots + X_n$
+
+                        % ======================================================
+                        % =========    VARIABLE ALEATORIA       ================
+                        % ======================================================
+                        \subsubsection{Variable Aleatoria}
+
+                            Ahora, nuestra variable aleatoria sera:
+                            \begin{equation*}
+                                X : \text{Número de Exitos en los experimentos}
+                            \end{equation*}
+
+                            Ahora, los valores posibles que puede tomar son muy muy sencillos, suponte que haremos
+                            n experimentos, entonces $X$ tiene que tomar valores entre $0 \dots n$
+
+                            Solemos entonces escribir esta distribución como:
+                            \begin{equation*}
+                                X \sim Bin(x; n, p)
+                            \end{equation*}
+
+                            donde:
+                            \begin{itemize}
+                                \item $x$: Nuestra variable
+                                \item $p$: Probabilidad de Exito de cada experimiento Bernoulli
+                            \end{itemize}
+
+
+                    % ==============================================================
+                    % ==========     FUNCIÓN PROBABILIDAD          =================
+                    % ==============================================================
+                    \subsubsection{Función Probabilidad}
+                    
+                        Esta esta fácil:
+                        \begin{align*}
+                            f_X(x) 
+                                = {n \choose x} p^x q^{n - x}
+                        \end{align*}
+
+
+                    % ==============================================================
+                    % =========   FUNCION PROBABILIDAD ACUMULADA        ============
+                    % ==============================================================
+                    \subsubsection{Función P. Acumulada}
+
+                        Esta esta fácil:
+                        \begin{align*}
+                            F_X(x) = \sum_{i=0}^x {n \choose i}p^i q^{n - i}
+                        \end{align*}
+
+                    % ==============================================================
+                    % =========          FUNCION ESPERANZA              ============
+                    % ==============================================================
+                    \subsubsection{Esperanza}  
+
+                        Esta también es sencilla:
+                        \begin{align*}
+                            E(X) = np
+                        \end{align*}
+
+
+                    % ==============================================================
+                    % =========          FUNCION VARIANZA               ============
+                    % ==============================================================
+                    \subsubsection{Varianza}
+
+                        Esta es bonita también:
+                        \begin{align*}
+                            v(X) = npq   
+                        \end{align*}
+
+                    % ==============================================================
+                    % =========   FUNCION GENERADORA DE MOMENTOS        ============
+                    % ==============================================================
+                    \subsubsection{Función Generadora}  
+
+                        Por definición tenemos que:
+                        \begin{align*}
+                            \Psi (t) = \Wrap{q + e^tp}^n   
+                        \end{align*}
+
+                    % ==============================================================
+                    % =========            PROPIEDADES                  ============
+                    % ==============================================================
+                    \subsubsection{Propiedades}  
+
+                        \begin{itemize}
+                            
+                            \item 
+
+                                Sean $X_1, X_2, \dots, X_k$ $k$ variables aleatorias discretas independientes
+                                y $X_i \sim Bin(x_i; n_i, p)$ con $i = 1, 2, \dots, k$.
+
+                                Entonces la variable aleatoria $X = X_1 + X_2 + \dots + X_k$ tiene una 
+                                distribución binomial tal que $X \sim Bin\Wrap{x; \sum_{i=1}^k n_i, p}$ 
+
+                        \end{itemize}
+
+
+                \end{SmallIndentation}
+                \end{multicols}
+
+
+
+            % ==============================================================
+            % ===========           GEOMETRICA              ================
+            % ==============================================================
+            \clearpage
+            \subsection{Geométrica}
+
+                \begin{multicols}{2}
+                \begin{SmallIndentation}[0em]
+
+                    % ==============================================================
+                    % ==============          DEFINICION           =================
+                    % ==============================================================
+                    \subsubsection{Definición}
+
+                        Supón que se repiten de manera independiente ensayos Bernoulli
+                        con una probabilidad de exito constante de $p$ hasta obtener el primer
+                        exito.
+
+                        La variable discreta es el número de experimentos hasta un primer exito,
+                        donde sus posibles valores son $X = \Set{1, 2, 3, \dots}$.
+
+
+                        % ======================================================
+                        % =========    VARIABLE ALEATORIA       ================
+                        % ======================================================
+                        \subsubsection{Variable Aleatoria}
+
+                            Ahora, nuestra variable aleatoria sera:
+                            \begin{equation*}
+                                X : \text{Número de experimentos hasta un exito}
+                            \end{equation*}
+
+                            Ahora, los valores posibles que puede tomar son muy muy sencillos,
+                            porque puede que pase en el primer experimento o en el segundo, 
+                            es decir la variable aleatoria puede tomar cualquier valor en los enteros
+                            positivos.
+
+                            Solemos entonces escribir esta distribución como:
+                            \begin{equation*}
+                                X \sim G(x; p)
+                            \end{equation*}
+
+                            donde:
+                            \begin{itemize}
+                                \item $x$: Nuestra variable
+                                \item $p$: Probabilidad de Exito de cada experimento Bernoulli
+                            \end{itemize}
+
+
+                    % ==============================================================
+                    % ==========     FUNCIÓN PROBABILIDAD          =================
+                    % ==============================================================
+                    \subsubsection{Función Probabilidad}
+
+                        Esta esta fácil:
+                        \begin{align*}
+                            f_X(x) = q^{x - 1} \; p
+                        \end{align*}
+
+                        Es decir, es la propabilidad de que todos los anteriores sean
+                        fracasos y el actual sea el exito.
+
+
+                    % ==============================================================
+                    % =========   FUNCION PROBABILIDAD ACUMULADA        ============
+                    % ==============================================================
+                    \subsubsection{Función P. Acumulada}
+
+                        Esta también es sencilla:
+                        \begin{align*}
+                            F_X(x) = 1 - q^x
+                        \end{align*}
+
+                    % ==============================================================
+                    % =========          FUNCION ESPERANZA              ============
+                    % ==============================================================
+                    \subsubsection{Esperanza}
+
+                        Esta es muy famosa, y lo repito, que no se te olvide la geométrica
+                        \begin{align*}
+                            E(X) = \frac{1}{p}
+                        \end{align*}
+
+                    % ==============================================================
+                    % =========          FUNCION VARIANZA               ============
+                    % ==============================================================
+                    \subsubsection{Varianza}
+
+                        Esta también es sencilla:
+                        \begin{align*}
+                            v(X) = \frac{1-p}{p^2}
+                        \end{align*}
+
+                         
+                    % ==============================================================
+                    % =========   FUNCION GENERADORA DE MOMENTOS        ============
+                    % ==============================================================
+                    \subsubsection{Función Generadora}   
+
+                        Esta también saldra por definición no somos cobardes:
+                        \begin{align*}
+                            \Psi (t) = \frac{pe^t}{1-qe^t}  
+                        \end{align*}
+
+
+                    % ==============================================================
+                    % ====                  PROPIEDADES                 ============
+                    % ==============================================================
+                    \subsubsection{Propiedades}
+
+                        \begin{itemize}
+                            
+                            \item 
+                                Sea $X \sim G(x; p)$ entonces tenemos que $P(X > a) = q^a$ con $a$ un natural positivo
+
+                            \item 
+                                Podemos decir que esta distribución no tiene memoria es decir que ya voy $a$ experimentos
+                                y no ha pasado nada entonces, debería ya ser mas probable que para $a + b$ ya me tocará,
+                                me explico mejor ... ¿No? ¡Pues no!
+
+                                Espera, me explico mejor:
+
+                                Sea $X \sim G(x; p)$ entonces $P(X > a + b \Such X > a) = P(X > b)$ 
+                                con $a, b$ un naturales positivos
+
+                        \end{itemize}
+
+
+                \end{SmallIndentation}
+                \end{multicols}
+
+
+            % ==============================================================
+            % ===========           HIPERGEOMETRICA         ================
+            % ==============================================================
+            \clearpage
+            \subsection{HiperGeométrica}
+
+                \begin{multicols}{2}
+                \begin{SmallIndentation}[0em]
+
+
+                    % ==============================================================
+                    % ==============          DEFINICION           =================
+                    % ==============================================================
+                    \subsubsection{Definición}
+
+                        Supongamos que tenemos una población de tamaño $r$, ahora
+                        esta particionado de 2 maneras, con elementos del tipo $r_1$
+                        o $r_2$, consideraremos exitosos los elementos de tipo $r_1$
+
+                        Ahora vamos a tomar una muestra aleatoria de tamaño $n$ sin reemplazo
+                        ni sustitución.
+
+                        Ahora, solo por notación si es que $n$, es decir la muestra es menor
+                        que nuestra población $r$ la llamamos muestra, pero si $n = r$ entonces
+                        decimos que es un censo.
+
+                        % ======================================================
+                        % =========    VARIABLE ALEATORIA       ================
+                        % ======================================================
+                        \subsubsection{Variable Aleatoria}
+
+                            Ahora, nuestra variable aleatoria sera:
+
+                            $X : $ Número de elementos del tipo $r_1$ en una muestra aleatoria de tamaño $n$
+
+                            Ahora, los valores posibles que puede tomar son $max(0, n - r_2) \leq x \leq min(r_1, n)$
+
+                            Ahora, ¿Porque esos números tan feos?
+
+                            Por un lado tenemos que que lo peor que nos puede pasar son dos cosas:
+                            \begin{itemize}
+                                \item 
+                                    O bien si el tamaño de tu muestra $n$ es muy pequeña, entonces puedes
+                                    tener toda la mala suerte del mundo y que pase que todas caigan donde
+                                    tu no querías por lo tanto, podría pasar que no seleccionará
+                                    ningún elemento de $r_1$ entonces $X = 0$.
+
+                                \item
+                                    Pero, pero que pasaría que tu $n$ fuera lo suficientemente grande tal que
+                                    incluso si seleccionará todos los que no quería $r_2$, aún quedarán elementos
+                                    por seleccionar, entonces los mínimos elementos $r_1$ que podría seleccionar 
+                                    es $n - r_2$, entonces $X = n - r_2$ 
+
+                            \end{itemize}
+
+                            El cálculo para el límite mayor es parecido
+                            \begin{itemize}
+                                \item 
+                                    Si tienes que $n <= r_1$, entonces lo mejor que te puede pasar es que todos
+                                    caigan donde tu quieras
+                                \item
+                                    Si es que $n > r_1$ entonces puedes seleccionar todos los elementos de $r_1$
+                            \end{itemize}
+
+                            Solemos entonces escribir esta distribución como:
+                            \begin{equation*}
+                                X \sim H(x; r_1, r_2, n)
+                            \end{equation*}
+
+                            donde:
+                            \begin{itemize}
+                                \item $x$: Nuestra variable
+                                \item $r_1$: Tamaño de nuestra población de interes
+                                \item $r_2$: Tamaño de la población que no es de interes, sale de $r_2 = r - r_1$
+                                \item $n$: Tamaño de la muestra
+                            \end{itemize}
+
+
+
+
+                    % ==============================================================
+                    % ==========     FUNCIÓN PROBABILIDAD          =================
+                    % ==============================================================
+                    \subsubsection{Función Probabilidad}
+
+                        Esta esta muy interesante, es:
+                        \begin{equation*}
+                            f_X(x) = \dfrac{\binom{r_1}{x}\binom{r_2}{n - x}}{{r \choose n}}
+                        \end{equation*}
+
+
+                    % ==============================================================
+                    % =========   FUNCION PROBABILIDAD ACUMULADA        ============
+                    % ==============================================================
+                    \subsubsection{Función P. Acumulada}
+
+                        Esta esta muy interesante, es:
+                        \begin{align*}
+                            F_X(x) 
+                                = P(X \leq x)              
+                                = \dfrac{1}{\binom{r}{n}}
+                                    \displaystyle \sum_{i = max (0, n - r_2)}^x                
+                                        \binom{r_1}{i} \binom{r_2}{n - i}
+                        \end{align*}
+
+
+
+                    % ==============================================================
+                    % =========          FUNCION ESPERANZA              ============
+                    % ==============================================================
+                    \subsubsection{Esperanza}
+
+                        Esta esta muy interesante:
+                        \begin{align*}
+                            E(X) = n \pfrac{r_1}{r}                    
+                        \end{align*}
+
+
+                    % ==============================================================
+                    % =========          FUNCION VARIANZA               ============
+                    % ==============================================================
+                    \subsubsection{Varianza}
+
+                        Esta esta muy dificíl, así que se deja para el lector :p
+                        \begin{align*}
+                            v(X) = n \pfrac{r_1}{r} \Wrap{1 - \frac{r_1}{r}} \Wrap{1 - \frac{n - 1}{r - 1}}
+                        \end{align*}
+                            
+
+                        
+
+                    % ==============================================================
+                    % =========   FUNCION GENERADORA DE MOMENTOS        ============
+                    % ==============================================================
+                    \subsubsection{Función Generadora}
+
+                        Esta esta muy interesante, es:
+                        \begin{align*}
+                            \Psi_X(t) 
+                                = E( e^{tX} )                 
+                                = \dfrac{1}{\binom{r}{n}}                      
+                                    \sum_{i = max (0, n - r_2)}^{min(n, r_1)}               
+                                       e^{ti} \binom{r_1}{i} \binom{r_2}{n - i}
+                        \end{align*}
+
+                \end{SmallIndentation}
+                \end{multicols}
+
+                \begin{multicols*}{2}
+                \begin{SmallIndentation}[0em]
+
+                    % ==============================================================
+                    % ==========     RELACION CON LA BINOMIAL      =================
+                    % ==============================================================
+                    \subsubsection{Relación con la Binomial}
+
+                        Suponte que tienes una población de $r$ elementos, con $r_1$ de un tipo \Quote{bueno}
+                        y $r_2 := n - r$ de un tipo \Quote{malo}.
+
+                        Ahora vamos a tomar una muestra aleatoria de tamaño $n$,
+                        sea entonces $X : $ Número de elementos de tipo bueno en nuestra muetra 
+
+                        ahora podemos tener
+                        entonces 2 posibles distribuciones dependiendo de una pregunta clave.
+
+                        ¿Hay reemplazo?
+
+                        \begin{itemize}
+                            \item 
+                                \textbf{Si es que tiene Reemplazo:}
+
+                                Entonces lo que pasa es que la probabilidad de exito es constante, por 
+                                lo tanto es simplemente $n$ experimentos de tipo Bernoulli.
+
+                                La probabilidad de exito también es bastante sencilla de sacarse, es
+                                como $p = \frac{r_1}{r}$
+
+                                Por lo tanto podemos decir que:
+                                \begin{align*}
+                                    X \sim B(x; n, p)
+                                \end{align*}
+
+                                Es decir, tendremos (como ya sabemos como se comporta una binomial):
+                                \begin{itemize}
+                                    \item $E(X) = np = \frac{nr_1}{r}$
+                                    \item $v(X) = npq = \frac{nr_1}{r}\Wrap{1 - \frac{r_1}{r}}$
+                                \end{itemize}
+
+                            \item 
+                                \textbf{Si es que NO tiene Reemplazo:}
+
+                                Entonces lo que pasa es que la probabilidad de exito ya no es constante,
+                                de hecho, llegamos a la definición de la Hipergeométrica, es decir:
+
+                                Por lo tanto podemos decir que:
+                                \begin{align*}
+                                    X \sim H(x; n, r_1, r_2)
+                                \end{align*}
+
+                                Es decir, tendremos (como ya sabemos como se comporta una hipergeometrica):
+                                \begin{itemize}
+                                    \item $E(X) = np = \frac{nr_1}{r}$
+                                    \item $v(X) = npq = \frac{nr_1}{r}\Wrap{1 - \frac{r_1}{r}}\Wrap{1 - \frac{n-1}{r-1}}$
+                                \end{itemize}
+
+                        \end{itemize}
+
+                        Es decir, sin importar si hay o no reemplazo, el valor esperado es el mismo, pero
+                        si es que no hay reemplazos tenemos una varianza es menor.
+
+                        Podemos también darnos cuenta de que mientras más población la diferencia entre
+                        el reemplazo y sin reemplazo cada vez será menor.
+
+
+                \end{SmallIndentation}
+                \end{multicols*}
+
+
+
+            % ==============================================================
+            % ===========           POISSON                ================
+            % ==============================================================
+            \clearpage
+            \subsection{Poisson}
+
+                \begin{multicols}{2}
+                \begin{SmallIndentation}[0em]
+
+
+                    % ======================================================
+                    % =========    VARIABLE ALEATORIA       ================
+                    % ======================================================
+                    \subsubsection{Variable Aleatoria}
+
+                        La variable aleatoria que cuenta el número de ocurrencías en un periodo
+                        de tiempo o espacio físico dado se le llama Poisson.
+
+                        $X : $ Número de ocurrencias en un periodo de tiempo o espacio dado
+
+                        Ahora, los valores posibles que puede tomar es $0, 1, 2, \dots$
+
+                        Solemos entonces escribir esta distribución como:
+                        \begin{equation*}
+                            X \sim P(x; \lambda)
+                        \end{equation*}
+
+                        donde:
+                        \begin{itemize}
+                            \item $x$: Nuestra variable
+                            \item $\lambda$: Es el número promedio de ocurrencias en el periodo o espacio dado
+                        \end{itemize}
+
+
+                    % ==============================================================
+                    % ==========     RELACION CON LA BINOMIAL      =================
+                    % ==============================================================
+                    \subsubsection{Relación con la Binomial}
+
+                        Considera $X \sim Bin(x; n, p)$, entonces cuando más grande sea $n$ más nuestra binomial se 
+                        va a parecer a una Poisson con $\lambda = np$
+
+
+                    % ==============================================================
+                    % ====                  PROPIEDADES                 ============
+                    % ==============================================================
+                    \subsubsection{Propiedades}
+
+                        \begin{itemize}
+                            
+                            \item 
+                                Sea $X_1, X_2, \dots, X_k$ variables aleatorias independientes
+                                y $X_i \sim P(x_i; \lambda_i)$ 
+
+                                Entonces $X = \sum_{i = 1}^k X_i$ cumple que $X$ se distribuye como
+                                una Poisson con parámetro $\lambda = \sum_{i=1}^k \lambda_i$
+
+                        \end{itemize}
+
+
+                    \ForceColumnBreak
+
+
+                    % ==============================================================
+                    % ==========     FUNCIÓN PROBABILIDAD          =================
+                    % ==============================================================
+                    \subsubsection{Función Probabilidad}
+
+                        Esta esta muy interesante, es:
+                        \begin{equation*}
+                            f_X(x) = P(X = x) = e^{- \lambda} \dfrac{\lambda^x}{x!}
+                        \end{equation*}
+
+
+                    % ==============================================================
+                    % =========   FUNCION PROBABILIDAD ACUMULADA        ============
+                    % ==============================================================
+                    \subsubsection{Función P. Acumulada}
+
+                        Esta esta muy interesante, es:
+                        \begin{align*}
+                            F_X(x) 
+                                = P(X \leq x)              
+                                = e^{-\lambda}\sum_{i = 0}^x \dfrac{\lambda^i}{i!}
+                        \end{align*}
+
+
+                    % ==============================================================
+                    % =========   FUNCION GENERADORA DE MOMENTOS        ============
+                    % ==============================================================
+                    \subsubsection{Función Generadora}
+
+                        Esta esta muy interesante, es:
+                        \begin{align*}
+                            \Psi_X(t) 
+                                = e^{\lambda(e^t - 1)}
+                        \end{align*}
+
+
+                    % ==============================================================
+                    % =========          FUNCION ESPERANZA              ============
+                    % ==============================================================
+                    \subsubsection{Esperanza}
+
+                        Esta esta muy interesante:
+                        \begin{align*}
+                            E(X) = \lambda               
+                        \end{align*}
+
+
+                    % ==============================================================
+                    % =========                 VARIANZA                ============
+                    % ==============================================================
+                    \subsubsection{Varianza}
+
+                        Esta esta muy interesante:
+                        \begin{align*}
+                            v(X) = \lambda               
+                        \end{align*}
+
+
+                    
+
+
+                \end{SmallIndentation}
+                \end{multicols}
+
+
+
+        % ==============================================================
+        % =======      DISTRIBUCIONES DISCRETAS            =============
+        % ==============================================================
+        \clearpage
+        \section{Distribuciones Discretas}
+
+
+            % ==============================================================
+            % ===========           UNIFORME                ================
+            % ==============================================================
+            \subsection{Uniforme}
+
+                \begin{multicols}{2}
+                \begin{SmallIndentation}[0em]
+
+                    % ==============================================================
+                    % ==============          DEFINICION           =================
+                    % ==============================================================
+                    \subsubsection{Definición}
+
+                        La mas sencilla de todas las distribuciones continuas es la uniforme.
+
+                        % ======================================================
+                        % =========    VARIABLE ALEATORIA       ================
+                        % ======================================================
+                        \vspace{1em}
+                        \subsubsection{Variable Aleatoria}
+
+
+                            Ahora, los valores posibles que puede tomar nuestra variable aleatoria es
+                            $ a< x < b$.
+
+                            Solemos entonces escribir esta distribución como:
+                            \begin{equation*}
+                                X \sim U(x; a, b)
+                            \end{equation*}
+
+                            donde:
+                            \begin{itemize}
+                                \item $a$: Inicio de la muestra
+                                \item $b$: Inicio de la muestra
+                            \end{itemize}
+
+
+                    % ==============================================================
+                    % ==========     FUNCIÓN PROBABILIDAD          =================
+                    % ==============================================================
+                    \subsubsection{Función Probabilidad}
+
+                        Esto es lo que distingue a una distribución uniforme:
+                        \begin{equation*}
+                            f_X(x) = 
+                                \begin{cases}
+                                    \dfrac{1}{b - a}  \MegaSpace &a < x < b           \\
+                                    0                 \MegaSpace &$en otro caso$
+                                \end{cases}
+                        \end{equation*}
+
+
+                    % ==============================================================
+                    % =========   FUNCION PROBABILIDAD ACUMULADA        ============
+                    % ==============================================================
+                    \subsubsection{Función P. Acumulada}
+
+                        Esta esta muy interesante, es:
+                        \begin{align*}
+                            F_X(x) = \dfrac{x - a}{b - a}                  
+                        \end{align*}
+
+
+                    % ==============================================================
+                    % =========          FUNCION ESPERANZA              ============
+                    % ==============================================================
+                    \subsubsection{Esperanza}
+
+                        Esta esta muy interesante:
+                        \begin{align*}
+                            E(X) = \dfrac{a+b}{2}                    
+                        \end{align*}
+
+                    % ==============================================================
+                    % =========          FUNCION VARIANZA               ============
+                    % ==============================================================
+                    \subsubsection{Varianza}
+
+                        Esta esta muy dificíl, pero si se puede:
+                        \begin{align*}
+                            v(X) = \dfrac{(a-b)^2}{12}
+                        \end{align*}
+
+                    % ==============================================================
+                    % =========   FUNCION GENERADORA DE MOMENTOS        ============
+                    % ==============================================================
+                    \subsubsection{Función Generadora}
+
+                        Esta esta muy interesante, es:
+                        \begin{align*}
+                            \Psi_X(t) = \dfrac{e^{bt} - e^{at}}{t(b -a)}
+                        \end{align*}
+
+
+                \end{SmallIndentation}
+                \end{multicols}
+
+
+
+            % ==============================================================
+            % ===========           EXPONENCIAL             ================
+            % ==============================================================
+            \clearpage
+            \subsection{Exponencial}
+
+                \begin{multicols}{2}
+                \begin{SmallIndentation}[0em]
+
+
+                    % ==============================================================
+                    % ==============          DEFINICION           =================
+                    % ==============================================================
+                    \subsubsection{Definición}
+
+                        Se utiliza generalmente para representar una distribución del tiempo
+                        que transcurre antes de la ocurrencia de un suceso.
+
+
+                        % ======================================================
+                        % =========    VARIABLE ALEATORIA       ================
+                        % ======================================================
+                        \vspace{1em}
+                        \subsubsection{Variable Aleatoria}
+
+                            Ahora, los valores posibles que puede tomar nuestra variable aleatoria es
+                            $x > 0$
+
+                            Solemos entonces escribir esta distribución como:
+                            \begin{equation*}
+                                X \sim E(x; \beta)
+                            \end{equation*}
+
+                            donde:
+                            \begin{itemize}
+                                \item $\beta$: Es un párametro que tiene que ser un entero positivo
+                            \end{itemize}
+
+
+                    % ==============================================================
+                    % ==========     FUNCIÓN PROBABILIDAD          =================
+                    % ==============================================================
+                    \subsubsection{Función Probabilidad}
+
+                        Esto es lo que distingue a una distribución exponencial:
+                        \begin{equation*}
+                            f_X(x) = 
+                                \begin{cases}
+                                    \beta e^{-\beta x}  \MegaSpace & x > 0           \\
+                                    0                   \MegaSpace & x \leq 0
+                                \end{cases}
+                        \end{equation*}
+                            
+
+                    % ==============================================================
+                    % =========   FUNCION PROBABILIDAD ACUMULADA        ============
+                    % ==============================================================
+                    \subsubsection{Función P. Acumulada}
+
+                        Esta esta muy interesante, es:
+                        \begin{align*}
+                            F_X(x) = 1 - e^{-\beta x}                
+                        \end{align*}
+
+
+                    % ==============================================================
+                    % =========   FUNCION GENERADORA DE MOMENTOS        ============
+                    % ==============================================================
+                    \subsubsection{Función Generadora}
+
+                        Esta esta muy interesante, es:
+                        \begin{align*}
+                            \Psi_X(t) = \frac{\beta}{\beta-t}
+                        \end{align*}
+
+
+                    % ==============================================================
+                    % =========          FUNCION ESPERANZA              ============
+                    % ==============================================================
+                    \subsubsection{Esperanza}
+
+                        Esta esta muy interesante:
+                        \begin{align*}
+                            E(X) = \frac{1}{\beta}                    
+                        \end{align*}
+
+                    % ==============================================================
+                    % =========          FUNCION VARIANZA               ============
+                    % ==============================================================
+                    \subsubsection{Varianza}
+
+                        Esta esta muy dificíl, pero si se puede:
+                        \begin{align*}
+                            v(X) = \frac{1}{\beta^2}
+                        \end{align*}
+
+
+                    % ==============================================================
+                    % ====                  PROPIEDADES                 ============
+                    % ==============================================================
+                    \subsubsection{Propiedades}
+
+                        \begin{itemize}
+                            
+                            \item 
+                                Podemos decir que esta distribución no tiene memoria, me explico
+                                mejor.
+
+                                Sea $P(X > a + b \Such X > a) = P(X > b)$ con $a, b$ un naturales positivos
+
+                                    
+                            \item 
+                                Sea $X_1, X_2, \dots, X_k$ variables aleatorias independientes
+                                y $X_i \sim E(x_i; \beta)$ 
+
+                                Entonces $X = min(X_1, X_2, \dots, X_k)$ también cumple que $X$ se distribuye como
+                                una Exponencial con parámetro $\beta = n\beta$
+
+
+                            \item 
+                                Sea $X_1, X_2, \dots, X_\alpha$ variables aleatorias independientes
+                                y $X_i \sim E(x_i; \beta)$ 
+
+                                Entonces $X = X_1 + X_2 + \dots + X_\alpha$ se distruye como
+                                como $X \sim \Gamma(x; \alpha, \beta)$
+
+                        \end{itemize}
+
+
+                \end{SmallIndentation}
+                \end{multicols}
+
+
+            % ==============================================================
+            % ===========           GAMMA                   ================
+            % ==============================================================
+            \clearpage
+            \subsection{Gamma}
+
+                \begin{multicols}{2}
+                \begin{SmallIndentation}[0em]
+
+                    % ==============================================================
+                    % ==============       FUNCION GAMMA           =================
+                    % ==============================================================
+                    \subsubsection{Función Gamma}
+
+                        La función Gamma se puede ver para $a > 0$ como:
+                        \begin{align*}
+                            \Gamma(a) = \int_0^\infty x^{a - 1} \; e^{-x} dx
+                        \end{align*}
+
+                        % ==============================================================
+                        % ==============       PROPIEDADES             =================
+                        % ==============================================================
+                        \subsubsection{Propiedades}
+
+                            La función gamma tiene un par de propieades interesantes
+                            \begin{itemize}
+                                \item $\Gamma(1) = 1$
+                                \item $\Gamma(a) = (a - 1)\Gamma(a - 1)$
+                                \item Si $n \in \Integers^+$ entonces $\Gamma(n) = (n-1)!$
+                            \end{itemize}
+
+
+                    % ==============================================================
+                    % ==============          DEFINICION           =================
+                    % ==============================================================
+                    \subsubsection{Definición}
+
+                        Se utiliza generalmente para representar una distribución del tiempo
+                        que transcurre antes de la ocurrencia de un suceso.
+
+
+                        % ======================================================
+                        % =========    VARIABLE ALEATORIA       ================
+                        % ======================================================
+                        \vspace{1em}
+                        \subsubsection{Variable Aleatoria}
+
+                            Ahora, los valores posibles que puede tomar nuestra variable aleatoria es
+                            $x > 0$
+
+                            Solemos entonces escribir esta distribución como:
+                            \begin{equation*}
+                                X \sim \Gamma(x; a, \beta)
+                            \end{equation*}
+
+                            donde:
+                            \begin{itemize}
+                                \item $a$: Entero positivo
+                                \item $\beta$: Es un párametro que tiene que ser un entero positivo
+                            \end{itemize}
+              
+                    % ==============================================================
+                    % ==========     FUNCIÓN PROBABILIDAD          =================
+                    % ==============================================================
+                    \subsubsection{Función Probabilidad}
+
+                        Esto es lo que distingue a una distribución uniforme:
+                        \begin{equation*}
+                            f_X(x) = 
+                                \begin{cases}
+                                    \dfrac{\beta^a}{\Gamma(a)} \; x^{a - 1} e^{-\beta x}    \MegaSpace & x > 0           \\
+                                    0                                                       \MegaSpace & x \leq 0
+                                \end{cases}
+                        \end{equation*}
+
+
+                    % ==============================================================
+                    % ==========     FUNCIÓN ACUMULADA             =================
+                    % ==============================================================
+                    \subsubsection{Función Acumulada}
+
+                        Esta esta rara, pero ve que.
+                        \begin{align*}
+                            F_X(x) = 1 - F_X^P (\alpha - 1) \MegaSpace \text{Con $\lambda = \beta x$}
+                        \end{align*}
+
+                        Es decir:
+                        \begin{align*}
+                            F_X(x) = 1 - e^{-\beta x} \sum_{i = 0}^{\alpha - 1} \frac{(\beta x)^i}{i!}
+                        \end{align*}
+
+
+                    % ==============================================================
+                    % ==========     GENERADORA DE MOMENTOS        =================
+                    % ==============================================================
+                    \subsubsection{Generadora de Momentos}
+
+                        Esto es lo que distingue a una distribución uniforme:
+                        \begin{equation*}
+                            \Psi_X(t) = \pfrac{\beta}{\beta - t}^\alpha
+                        \end{equation*}
+
+                    % ==============================================================
+                    % ==========                ESPERANZA          =================
+                    % ==============================================================
+                    \subsubsection{Esperanza}
+
+                        Usando la función generadora tenemos que:
+                        \begin{equation*}
+                            E(X) = \dfrac{\alpha}{\beta}
+                        \end{equation*}
+
+
+                    % ==============================================================
+                    % ==========                VARIANZA           =================
+                    % ==============================================================
+                    \subsubsection{Varianza}
+
+                        Usando la función generadora tenemos que:
+                        \begin{equation*}
+                            v(X) = \dfrac{\alpha}{\beta^2}
+                        \end{equation*}
+
+
+                    % ==============================================================
+                    % ====                  PROPIEDADES                 ============
+                    % ==============================================================
+                    \subsubsection{Propiedades}
+
+                        \begin{itemize}
+
+                            \item
+                                Si tenemos una distribución Gamma pero donde $\alpha = 1$, entonces lo que
+                                en realidad tenemos es una distribución exponencial con la misma $\beta$
+
+                            \item 
+                                Sea $X_1, X_2, \dots, X_k$ variables aleatorias independientes
+                                y $X_i \sim \Gamma(x_i; \alpha_i, \beta)$ 
+
+                                Entonces $X = X_1 + X_2 + \dots + X_k$ se distruye como
+                                como $X \sim \Gamma(x; \sum_{i=1}^k \alpha_i, \beta)$
+
+                        \end{itemize}
+                    
+
+                \end{SmallIndentation}
+                \end{multicols}
+
+
+
+            % ==============================================================
+            % ===========           NORMAL                  ================
+            % ==============================================================
+            \clearpage
+            \subsection{Normal}
+
+                \begin{multicols}{2}
+                \begin{SmallIndentation}[0em]
+
+                    % ==============================================================
+                    % ==============          DEFINICION           =================
+                    % ==============================================================
+                    \subsubsection{Definición}
+
+                        Es la más famosa de todas las continuas, es simetrica con respecto al valor
+                        central $\mu$
+
+                        % ======================================================
+                        % =========    VARIABLE ALEATORIA       ================
+                        % ======================================================
+                        \vspace{1em}
+                        \subsubsection{Variable Aleatoria}
+
+                            Ahora, los valores posibles que puede tomar nuestra variable aleatoria
+                            son todos los reales
+
+                            Solemos entonces escribir esta distribución como:
+                            \begin{equation*}
+                                X \sim N(x; \mu, \sigma^2)
+                            \end{equation*}
+
+                            donde:
+                            \begin{itemize}
+                                \item $\mu$: El valor central, es cualquier real
+                                \item $\sigma^2$: La varianza, es un real positivo
+                            \end{itemize}
+
+                            Nota que si pasa que $X \sim N(x; \mu = 0, \sigma^2 = 1)$
+                            entonces se suele denotar como:
+                            \\$Z \sim N(0, 1)$ 
+
+                            Se le conoce como normal estandar.
+
+                    % ==============================================================
+                    % ==============       ESTANDARIZACION         =================
+                    % ==============================================================
+                    \subsubsection{Estandarización}  
+
+                        Ya que tenemos una normal estandar, es decir una que cumple que $\mu = 0$,
+                        $\sigma^2 = 1$
+
+                        Ahora, hay una forma muy facil de \Quote{estandarizar} es decir
+                        de transformar cualquier punto sobre una normal a ese punto en la estandar
+                        esta esta dada por:
+                        \begin{align*}
+                            Z = \dfrac{X - \mu}{\sigma}
+                        \end{align*}
+
+                        Y obviamente tiene su inversa:
+                        \begin{align*}
+                            X = Z\sigma  + \mu
+                        \end{align*}
+
+
+                    % ==============================================================
+                    % ==========     FUNCIÓN PROBABILIDAD          =================
+                    % ==============================================================
+                    \subsubsection{Función Probabilidad}
+
+                        Esto es lo que distingue a una distribución uniforme:
+                        \begin{equation*}
+                            f_X(x) = \dfrac{1}{\sigma \sqrt{2\pi}} \; e^{-\dfrac{1}{2}\pfrac{x - \mu}{\sigma}^2 }
+                        \end{equation*}
+
+
+                    % ==============================================================
+                    % ==========     GENERADORA DE MOMENTOS        =================
+                    % ==============================================================
+                    \subsubsection{Generadora de Momentos}
+
+                        Esta es sencilla:
+                        \begin{align*}
+                            \Psi_X(t) = e^{t\mu + \frac{1}{2}(t^2\sigma^2)}
+                        \end{align*}
+
+
+
+                    % ==============================================================
+                    % ==========               MEDIA               =================
+                    % ==============================================================
+                    \subsubsection{Media}
+
+                        Mira, que loco :v
+                        \begin{align*}
+                            E(X) = \mu
+                        \end{align*}
+
+                            
+                    % ==============================================================
+                    % ==========               VARIANZA            =================
+                    % ==============================================================
+                    \subsubsection{Varianza}
+
+                        Mira, que loco :v
+                        \begin{align*}
+                            v(X) = \sigma^2
+                        \end{align*}
+
+
+                    % ==============================================================
+                    % ====                  PROPIEDADES                 ============
+                    % ==============================================================
+                    \subsubsection{Propiedades}
+
+                        \begin{itemize}
+
+                            \item 
+                                Sea $X_1, X_2, \dots, X_k$ variables aleatorias independientes
+                                y $X_i \sim N(x_i; \mu_i, \sigma_i^2)$  
+
+                                Entonces $X = X_1 + X_2 + \dots + X_k$ se distruye como
+                                como $X \sim N(x_i; \sum_{i=1}^k \mu_i, \sum_{i=1}^k \sigma_i^2)$
+
+                            \item 
+                                Sea $X_i \sim N(x_i; \mu, \sigma^2)$  
+
+                                Entonces $Y = aX + b$ se distruye como
+                                como $Y \sim N(y; a\mu + b, a\sigma^2)$
+
+                            \item 
+                                Sea $X_1, X_2, \dots, X_k$ variables aleatorias independientes
+                                y $X_i \sim N(x_i; \mu, \sigma^2)$  
+
+                                Entonces $\Over{X} = \frac{1}{n} \sum_{i=1}^n X_i$ se distruye como
+                                como $\Over{X} \sim N(\Over{x}; \mu, \frac{\sigma^2}{n})$
+
+                        \end{itemize}
+                    
+
+                \end{SmallIndentation}
+                \end{multicols}
+
+
+
+        % ==============================================================
+        % =======      PROPABILIDAD HARDCORE               =============
+        % ==============================================================
+        \clearpage
+        \section{Probabilidad Hardcore}
+
+
+                \begin{multicols}{2}
+                \begin{SmallIndentation}[0em]
+                    
+                    % ==============================================================
+                    % ========     TEOREMA CENTRAL DEL LIMITE         ==============
+                    % ==============================================================
+                    \subsubsection{Teorema Central del Límite}
+
+                        % ======================================================
+                        % ===========          DEFINICIÓN       ================
+                        % ======================================================
+                        \subsection{Definición}
+
+                            Garantiza que para $n$ (tamaño de muestra) suficientemente grande ($n \geq 30$)
+                            entonces:
+
+                            \begin{itemize}
+                                \item 
+                                    Si tienes una variable aleatoria que es la media muestral de otras variables aleatorias entonces
+                                    mientras mas variables aleatoria muestrees entonces más se va aproximar:
+
+                                    $\Over{X} \approx N(x; \mu = \mu, \sigma^2 = \dfrac{\sigma^2}{n})$
+                                
+                                \item 
+                                    Si tienes una variable aleatoria que esta compuesta por la suma de muchas otras variables
+                                    aleatorias entonces mientras mas grande sea la cantidad de variables aleatorias más se
+                                    aproxima a una normal:
+
+                                    $\sum_{i=0}^n X_i \approx N(x; \mu_x = n \mu, \sigma^2_x = n\sigma^2)$
+                            \end{itemize}
+
+
+                    % ==============================================================
+                    % ========            TEOREMA DE CHEBYSHEU        ==============
+                    % ==============================================================
+                    \subsubsection{Teorema Central de Chebyshue}
+
+                        % ======================================================
+                        % ===========          DEFINICIÓN       ================
+                        % ======================================================
+                        \subsubsection{Definición}
+
+                            Si no se conoce la distribución de la variable aleatoria, pero por circunstancias
+                            raras tenegamos la media y la varianza entonces podemos conocer información de
+                            la variable.
+
+                            
+                            Tenemos que:
+                            \begin{align*}
+                                P(\mu -k\sigma \leq X \leq \mu + k\sigma) &\geq 1 - \dfrac{1}{k^2}      \\   
+                                P(|X - \mu| \leq k\sigma) &\geq 1 - \dfrac{1}{k^2}                      \\   
+                                P(|X - \mu| > k\sigma) &< \dfrac{1}{k^2}     
+                            \end{align*}      
+
+
+                \end{SmallIndentation}
+                \end{multicols}
+
 
 
 
