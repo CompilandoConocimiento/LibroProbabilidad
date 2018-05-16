@@ -4446,6 +4446,53 @@
 
 
 
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+% ///////////////////////                 ESTIMACIONES               ///////////////////////////////////////
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+\part{Estimaciones}
+\clearpage
+
+
+
+    % ===============================================================================
+    % ===============       VARIABLES ALEATORIAS CONTINUAS     ======================
+    % ===============================================================================
+    \chapter{Variables Aleatorias Continuas}
+
+
+
+        % ==============================================================
+        % ===========       INTERVALOS DE CONFIANZA      ===============
+        % ==============================================================
+        \clearpage
+        \section{Intervalos de Confianza}
+
+
+            % ==============================================================
+            % ===========       INTERVALOS DE CONFIANZA      ===============
+            % ==============================================================
+            \clearpage
+            \subsection{Media $\mu$}
+
+                Considera que quieres un intervalo de confianza de $1 - \alpha$
+
+
+                Entonces necesitamos un estimador puntual, el mejor $\Over{X}$.
+
+                Ahora, con una $n$ muy grande tenemos que esto se puede ver como una normal
+                entonces lo que queremos es que:
+                \begin{align*}
+                    1 - \alpha
+                        & P\Wrap{L \leq \Over{X} \leq U}                                                                                                  \\
+                        & P\Wrap{\dfrac{L - \mu}{\sigma} \leq \dfrac{\Over{X} - \mu}{\sigma} \leq \dfrac{U - \mu}{\sigma}}                                \\
+                        & P\Wrap{Z_L \leq \dfrac{\Over{X} - \mu}{\frac{\sigma}{\sqrt{n}} } \leq Z_U}                                                      \\
+                        & P\Wrap{-Z_{\alpha / 2} \leq \dfrac{\Over{X} - \mu}{\frac{\sigma}{\sqrt{n}} } \leq Z_{\alpha / 2}}                             \\
+                        & P\Wrap{ \frac{\sigma}{\sqrt{n}} -Z_{\alpha / 2} \leq \Over{X} - \mu \leq \frac{\sigma}{\sqrt{n}} Z_{\alpha / 2}}              \\
+                        & P\Wrap{ \Over{X} + \frac{\sigma}{\sqrt{n}} -Z_{\alpha / 2} \leq \mu \leq  \Over{X} + \frac{\sigma}{\sqrt{n}} Z_{\alpha / 2}  }   \\
+                \end{align*}
+
+            
+
 
 
 
