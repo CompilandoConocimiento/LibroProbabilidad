@@ -4299,9 +4299,14 @@
 
                 Es la función de dos variables que cumple que:
                 \begin{itemize}
-                    \item $f_{X, Y}(x, y)$ nunca es negativa
-                    \item $\displaystyle \inftyInt \inftyInt f_{X, Y}(x, y) \; dx \; dy = 1$ 
+                    \item $f_{X, Y}(x, y) > 0 \forall x, y$
+                    \item $\displaystyle \inftyInt \inftyInt f_{X, Y}(x, y) \; dy \; dx = 1$ 
                 \end{itemize}
+
+
+                Ahora en el rango de los posibles valores de la variable aleatoria bidimensional
+                en el caso de continuo serán regiones en el plano y las probabilidades de interes
+                serán volumenes bajo la curva de interés.
                 
 
 
@@ -4457,41 +4462,147 @@
     % ===============================================================================
     % ===============       VARIABLES ALEATORIAS CONTINUAS     ======================
     % ===============================================================================
-    \chapter{Variables Aleatorias Continuas}
+    \chapter{Estimadores Puntuales}
 
-
-
-        % ==============================================================
-        % ===========       INTERVALOS DE CONFIANZA      ===============
-        % ==============================================================
+        
+        % ===============================================================================
+        % ===============            CARACTERISTICAS               ======================
+        % ===============================================================================
         \clearpage
-        \section{Intervalos de Confianza}
+        \section{Características}  
+
+            % ==============================================================
+            % ===============        Insesgado        ======================
+            % ==============================================================
+            \vspace{1em}
+            \subsection{Insesgado}
+
+                % ========================================
+                % ==============    SESGO    =============
+                % ========================================
+                \vspace{1em}
+                \subsubsection{Sesgo}
+
+                    Este esta dado por:
+                    \begin{align*}
+                        Sesgo(\hat \theta) = E(\hat \theta)  - \theta
+                    \end{align*}
+
+                % ========================================
+                % ==========   DEFINICION    =============
+                % ========================================
+                \vspace{1em}
+                \subsubsection{Definición}
+
+                    Suponte que tenemos un estimador puntual $\hat \theta$, decimos
+                    que es insesgado si y solo si $E(\hat \theta) = 0$
+
+            % ==============================================================
+            % ===============        VARIANZA MINIMA     ===================
+            % ==============================================================
+            \vspace{2em}
+            \subsection{Varianza Mínima}
+
+                Antes que nada vayamos con las definiciones:
+
+                % ==============================================================
+                % ==============    ERROR CUADRATICO MEDIO   ===================
+                % ==============================================================
+                \vspace{1em}
+                \subsubsection{Error Cuadrático Medio}
+
+                    Este esta dado por:
+                    \begin{align*}
+                        ECM(\hat \theta) = E(\theta - \hat \theta)^2
+                    \end{align*}
+
+
+                    Podemos trabar un poco la definición y llegar a una alternativa
+                    que puede sernos mucho más útil
+                    \begin{align*}
+                        ECM(\hat \theta) = V(\hat \theta) + Sesgo(\hat \theta)
+                    \end{align*}
+
+                    Si tenemos un estimador insesgado entonces es más que obvio
+                    que:
+                    \begin{align*}
+                        ECM(\hat \theta) = V(\hat \theta)
+                    \end{align*}
 
 
             % ==============================================================
-            % ===========       INTERVALOS DE CONFIANZA      ===============
+            % ===============            OPTIMO          ===================
             % ==============================================================
-            \clearpage
-            \subsection{Media $\mu$}
+            \vspace{2em}
+            \subsection{Optimo}
 
-                Considera que quieres un intervalo de confianza de $1 - \alpha$
-
-
-                Entonces necesitamos un estimador puntual, el mejor $\Over{X}$.
-
-                Ahora, con una $n$ muy grande tenemos que esto se puede ver como una normal
-                entonces lo que queremos es que:
+                Decimos que un estimador es optimo si cumple que:
                 \begin{align*}
-                    1 - \alpha
-                        & P\Wrap{L \leq \Over{X} \leq U}                                                                                                  \\
-                        & P\Wrap{\dfrac{L - \mu}{\sigma} \leq \dfrac{\Over{X} - \mu}{\sigma} \leq \dfrac{U - \mu}{\sigma}}                                \\
-                        & P\Wrap{Z_L \leq \dfrac{\Over{X} - \mu}{\frac{\sigma}{\sqrt{n}} } \leq Z_U}                                                      \\
-                        & P\Wrap{-Z_{\alpha / 2} \leq \dfrac{\Over{X} - \mu}{\frac{\sigma}{\sqrt{n}} } \leq Z_{\alpha / 2}}                             \\
-                        & P\Wrap{ \frac{\sigma}{\sqrt{n}} -Z_{\alpha / 2} \leq \Over{X} - \mu \leq \frac{\sigma}{\sqrt{n}} Z_{\alpha / 2}}              \\
-                        & P\Wrap{ \Over{X} + \frac{\sigma}{\sqrt{n}} -Z_{\alpha / 2} \leq \mu \leq  \Over{X} + \frac{\sigma}{\sqrt{n}} Z_{\alpha / 2}  }   \\
+                    ECM(\hat \theta) < ECM(\hat \theta_x) \forall \theta_x 
                 \end{align*}
 
-            
+
+            % ==============================================================
+            % ===============           CONSISTENTE      ===================
+            % ==============================================================
+            \vspace{2em}
+            \subsection{Optimo}
+
+                Decimos que un estimador es consistente si cumple que siendo
+                $n$ el tamaño de la muestra:
+                \begin{align*}
+                    \lim_{n \to \infty} ECM(\hat \theta) = 0 
+                \end{align*}
+
+
+
+        % ===============================================================================
+        % ===============            MÉTODO DE LOS MOMENTOS        ======================
+        % ===============================================================================
+        \clearpage
+        \section{Método de los Momentos}  
+
+            Podemos usar los momentos para estimar parámetros, de la siguiente manera:
+            \begin{itemize}
+                \item El k-ésimo momento poblacional es $\mu_k = E(X^K)$
+                \item El k-ésimo momento muestral es 
+                    $\mu_k = \dfrac{1}{n} \sum_{i=1}^n X_i^K$
+            \end{itemize}
+
+            Ahora solo decimos que $\mu_k = m_k$ y listo.
+
+
+            Recuerda para este paso que $E(X^2) = E(X)^2 + v(X)$
+
+
+
+        % ===============================================================================
+        % ===============            MÉTODO DE MÁXIMA VEROSIMILITUD    ==================
+        % ===============================================================================
+        \clearpage
+        \section{Método de Máxima Verosimilitud}
+
+            Ok, este parece que se ve un poco más difícil de explicar pero
+            es igual de sencillo.
+
+            Si tenemos una muestra aleatoria de $n$ de una pobalación con una función
+            de probabilidad de $f(x; \theta)$ entonces tenemos que la función
+            de verosimilitud esta dada por:
+            \begin{align*}
+                L(\theta) 
+                    &= f(x_1; \theta) f(x_2; \theta) \dots f(x_n; \theta)
+                    &= \prod_{i = 1}^n f(x_i; \theta)
+            \end{align*}
+
+            Ahora lo único que tenemos que hacer es encontrar la $\theta$
+            tal que esta función se maximize.
+
+            Ahora, generalmente al esta hablando del producto de funciones lo
+            que se suele hacer es encontrar el máximo de $Ln(L(\theta))$, 
+            pues tienen los mismo maximos y es generalmente más sencillos de encontrar
+
+
+        
 
 
 
