@@ -1355,6 +1355,9 @@
                     \clearpage
 
                     \item 
+                        $v(aX + bY) = a^2v(X) + b^2v(Y) + 2ab \; Cov(X,Y)$
+
+                    \item 
                         $v(X - Y) = v(X) - v(Y) - 2Cov(X,Y)$
 
                         % ======== DEMOSTRACION ========
@@ -4579,7 +4582,7 @@
         % ===============================================================================
         % ===============            MÉTODO DE MÁXIMA VEROSIMILITUD    ==================
         % ===============================================================================
-        \clearpage
+        \vspace{1em}
         \section{Método de Máxima Verosimilitud}
 
             Ok, este parece que se ve un poco más difícil de explicar pero
@@ -4590,7 +4593,7 @@
             de verosimilitud esta dada por:
             \begin{align*}
                 L(\theta) 
-                    &= f(x_1; \theta) f(x_2; \theta) \dots f(x_n; \theta)
+                    &= f(x_1; \theta) f(x_2; \theta) \dots f(x_n; \theta)       \\
                     &= \prod_{i = 1}^n f(x_i; \theta)
             \end{align*}
 
@@ -4599,10 +4602,12 @@
 
             Ahora, generalmente al esta hablando del producto de funciones lo
             que se suele hacer es encontrar el máximo de $Ln(L(\theta))$, 
-            pues tienen los mismo maximos y es generalmente más sencillos de encontrar
+            pues tienen los mismo maximos y es generalmente más sencillos de encontrar.
+
+            Ahora, despues de derivar con respecto a lo que tu quieras e igualar a cero, lo 
+            único que tienes que hacer es despejar lo que tu quieres.
 
 
-        
 
 
 
@@ -5125,7 +5130,10 @@
 
                         \item 
                             $v(X - Y) = v(X) - v(Y) - 2Cov(X,Y)$
-                                
+
+                        \item 
+                            $v(aX + bY) = a^2v(X) + b^2v(Y) + 2ab \; Cov(X,Y)$
+
 
                         \item
                             Si $X$ y $Y$ son independientes, entonces $v(X + Y) = v(X) + v(Y)$
