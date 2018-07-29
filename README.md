@@ -41,7 +41,7 @@ acaba de empezar.
 **Compilar es Compartir**
 
 <br />
-[![DownloadButton](Graphics/BookShow.png)](https://compilandoconocimiento.github.io/LibroProbabilidad/LibroProbabilidadYEstadistica.pdf)
+[![DownloadButton](Graphics/BookShow.png)](https://CompilandoConocimiento.github.io/LibroProbabilidad/LibroProbabilidadYEstadistica.pdf)
 
 ## Contenidos
 
