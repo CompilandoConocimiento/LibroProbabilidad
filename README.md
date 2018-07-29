@@ -17,7 +17,7 @@ que cometamos pequeños errores de vez en cuando.
 Espero que tomes estas páginas como un regalo, creado por seres imperfectos pero con muchos ánimos de hacer
 del mundo un lugar mejor, ahora si, abróchate los cinturones que esto acaba de empezar.
 
-![](Graphics/BookShow.png)
+[![DownloadButton](Graphics/BookShow.png)](https://compilandoconocimiento.github.io/LibroProbabilidad/LibroProbabilidadYEstadistica.pdf)
 
 ## Contenidos
 
@@ -76,7 +76,7 @@ En este libro podrás aprender sobre los siguientes temas:
 
 ### Ver el Documento en Línea o Descargarlo
 
-[![DownloadButton](Graphics/DownloadButton.png)](http://google.com.au/)
+[![DownloadButton](Graphics/DownloadButton.png)](https://compilandoconocimiento.github.io/LibroProbabilidad/LibroProbabilidadYEstadistica.pdf)
 
 Puedes descargar ambos archivos para tu disfrute o modificar del código fuente siguiendo las ideas del software libre.
 
