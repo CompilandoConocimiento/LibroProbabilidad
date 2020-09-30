@@ -10,7 +10,6 @@
     % *********  SPECIFIC FOR THIS BOOK  ********
     \def\ProjectAuthorLink{https://github.com/CompilandoConocimiento}
     \def\ProjectNameLink{\ProjectAuthorLink/LibroProbabilidad}    
-    
 
     % *********   DOCUMENT ITSELF   **************
     \documentclass[12pt, fleqn]{report}                             %Type of doc and size of font and left equations
@@ -536,6 +535,35 @@
         % ==============================================================
         \clearpage
         \section{Notación}
+            Kolmogorov creo una axiomatizacion fuertemente basada en la teoría de la medida. En ella se habla de que
+            un espacio de probabilidad tiene 3 elementos:
+            \begin{enumerate}
+                \item Un conjunto no vacío, $\Omega$, llamado espacio muestral
+                \item $\GenericField$ una $\sigma$ - algebra 
+                    (digamos que que es el conjunto de las posibles salidas, nota intesante que 
+                    matematicamente podemos decir que es un conjunto cerrado bajo operaciones
+                    conjuntivistas), es decir
+                        un subconjuntos del conjunto potencia de $\Omega$ que cumple que:
+                        \begin{enumerate}
+                            \item $\emptyset \in \GenericField$
+                            \item Si $A \in \GenericField \lInfire A^C \in GenericField$
+                            \item Si $A_1, A_2, \cdots \in \GenericField \lInfire \displaystyle \cup_{i = 1}^\infty A_i \in GenericField$
+                        \end{enumerate}
+                \item Una función $P: \GenericField\to [0, 1]$ tal que:
+                    \begin{enumerate}
+                        \item $P(\emptyset) = 0$
+                        \item Si $A_1, A_2, \dots$ son disjuntos entonces 
+                            $
+                            \displaystyle
+                            P \Wrap{
+                                \cup_{i = 1}^\infty A_i
+                            }
+                            = 
+                            \sum_{i = 1}^\infty P(A_i)
+                            $
+                        \item $P(\Omega) = 1$
+                    \end{enumerate}
+            \end{enumerate}
 
 
             % ====================================
@@ -1063,6 +1091,12 @@
                         Teorema del Binomio (Caso Especial)
                         \begin{equation*}
                             \sum_{k=0}^n {n \choose k} p^k (1 - p)^{n-k} = 1
+                        \end{equation*}
+
+                    \item 
+                        Propiedad bonita
+                        \begin{equation*}
+                            {n \choose k} = {n - 1 \choose k - 1} + {n - 1 \choose k} 
                         \end{equation*}
 
                 \end{itemize}
