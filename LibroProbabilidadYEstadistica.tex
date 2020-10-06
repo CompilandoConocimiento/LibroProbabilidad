@@ -674,8 +674,37 @@
                     \item 
                         $P(A') = 1 - P(A)$
 
+                        %======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            
+                            \begin{align*}
+                                P(\Omega)
+                                    &= P(A \cup A^C)
+                                        && \Remember{como son disjuntos}    \\
+                                    &= P(A) + P(A^C)
+                                        && \Remember{por ser el universo}    \\
+                                    1 &= P(A) + P(A^C)
+                                \end{align*}
+                        
+                        \end{SmallIndentation}
+
                     \item 
                         Si $A \subseteq B$ entonces $P(A) \leq P(B)$
+
+                        %======== DEMOSTRACION ========
+                        \begin{SmallIndentation}[1em]
+                            \textbf{Demostración}:
+                            \begin{align*}
+                                P(B)
+                                    &= P(A \cup (B - A))
+                                        && \Remember{y dado que a y B - A son disjuntos por definicion}    \\
+                                    &= P(A) + P(B - A)
+                                        && \Remember{Pero $P(B - A) \geq 0$ entonces}                   \\
+                                P(A)    \leq P(B)
+                                \end{align*}
+                        
+                        \end{SmallIndentation}
 
                     \item
                         La probabilidad de la unión de n eventos de puede escribir de manera general como:
@@ -703,8 +732,8 @@
                                 &+ P(A \cap B \cap C)   
                         \end{align*}
 
-                    \item
-                        $P(A - B) = P(A) - P(A \cap B)$
+                    \item $P(A - B) = P(A) - P(A \cap B)$
+                    \item $P(A) = P(A \cap B) + P(A \cap B^C)$
 
                 \end{itemize}
 
